@@ -140,7 +140,7 @@ const ShowBtn = styled.img`
 {/* <Buttons> */}
 const Buttons = styled.div`
   width: 100%;
-  height: 30%;
+  height: 96px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -151,8 +151,8 @@ const Home = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   /* background-color: pink; */
 `
 const HomeBtn = styled.img`
@@ -163,6 +163,7 @@ const Loca = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `
 const LocaBtn = styled.img`
 
@@ -172,6 +173,7 @@ const Like = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `
 const LikeBtn = styled.img`
 
@@ -181,6 +183,7 @@ const MyMain = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `
 const MyMainBtn = styled.img`
 
@@ -201,16 +204,16 @@ export default function EmotionPage(){
 
       <SearchBar>
         <SearchBtn>
-          <img src="Search.svg"/>
+          <img src="../../images/Search.svg"/>
         </SearchBtn>
       </SearchBar>
       
       <Mypage>
         <My>마이</My>
         <User>
-        <UserImg src="ProfileImg.png"/>
+        <UserImg src="../../images/ProfileImg.png"/>
         <UserName>임정아</UserName>
-        <UserTog src="togle.svg"></UserTog>
+        <UserTog src="../../images/togle.svg"></UserTog>
         </User>
       </Mypage>
 
@@ -227,7 +230,7 @@ export default function EmotionPage(){
             <Qn>Q. 01</Qn>
             <Question>리뷰 작성은 어떻게 하나요?</Question>
           </QuestionBox>
-          <ShowBtn src="showBtn.svg"></ShowBtn>
+          <ShowBtn src="../../images/showBtn.svg"></ShowBtn>
         </QuestionLi>
 
         <QuestionLi>
@@ -235,7 +238,7 @@ export default function EmotionPage(){
             <Qn>Q. 02</Qn>
             <Question>리뷰 수정/삭제는 어떻게 하나요?</Question>
           </QuestionBox>
-          <ShowBtn src="showBtn.svg"></ShowBtn>
+          <ShowBtn src="../../images/showBtn.svg"></ShowBtn>
         </QuestionLi>
 
         <QuestionLi>
@@ -243,7 +246,7 @@ export default function EmotionPage(){
             <Qn>Q. 03</Qn>
             <Question>아이디/비밀번호를 잊어버렸어요.</Question>
           </QuestionBox>
-          <ShowBtn src="showBtn.svg"></ShowBtn>
+          <ShowBtn src="../../images/showBtn.svg"></ShowBtn>
         </QuestionLi>
 
         <QuestionLi>
@@ -251,7 +254,7 @@ export default function EmotionPage(){
             <Qn>Q. 04</Qn>
             <Question>회원탈퇴를 하고싶어요.</Question>
           </QuestionBox>
-          <ShowBtn src="showBtn.svg"></ShowBtn>
+          <ShowBtn src="../../images/showBtn.svg"></ShowBtn>
         </QuestionLi>
 
         <QuestionLi>
@@ -259,7 +262,7 @@ export default function EmotionPage(){
             <Qn>Q. 05</Qn>
             <Question>출발지 설정은 어떻게 하나요?</Question>
           </QuestionBox>
-          <ShowBtn src="showBtn.svg"></ShowBtn>
+          <ShowBtn src="../../images/showBtn.svg"></ShowBtn>
         </QuestionLi>
 
         <QuestionLi>
@@ -267,25 +270,25 @@ export default function EmotionPage(){
             <Qn>Q. 06</Qn>
             <Question>비밀번호를 변경하고 싶어요.</Question>
           </QuestionBox>
-          <ShowBtn src="showBtn.svg"></ShowBtn>
+          <ShowBtn src="../../images/showBtn.svg"></ShowBtn>
         </QuestionLi>
       </QuestionList>
 
       <Buttons>
         <Home>
-          <HomeBtn src="home.svg"></HomeBtn>
+          <HomeBtn src="../../images/home.svg"></HomeBtn>
           홈
         </Home>
         <Loca>
-          <LocaBtn src="location.svg"></LocaBtn>
+          <LocaBtn src="../../images/location.svg"></LocaBtn>
           잇츠로드
         </Loca>
         <Like>
-          <LikeBtn src="love.svg"></LikeBtn>
+          <LikeBtn src="../../images/love.svg"></LikeBtn>
           마이찜
         </Like>
         <MyMain>
-          <MyMainBtn src="my.svg"></MyMainBtn>
+          <MyMainBtn src="../../images/my.svg"></MyMainBtn>
           마이
         </MyMain>
       </Buttons>
