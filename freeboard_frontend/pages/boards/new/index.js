@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import{
   AddBox,
   AddBoxWrapper,
@@ -22,10 +24,58 @@ import{
   WriterWrapper,
   ZipcodeBtn,
   ZipcodeInput,
-  ZipcodeWrapper
+  ZipcodeWrapper,
+  NameErr,
+  PasswordErr,
+  TitleErr
 } from '../../../styles/BoardsNew-style'
 
 export default function BoardsNewPage() {
+
+  const [ name, setName ] = useState("")
+  const [ nameErr, setNameErr ] = useState("")
+
+  const [ password, setPassword ] = useState("")
+  const [ passwordErr, setPasswordErr ] = useState("")
+
+  const [ title, setTitle ] = useState("")
+  const [ titleErr, setTitleErr ] = useState("")
+
+  function onChangeName(event){
+    setName(event.target.value)
+  }
+  function onChangePassword(event){
+    setPassword(event.target.value)
+  }
+  function onChangeTitle(event){
+    setTitle(event.target.value)
+  }
+
+  function errMsg(){
+    if(!name){
+      setNameErr("*이름을 입력해주세요.")
+    }
+
+    if(name){
+      setNameErr("")
+    }
+
+    if((password.length) < 4){
+      setPasswordErr("*비밀번호를 4자리 이상으로 설정해주세요.")
+    }
+
+    if((password.length) > 3){
+      setPasswordErr("")
+    }
+
+    if(!title){
+      setTitleErr("*제목을 입력해주세요.")
+    }
+
+    if(title){
+      setTitleErr("")
+    }
+  }
 
   return (
     <Wrapper>
@@ -36,11 +86,13 @@ export default function BoardsNewPage() {
             작성자
             <Check> *</Check>
           </Label>
-          <WriterInput type="text" placeholder="이름을 적어주세요."></WriterInput>
+          <WriterInput type="text" placeholder="이름을 적어주세요." onChange={onChangeName}></WriterInput>
+          <NameErr>{nameErr}</NameErr>
         </InputWrapper>
         <InputWrapper>
           <Label>비밀번호</Label>
-          <WriterInput type="text" placeholder="비밀번호를 입력해주세요."></WriterInput>
+          <WriterInput type="password" placeholder="비밀번호를 입력해주세요." onChange={onChangePassword}></WriterInput>
+          <PasswordErr>{passwordErr}</PasswordErr>
         </InputWrapper>
       </WriterWrapper>
       <InputWrapper>
@@ -48,7 +100,8 @@ export default function BoardsNewPage() {
           제목
           <Check> *</Check>
         </Label>
-        <Input type="text" placeholder="제목을 작성해주세요."></Input>
+        <Input type="text" placeholder="제목을 작성해주세요." onChange={onChangeTitle}></Input>
+        <TitleErr>{titleErr}</TitleErr>
       </InputWrapper>
       <InputWrapper>
         <Label>내용</Label>
@@ -95,7 +148,7 @@ export default function BoardsNewPage() {
       </SelectWrapper>
       <ButtonWrapper>
         <CancelBtn>취소하기</CancelBtn>
-        <SubmitBtn>등록하기</SubmitBtn>
+        <SubmitBtn onClick={errMsg}>등록하기</SubmitBtn>
       </ButtonWrapper>
     </Wrapper>
   )

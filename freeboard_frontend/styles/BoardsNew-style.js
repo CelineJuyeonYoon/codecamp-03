@@ -172,6 +172,7 @@ font-weight: 500;
 color: #4F4F4F;
 cursor: pointer;
 `
+
 export const SubmitBtn = styled.button`
 background-color: #FFD600;
 width:179px;
@@ -181,9 +182,28 @@ font-size: 16px;
 font-weight: 500;
 cursor: pointer;
 `
+
 export const ButtonWrapper = styled.div`
 width: 382px;
 display: flex;
 justify-content: space-between;
 padding-top: 40px;
+`
+
+export const NameErr = styled.div`
+  color: red;
+  margin-top: 3px;
+  margin-left: 1px;
+  `
+
+export const PasswordErr = styled.div`
+  color: red;
+  margin-top: 3px;
+  margin-left: 1px;
+  `
+
+export const TitleErr = styled.div`
+  color: red;
+  margin-top: 3px;
+  margin-left: 1px;
 `
