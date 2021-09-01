@@ -60,7 +60,7 @@ export default function BoardsNewPage() {
     }
   }
 
-  function errMsg(){
+  function onClickSubmit(){
     if(!name){
       setNameErr("*이름을 입력해주세요.")
     }
@@ -71,6 +71,10 @@ export default function BoardsNewPage() {
 
     if(!title){
       setTitleErr("*제목을 입력해주세요.")
+    }
+
+    if(name!=="" && password.length>=4 && title !==""){
+      alert('게시물이 등록되었습니다.')
     }
   }
 
@@ -145,7 +149,7 @@ export default function BoardsNewPage() {
       </SelectWrapper>
       <ButtonWrapper>
         <CancelBtn>취소하기</CancelBtn>
-        <SubmitBtn onClick={errMsg}>등록하기</SubmitBtn>
+        <SubmitBtn onClick={onClickSubmit}>등록하기</SubmitBtn>
       </ButtonWrapper>
     </Wrapper>
   )
