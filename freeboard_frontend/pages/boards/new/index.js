@@ -43,12 +43,21 @@ export default function BoardsNewPage() {
 
   function onChangeName(event){
     setName(event.target.value)
+    if(event.target.value){
+      setNameErr("")
+    }
   }
   function onChangePassword(event){
     setPassword(event.target.value)
+    if(event.target.value.length > 3){
+      setPasswordErr("")
+    }
   }
   function onChangeTitle(event){
-    setTitle(event.target.value)
+    setTitle(event.target.value)   
+    if(title){
+      setTitleErr("")
+    }
   }
 
   function errMsg(){
@@ -56,24 +65,12 @@ export default function BoardsNewPage() {
       setNameErr("*이름을 입력해주세요.")
     }
 
-    if(name){
-      setNameErr("")
-    }
-
     if((password.length) < 4){
-      setPasswordErr("*비밀번호를 4자리 이상으로 설정해주세요.")
-    }
-
-    if((password.length) > 3){
-      setPasswordErr("")
+      setPasswordErr("*비밀번호를 4자리 이상 입력해주세요.")
     }
 
     if(!title){
       setTitleErr("*제목을 입력해주세요.")
-    }
-
-    if(title){
-      setTitleErr("")
     }
   }
 
