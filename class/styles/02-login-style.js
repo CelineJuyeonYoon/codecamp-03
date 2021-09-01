@@ -87,8 +87,9 @@ export const LoginBtn = styled.button`
   height:76px;
   margin-left: 51px;
   margin-top: 20px;
-  background-color: #ff1b6d;
-  opacity: 0.6;
+  /* background-color: #ff1b6d; */
+  background-color: rgba(255, 27, 109, 0.6);
+  /* opacity: 0.6; */
   border-radius: 38px;
   border: none;
   color: white;
@@ -139,7 +140,8 @@ export const KaKaoLoginBtn = styled.button`
   margin-left: 51px;
   margin-top: 60px;
   background-color: transparent;
-  opacity: 0.6;
+  /* opacity: 0.6; */
+  /* background-color: rgba(0, 0, 0, 0.5); */
   border-radius: 38px;
   border: solid yellow 3px;
   color: yellow;
