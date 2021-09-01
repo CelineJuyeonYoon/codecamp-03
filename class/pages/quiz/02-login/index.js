@@ -53,11 +53,9 @@ export default function LoginPage(){
     } else if(!email.includes('@')){
       setEmailErr("이메일 주소를 다시 확인해주세요.")
     }
-    if(
-      password.length < 8 
-    || password.length > 16){
+    if(!password){
       setPasswordErr("비밀번호를 입력해주세요.")
-    } else if(password < 8 || password > 16){
+    } else if(password.length < 8 || password.length > 16){
       setPasswordErr("8~16자의 영문, 숫자, 특수 문자만 사용 가능합니다.")
     } else if(email.includes('@') && password.length >= 8 && password.length <= 16){
       alert('환영합니다~!')
