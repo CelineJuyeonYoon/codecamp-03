@@ -47,6 +47,17 @@ function makeNumber(num){
   return result
 }
 
+// better
+function makeNumber(num){
+  let result = ''
+  for(let i=1; i<=num; i++){
+    result = result + i
+    if(i!==num){
+      result = `${result}-`
+    }
+  } return result
+}
+
 // **026. 홀수 문자열**
 // function makeOdd(num){
 //   let result
