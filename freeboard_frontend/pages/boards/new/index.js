@@ -1,3 +1,4 @@
+import { useMutation, gql } from '@apollo/client'
 import { useState } from 'react'
 
 import{
@@ -27,10 +28,25 @@ import{
   ZipcodeWrapper,
   NameErr,
   PasswordErr,
-  TitleErr
+  TitleErr,
+  ContentErr
 } from '../../../styles/BoardsNew-style'
 
+const CREATE_BOARD = gql`
+  mutation createBoard($createBoardInput: CreateBoardInput!){
+  createBoard(
+    createBoardInput: $createBoardInput
+  ){
+    _id
+    writer
+    title
+    contents
+  }
+}
+`
+
 export default function BoardsNewPage() {
+  const [ createBoard ] = useMutation(CREATE_BOARD)
 
   const [ name, setName ] = useState("")
   const [ nameErr, setNameErr ] = useState("")
@@ -41,9 +57,12 @@ export default function BoardsNewPage() {
   const [ title, setTitle ] = useState("")
   const [ titleErr, setTitleErr ] = useState("")
 
+  const [ content, setContent ] = useState("")
+  const [ contentErr, setContentErr ] = useState("")
+
   function onChangeName(event){
     setName(event.target.value)
-    if(event.target.value){
+    if(event.target.value){ //이부분을 state인 name으로하면 입력시 바로 에러가 없어지지 X
       setNameErr("")
     }
   }
@@ -55,12 +74,29 @@ export default function BoardsNewPage() {
   }
   function onChangeTitle(event){
     setTitle(event.target.value)   
-    if(title){
+    if(event.target.value){
       setTitleErr("")
     }
   }
+  function onChangeContent(event){
+    setContent(event.target.value)
+    if(event.target.value){
+      setContentErr("")
+    }
+  }
 
-  function onClickSubmit(){
+  async function onClickSubmit(){
+    // await createBoard({
+    //   variables:{
+    //     createBoardInput: {
+    //       writer: name,
+    //       password: password,
+    //       title: title,
+    //       contents: content
+    //     }
+    //   }
+    // })
+
     if(!name){
       setNameErr("*이름을 입력해주세요.")
     }
@@ -73,7 +109,11 @@ export default function BoardsNewPage() {
       setTitleErr("*제목을 입력해주세요.")
     }
 
-    if(name!=="" && password.length>=4 && title !==""){
+    if(!content){
+      setContentErr("*내용을 입력해주세요.")
+    }
+
+    if(name!=="" && password.length>=4 && title !=="" && content !==""){
       alert('게시물이 등록되었습니다.')
     }
   }
@@ -106,7 +146,8 @@ export default function BoardsNewPage() {
       </InputWrapper>
       <InputWrapper>
         <Label>내용</Label>
-        <ContentInput type="text" placeholder="내용을 작성해주세요."></ContentInput>
+        <ContentInput type="text" placeholder="내용을 작성해주세요." onChange={onChangeContent}></ContentInput>
+        <ContentErr>{contentErr}</ContentErr>
       </InputWrapper>
       <AddressWrapper>
         <Label>주소</Label>

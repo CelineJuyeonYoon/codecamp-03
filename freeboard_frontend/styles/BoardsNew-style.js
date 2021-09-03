@@ -207,3 +207,9 @@ export const TitleErr = styled.div`
   margin-top: 3px;
   margin-left: 1px;
 `
+
+export const ContentErr = styled.div`
+  color: red;
+  margin-top: 3px;
+  margin-left: 1px;
+`
