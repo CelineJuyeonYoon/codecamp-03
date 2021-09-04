@@ -17,14 +17,14 @@ const FETCH_BOARD = gql`
 export default function DynamicBoardRead(){
   const router = useRouter()
 
-  const { data } = useQuery(FETCH_BOARD, {
-    variables: { number: Number(router.query.number) }  //실행하자마자(페이지열리자마자) 바로 요청됨 <-> mutation은 내가 원할 때
+  const { data } = useQuery(FETCH_BOARD, {  //실행하자마자(페이지열리자마자) 바로 요청됨 <-> mutation은 내가 원할 때
+    variables: { number: Number(router.query.aaa) } //aaa는 동적라우팅된 폴더(?)명임!!!
   })
   //async await 도 안됨! 데이터가 들어오기 전에 아래 페이지를 먼저 표시하고 싶기 때문에!
   return(
     <>
       <div>게시물 상세 페이지 입니다.</div>
-      <div>게시글 번호: {router.query.number}</div>
+      <div>게시글 번호: {router.query.aaa}</div>
       <div>게시글 작성자: {data?.fetchBoard.writer}</div>
       <div>게시글 제목: {data?.fetchBoard.title}</div>
       <div>게시글 내용: {data?.fetchBoard.contents}</div>

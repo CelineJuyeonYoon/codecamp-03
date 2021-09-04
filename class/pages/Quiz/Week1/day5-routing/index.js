@@ -44,7 +44,7 @@ export default function MyDynamicRoutingPage(){
           createProductInput: {
             name,
             detail,
-            price: price
+            price: Number(price) //price 로만 쓰고 Number타입으로 변경 안하면 에러!
           }
         }
       })

@@ -2,7 +2,7 @@ import { useMutation, gql } from '@apollo/client'
 import { useState } from 'react'
 
 const CREATE_BOARD = gql`
-  mutation belowMutations($writer: String, $title: String, $contents: String) {
+  mutation createBoard($writer: String, $title: String, $contents: String) {
     createBoard(writer: $writer, title: $title, contents: $contents){
       message
       number
