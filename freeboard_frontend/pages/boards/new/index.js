@@ -1,5 +1,6 @@
 import { useMutation, gql } from '@apollo/client'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 import{
   AddBox,
@@ -48,6 +49,7 @@ const CREATE_BOARD = gql`
 
 export default function BoardsNewPage() {
   const [ createBoard ] = useMutation(CREATE_BOARD)
+  const router = useRouter()
 
   const [ name, setName ] = useState("")
   const [ nameErr, setNameErr ] = useState("")
@@ -87,7 +89,7 @@ export default function BoardsNewPage() {
   }
 
   async function onClickSubmit(){
-    await createBoard({
+    const result = await createBoard({
       variables:{
         createBoardInput: {
           writer: name,
@@ -117,6 +119,8 @@ export default function BoardsNewPage() {
     if(name!=="" && password.length>=4 && title !=="" && content !==""){
       alert('게시물이 등록되었습니다.')
     }
+
+    router.push(`boards/detail/${result.data.createBoard._id}`)
   }
 
   return (
