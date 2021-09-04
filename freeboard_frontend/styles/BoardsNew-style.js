@@ -140,11 +140,11 @@ padding-top: 40px;
 width: 996px;
 `
 
-// export const RadioWrapper = styled.div`
-//   height: 24px;
-//   display: flex;
-//   align-items: center;
-// `
+export const RadioWrapper = styled.div`
+  height: 24px;
+  display: flex;
+  align-items: center;
+`
 
 export const RadioInput = styled.input`
 width: 15px;
@@ -157,9 +157,18 @@ cursor: pointer;
 export const RadioLabel = styled.label`
 margin-left: 10px;
 margin-right: 22px;
+padding-top: 2px;
 font-size: 16px;
 font-weight: 500;
 /* padding-bottom: 1px; */
+`
+
+export const ButtonWrapper = styled.div`
+width: 382px;
+/* width: 1200px; */
+display: flex;
+justify-content: space-between;
+padding-top: 40px;
 `
 
 export const CancelBtn = styled.button`
@@ -181,13 +190,6 @@ border: none;
 font-size: 16px;
 font-weight: 500;
 cursor: pointer;
-`
-
-export const ButtonWrapper = styled.div`
-width: 382px;
-display: flex;
-justify-content: space-between;
-padding-top: 40px;
 `
 
 export const NameErr = styled.div`

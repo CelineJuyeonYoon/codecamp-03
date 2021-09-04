@@ -16,6 +16,7 @@ import{
   Label,
   RadioInput,
   RadioLabel,
+  RadioWrapper,
   SelectWrapper,
   SubmitBtn,
   Title,
@@ -86,16 +87,16 @@ export default function BoardsNewPage() {
   }
 
   async function onClickSubmit(){
-    // await createBoard({
-    //   variables:{
-    //     createBoardInput: {
-    //       writer: name,
-    //       password: password,
-    //       title: title,
-    //       contents: content
-    //     }
-    //   }
-    // })
+    await createBoard({
+      variables:{
+        createBoardInput: {
+          writer: name,
+          password: password,
+          title: title,
+          contents: content
+        }
+      }
+    })
 
     if(!name){
       setNameErr("*이름을 입력해주세요.")
@@ -181,12 +182,12 @@ export default function BoardsNewPage() {
       </AddWrapper>
       <SelectWrapper>
         <Label>메인 설정</Label>
-        {/* <RadioWrapper> */}
-        <RadioInput type="radio"></RadioInput>
-        <RadioLabel>유튜브</RadioLabel>
-        <RadioInput type="radio"></RadioInput>
-        <RadioLabel>사진</RadioLabel>
-        {/* </RadioWrapper> */}
+        <RadioWrapper>
+          <RadioInput type="radio"></RadioInput>
+          <RadioLabel>유튜브</RadioLabel>
+          <RadioInput type="radio"></RadioInput>
+          <RadioLabel>사진</RadioLabel>
+        </RadioWrapper>
       </SelectWrapper>
       <ButtonWrapper>
         <CancelBtn>취소하기</CancelBtn>
