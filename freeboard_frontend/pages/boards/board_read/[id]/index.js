@@ -22,20 +22,20 @@ import {
   DislikeBtn,
   LikeImg,
   DislikeImg
-} from '../../../styles/ProductDetail-style'
+} from '../../../../styles/ProductDetail-style'
 
 const FETCH_BOARD = gql`
   query fetchBoard($boardId: ID!){
   fetchBoard(boardId: $boardId){
     writer
-    createdAt
+    # createdAt
     title
     contents
   }
 }
 `
 
-export default function ProductDetailPage(){
+export default function BoardReadPage(){
   const router = useRouter()
 
   const { data } = useQuery(FETCH_BOARD, {
@@ -46,14 +46,15 @@ export default function ProductDetailPage(){
   return(
     <Wrapper>
       <Box>
+        {/* 게시물ID: {router.query.id} */}
         <Header>
           <WriterWrapper>
             <img src="../../images/profile.png"></img>
             <WriteInfo>
-              <WriterName>{data?.fetchBoard.writer}</WriterName>
-              {/* <WriterName>노원두</WriterName> */}
-              <WriteDate>{data?.fetchBoard.createAt}</WriteDate>
-              {/* <WriteDate>날짜</WriteDate> */}
+              {/* <WriterName>{data?.fetchBoard.writer}</WriterName> */}
+              <WriterName>노원두</WriterName>
+              {/* <WriteDate>{data?.fetchBoard.createAt}</WriteDate> */}
+              <WriteDate>날짜</WriteDate>
             </WriteInfo>
           </WriterWrapper>
           <Icons>
@@ -61,11 +62,11 @@ export default function ProductDetailPage(){
             <LocaImg src="../../images/loca.png"></LocaImg>
           </Icons>
         </Header>
-        <Title>{data?.fetchBoard.title}</Title>
-        {/* <Title>제목</Title> */}
+        {/* <Title>{data?.fetchBoard.title}</Title> */}
+        <Title>제목</Title>
         <Image src='../../images/image.png'></Image>
-        <Contents>{data?.fetchBoard.contents}</Contents>
-        {/* <Contents>내용</Contents> */}
+        {/* <Contents>{data?.fetchBoard.contents}</Contents> */}
+        <Contents>내용</Contents>
         <Vedio src="../../images/video.png"></Vedio>
         <LikeDislike>
           <LikeBtn >

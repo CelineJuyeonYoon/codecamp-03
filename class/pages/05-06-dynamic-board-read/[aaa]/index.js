@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 
 const FETCH_BOARD = gql`
-  query fetchBoard($number: Int ){
+  query fetchBoard($number: Int){
     fetchBoard(number: $number){
       writer
       title

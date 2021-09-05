@@ -89,38 +89,42 @@ export default function BoardsNewPage() {
   }
 
   async function onClickSubmit(){
-    const result = await createBoard({
-      variables:{
-        createBoardInput: {
-          writer: name,
-          password: password,
-          title: title,
-          contents: content
-        }
-      }
-    })
-
+    
     if(!name){
       setNameErr("*이름을 입력해주세요.")
     }
-
+    
     if((password.length) < 4){
       setPasswordErr("*비밀번호를 4자리 이상 입력해주세요.")
     }
-
+    
     if(!title){
       setTitleErr("*제목을 입력해주세요.")
     }
-
+    
     if(!content){
       setContentErr("*내용을 입력해주세요.")
     }
-
+    
     if(name!=="" && password.length>=4 && title !=="" && content !==""){
       alert('게시물이 등록되었습니다.')
     }
-
-    router.push(`boards/detail/${result.data.createBoard._id}`)
+    
+    try{
+      const result = await createBoard({
+        variables:{
+          createBoardInput: {
+            writer: name,
+            password: password,
+            title: title,
+            contents: content
+          }
+        }
+      })
+      router.push(`/boards/board_read/${result.data.createBoard._id}`)
+    } catch(error){
+      console.log(error)
+    }
   }
 
   return (
