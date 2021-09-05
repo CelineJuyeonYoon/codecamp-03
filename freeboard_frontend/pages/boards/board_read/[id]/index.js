@@ -51,7 +51,7 @@ export default function BoardReadPage(){
             <img src="../../images/profile.png"></img>
             <WriteInfo>
               <WriterName>{data?.fetchBoard.writer}</WriterName>
-              <WriteDate>{data?.fetchBoard.createAt}</WriteDate>
+              <WriteDate>{data?.fetchBoard.createdAt}</WriteDate>
             </WriteInfo>
           </WriterWrapper>
           <Icons>
