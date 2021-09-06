@@ -1,15 +1,18 @@
 import{
-
+  Writer,
+  Title,
+  Content,
+  SubmitBtn
 } from './BoardWrite.styles'
 
 export default function BoardWriteUI(props){
 
   return(
     <>
-      작성자: <input type="text" onChange={props.onChangeMyWriter}/><br />
-      제목: <input type="text" onChange={props.onChangeMyTitle}/><br />
-      내용: <input type="text" onChange={props.onChangeMyContents}/><br />
-      <button onClick={props.aaa}>GRAPHQL-API 요청하기!!!</button>
+      작성자: <Writer type="text" onChange={props.onChangeMyWriter}/><br />
+      제목: <Title type="text" onChange={props.onChangeMyTitle}/><br />
+      내용: <Content type="text" onChange={props.onChangeMyContents}/><br />
+      <SubmitBtn onClick={props.aaa} BTO={props.greenLight}>GRAPHQL-API 요청하기!!!</SubmitBtn>
     </>
   )
 }

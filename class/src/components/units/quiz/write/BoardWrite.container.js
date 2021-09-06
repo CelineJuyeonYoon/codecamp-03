@@ -11,17 +11,33 @@ export default function BoardWrite() {
   const [myWriter, setMyWriter] = useState("")
   const [myTitle, setMyTitle] = useState("")
   const [myContents, setMyContents] = useState("")
+  const [greenLight, setGreenLight] = useState("")
 
   function onChangeMyWriter(event){
     setMyWriter(event.target.value)
+    if(event.target.value !== '' && myTitle !== '' && myContents !== ''){
+      setGreenLight(true)
+    } else{
+      setGreenLight('')
+    }
   }
 
   function onChangeMyTitle(event){
     setMyTitle(event.target.value)
+    if(myWriter !== '' && event.target.value !== '' && myContents !== ''){
+      setGreenLight(true)
+    } else{
+      setGreenLight('')
+    }
   }
 
   function onChangeMyContents(event){
     setMyContents(event.target.value)
+    if(myWriter !== '' && myTitle !== '' && event.target.value !== ''){
+      setGreenLight(true)
+    } else{
+      setGreenLight('')
+    }
   }
 
   async function aaa(){
@@ -47,6 +63,7 @@ export default function BoardWrite() {
       onChangeMyTitle={onChangeMyTitle}
       onChangeMyContents={onChangeMyContents}
       aaa={aaa}
+      greenLight={greenLight}
     />
   )
 }
