@@ -107,13 +107,13 @@ export default function BoardsNewPage() {
       setContentErr("*내용을 입력해주세요.")
     }
     
-    if(name!=="" && password.length>=4 && title !=="" && content !==""){
+    if(name !=="" && password.length>=4 && title !=="" && content !==""){
       alert('게시물이 등록되었습니다.')
     }
     
     try{
       const result = await createBoard({
-        variables:{
+        variables: {
           createBoardInput: {
             writer: name,
             password: password,
