@@ -1,7 +1,7 @@
-import { useQuery } from '@apollo/client'
+import { useQuery, useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import BoardReadUI from './BoardRead.presenter'
-import {FETCH_BOARD} from './BoardRead.queries'
+import {FETCH_BOARD, DELETE_BOARD} from './BoardRead.queries'
 
 export default function BoardRead(){
   const router = useRouter()
@@ -10,10 +10,20 @@ export default function BoardRead(){
     variables: { boardId: router.query.id }
   })
 
+  const [deleteBoard] = useMutation(DELETE_BOARD)
+
+  async function onClickDelete(){
+    await deleteBoard({
+      variables: { boardId: router.query.id }
+    })
+    alert('게시물이 삭제되었습니다.')
+  }
+
   return(
     <BoardReadUI 
       data={data}
       router={router}
+      onClickDelete={onClickDelete}
     />
   )
 }

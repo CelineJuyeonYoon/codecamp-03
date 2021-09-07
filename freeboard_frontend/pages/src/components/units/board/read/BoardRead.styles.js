@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
-  width: 1200px;
-  height: 1602px;
-  border: 1px solid gray;
-  `
+width: 1200px;
+height: 1602px;
+border: 1px solid gray;
+`
   export const Box = styled.div`
     margin-left: 106.67px;
     margin-right: 108.67px;
@@ -94,3 +94,30 @@ export const LikeImg = styled.img`
 export const DislikeImg = styled.img`
   padding-bottom: 1px;
 `
+export const Buttons = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 200px;
+`
+export const ToListBtn = styled.button`
+  width: 175px;
+  height: 45px;
+  margin-left: 25px;
+  background-color: white;
+  border: 1px #BDBDBD solid
+`
+export const UpdateBtn = styled.button`
+  margin-left: 24px;
+  width: 175px;
+  height: 45px;
+  background-color: white;
+  border: 1px #BDBDBD solid
+`
+export const DeleteBTn = styled.button`
+  margin-left: 24px;
+  width: 175px;
+  height: 45px;
+  background-color: white;
+  border: 1px #BDBDBD solid
+`
+

@@ -18,7 +18,11 @@ import {
   LikeBtn,
   DislikeBtn,
   LikeImg,
-  DislikeImg
+  DislikeImg,
+  Buttons,
+  ToListBtn,
+  UpdateBtn,
+  DeleteBTn
 } from './BoardRead.styles'
 
 export default function BoardReadUI(props){
@@ -54,6 +58,11 @@ export default function BoardReadUI(props){
         </DislikeBtn>
       </LikeDislike>
     </Box>
+    <Buttons>
+      <ToListBtn>목록으로</ToListBtn>
+      <UpdateBtn>수정하기</UpdateBtn>
+      <DeleteBTn onClick={props.onClickDelete}>삭제하기</DeleteBTn>
+    </Buttons>
   </Wrapper>
   )
 }

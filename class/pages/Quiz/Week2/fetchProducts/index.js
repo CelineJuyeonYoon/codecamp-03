@@ -2,8 +2,8 @@ import { useMutation, useQuery, gql } from "@apollo/client"
 import styled from '@emotion/styled'
 
 const FETCH_PRODUCT = gql`
-  query fetchProducts($page: Int){
-  fetchProducts(page: $page){
+  query fetchProducts{
+  fetchProducts{
     seller
     name
     detail
@@ -54,7 +54,7 @@ export default function FetchProductsPage(){
         <Column>name</Column>
         <Column>price</Column>
         <Column>detail</Column>
-        <Column>detail</Column>
+        <Column>delete</Column>
       </Header>
       {data?.fetchProducts.map((el) => (
         <Row key={el._id}>
