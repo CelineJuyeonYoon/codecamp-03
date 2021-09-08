@@ -19,7 +19,7 @@ export default function BoardDetailPage(){
     })
 
     function onClickToEdit(){
-        router.push(`/08-04-board-detail/${router.query.number}/edit`)
+        router.push(`/08-04-board-detail/${router.query.number}/edit`) // <= 주소!!
     }
 
     return (

@@ -7,7 +7,7 @@ export default function BoardWriteUI(props){
 
   return(
     <>
-    <h1>{props.isEdit ? '수정페이지' : '둥록페이지'}</h1>
+    <h1>{props.isEdit ? '수정페이지' : '등록페이지'}</h1>
       <Title titleCol={props.titleCol}>컨테이너 프리젠터 패턴</Title>
       작성자: <input type="text" onChange={props.onChangeMyWriter}/><br />
       제목: <input type="text" onChange={props.onChangeMyTitle}/><br />
