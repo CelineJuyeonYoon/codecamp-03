@@ -8,6 +8,7 @@ import{
   CancelBtn,
   Check,
   ContentInput,
+  EditBtn,
   Input,
   InputWrapper,
   Label,
@@ -34,7 +35,7 @@ export default function BoardWriteUI(props){
 
   return(
     <Wrapper>
-    <Title>게시물 등록</Title>
+    <Title>{props.isEdit ? '게시물 수정' : '게시물 등록'}</Title>
     <WriterWrapper>
       <InputWrapper>
         <Label>
@@ -104,7 +105,8 @@ export default function BoardWriteUI(props){
     </SelectWrapper>
     <ButtonWrapper>
       <CancelBtn>취소하기</CancelBtn>
-      <SubmitBtn onClick={props.onClickSubmit} buttonAct={props.buttonAct}>등록하기</SubmitBtn>
+      {!props.isEdit && <SubmitBtn onClick={props.onClickSubmit} buttonAct={props.buttonAct}>등록하기</SubmitBtn>}
+      {props.isEdit && <EditBtn onClick={props.onClickEdit} buttonAct={props.buttonAct}>수정하기</EditBtn>}
     </ButtonWrapper>
   </Wrapper>
   )

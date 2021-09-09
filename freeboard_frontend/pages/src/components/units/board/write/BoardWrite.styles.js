@@ -192,6 +192,16 @@ font-weight: 500;
 cursor: pointer;
 `
 
+export const EditBtn = styled.button`
+background-color: ${(props) => (props.buttonAct === true ? '#FFD600' : '#BDBDBD')};
+width:179px;
+height: 52px;
+border: none;
+font-size: 16px;
+font-weight: 500;
+cursor: pointer; 
+`
+
 export const NameErr = styled.div`
   color: red;
   margin-top: 3px;

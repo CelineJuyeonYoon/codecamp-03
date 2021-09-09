@@ -104,20 +104,23 @@ export const ToListBtn = styled.button`
   height: 45px;
   margin-left: 25px;
   background-color: white;
-  border: 1px #BDBDBD solid
-`
-export const UpdateBtn = styled.button`
-  margin-left: 24px;
-  width: 175px;
-  height: 45px;
-  background-color: white;
-  border: 1px #BDBDBD solid
+  border: 1px #BDBDBD solid;
+  cursor: pointer;
 `
 export const DeleteBTn = styled.button`
   margin-left: 24px;
   width: 175px;
   height: 45px;
   background-color: white;
-  border: 1px #BDBDBD solid
+  border: 1px #BDBDBD solid;
+  cursor: pointer;
+`
+export const EditBTn = styled.button`
+  margin-left: 24px;
+  width: 175px;
+  height: 45px;
+  background-color: white;
+  border: 1px #BDBDBD solid;
+  cursor: pointer;
 `
 

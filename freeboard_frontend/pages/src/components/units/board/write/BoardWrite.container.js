@@ -1,11 +1,12 @@
 import BoardWriteUI from './BoardWrite.presenter';
-import { CREATE_BOARD } from './BoardWrite.queries'
+import { CREATE_BOARD, UPDATE_BOARD } from './BoardWrite.queries'
 import { useMutation } from '@apollo/client'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
-export default function BoardWrite(){
+export default function BoardWrite(props){
   const [ createBoard ] = useMutation(CREATE_BOARD)
+  const [ updateBoard ] = useMutation(UPDATE_BOARD)
   const router = useRouter()
 
   const [ name, setName ] = useState("")
@@ -102,6 +103,46 @@ export default function BoardWrite(){
     }
   }
 
+  async function onClickEdit(){
+    
+    if(!name){
+      setNameErr("*이름을 입력해주세요.")
+    }
+    
+    if((password.length) < 4){
+      setPasswordErr("*비밀번호를 4자리 이상 입력해주세요.")
+    }
+    
+    if(!title){
+      setTitleErr("*제목을 입력해주세요.")
+    }
+    
+    if(!content){
+      setContentErr("*내용을 입력해주세요.")
+    }
+    
+    // if(name !=="" && password.length>=4 && title !=="" && content !==""){ ### 이건나중에!!!
+    //   alert('게시물이 수정되었습니다.')
+    // }
+    
+    try{
+      const result = await updateBoard({
+        variables: {
+          boardId: router.query.id,
+          password,
+          updateBoardInput: {
+            title,
+            contents: content
+          }
+        }
+      })
+      router.push(`/boards/board_read/${router.query.id}`)
+      // router.push(`/boards/board_read/${result.data.createBoard._id}`) //<= 이렇게 써서 boardId 없다고 오류
+    } catch(error){
+      alert(error.message)
+    }
+  }
+
   return(
     <BoardWriteUI
       onChangeName={onChangeName}
@@ -114,6 +155,8 @@ export default function BoardWrite(){
       contentErr={contentErr}
       onClickSubmit={onClickSubmit}
       buttonAct={buttonAct}
+      onClickEdit={onClickEdit}
+      isEdit={props.isEdit}
     />
   )
 }
