@@ -55,22 +55,32 @@ export default function BoardWrite(props){
         contents: myContents
       }
     })
-    console.log(result)
-    console.log(result.data)
-    // console.log(result.data.createBoard)
+    // console.log(result)
+    // console.log(result.data)
+    console.log(result.data.createBoard)
     // console.log(result.data.createBoard.number)
     router.push(`/08-04-board-detail/${result.data.createBoard.number}`)
   }
 
   async function onClickEdit(){
     try{
+      // 1. state의 초기값에도 defaultValue를 넣어주는 방법
+      // 2. 실제로 변경이 일어난 값만 수정하라고 Backend에 요청하는 방법 << 이게 더 효율적인 방법!
+      const myVariables = {
+        number: Number(router.query.number)
+      }
+      if(myWriter) myVariables.writer = myWriter
+      if(myTitle) myVariables.title = myTitle
+      if(myContents) myVariables.contents = myContents
+      // 입력값이 있는 것만 추가할 수 있음
       await updateBoard({
-        variables: {
-          number: Number(router.query.number),
-          writer: myWriter,
-          title: myTitle,
-          contents: myContents
-        }
+        variables: myVariables
+        //             {
+        //   number: Number(router.query.number),
+        //   // writer: myWriter, // 보낸 값만 수정할 수 있게되어있거나, 아니거나 (회사마다 다를수있음)
+        //   // title: myTitle,
+        //   contents: myContents
+        // }
       })
       router.push(`/08-04-board-detail/${router.query.number}`)
     } catch(error){
@@ -88,6 +98,7 @@ export default function BoardWrite(props){
       able={able}
       isEdit={props.isEdit}
       onClickEdit={onClickEdit}
+      data={props.data}
     />
   )
 }
