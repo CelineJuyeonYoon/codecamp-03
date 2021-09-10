@@ -97,9 +97,9 @@ export default function BoardWriteUI(props){
     <SelectWrapper>
       <Label>메인 설정</Label>
       <RadioWrapper>
-        <RadioInput type="radio"></RadioInput>
+        <RadioInput type="radio" name='main'></RadioInput>
         <RadioLabel>유튜브</RadioLabel>
-        <RadioInput type="radio"></RadioInput>
+        <RadioInput type="radio" name='main'></RadioInput>
         <RadioLabel>사진</RadioLabel>
       </RadioWrapper>
     </SelectWrapper>

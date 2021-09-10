@@ -17,6 +17,7 @@ export default function BoardRead(){
       variables: { boardId: router.query.id }
     })
     alert('게시물이 삭제되었습니다.')
+    router.push(`/boards/board_list`)
   }
 
   function onClickToEdit(){
@@ -24,11 +25,13 @@ export default function BoardRead(){
   }
 
   return(
-    <BoardReadUI 
-      data={data}
-      router={router}
-      onClickDelete={onClickDelete}
-      onClickToEdit={onClickToEdit}
-    />
+    <div>
+      <BoardReadUI 
+        data={data}
+        router={router}
+        onClickDelete={onClickDelete}
+        onClickToEdit={onClickToEdit}
+      />
+    </div>
   )
 }
