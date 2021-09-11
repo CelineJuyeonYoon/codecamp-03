@@ -2,7 +2,8 @@ import { useQuery, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import BoardReadUI from "./BoardRead.presenter";
 import { FETCH_BOARD, DELETE_BOARD } from "./BoardRead.queries";
-import CommentWrite from "../../../../../boards/board_comment";
+import CommentWrite from "../comment/BoardComment.container";
+import CommentList from "../commentList/CommentList.container";
 
 export default function BoardRead() {
   const router = useRouter();
@@ -39,6 +40,7 @@ export default function BoardRead() {
         onClickToList={onClickToList}
       />
       <CommentWrite />
+      <CommentList />
     </div>
   );
 }

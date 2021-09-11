@@ -111,6 +111,10 @@ export const ToListBtn = styled.button`
   background-color: white;
   border: 1px #bdbdbd solid;
   cursor: pointer;
+  :hover {
+    background-color: #ffd600;
+    border-color: #ffd600;
+  }
 `;
 export const DeleteBTn = styled.button`
   margin-left: 24px;
@@ -119,6 +123,10 @@ export const DeleteBTn = styled.button`
   background-color: white;
   border: 1px #bdbdbd solid;
   cursor: pointer;
+  :hover {
+    background-color: #ffd600;
+    border-color: #ffd600;
+  }
 `;
 export const EditBTn = styled.button`
   margin-left: 24px;
@@ -127,4 +135,8 @@ export const EditBTn = styled.button`
   background-color: white;
   border: 1px #bdbdbd solid;
   cursor: pointer;
+  :hover {
+    background-color: #ffd600;
+    border-color: #ffd600;
+  }
 `;
