@@ -11,7 +11,7 @@ import {
   CommentSubmitBar,
   CommentCount,
   SubmitBtn,
-} from "../comment/BoardComment.styles";
+} from "./CommentWrite.styles";
 
 export default function CommentWriteUI(props) {
   return (

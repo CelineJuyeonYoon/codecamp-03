@@ -122,7 +122,7 @@ export default function BoardWriteUI(props) {
         </RadioWrapper>
       </SelectWrapper>
       <ButtonWrapper>
-        <CancelBtn>취소하기</CancelBtn>
+        <CancelBtn onClick={props.onClickCancle}>취소하기</CancelBtn>
         {!props.isEdit && (
           <SubmitBtn onClick={props.onClickSubmit} buttonAct={props.buttonAct}>
             등록하기

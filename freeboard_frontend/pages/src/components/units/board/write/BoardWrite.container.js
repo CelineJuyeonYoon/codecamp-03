@@ -88,6 +88,10 @@ export default function BoardWrite(props) {
     }
   }
 
+  function onClickCancle() {
+    router.push(`../../../boards/board_list`);
+  }
+
   async function onClickSubmit() {
     if (!name) {
       setNameErr("*이름을 입력해주세요.");
@@ -126,25 +130,25 @@ export default function BoardWrite(props) {
     }
   }
 
-  async function onClickEdit(event) {
+  async function onClickEdit() {
     try {
-      // const myVariables = {
-      //   boardId: router.query.id,
-      //   password,
-      //   updateBoardInput: {},
-      // };
-      // if (title) myVariables.updateBoardInput.title = title; // 만약 title에 값이 입력되면, variables에 title을 title로 한다(제목을 입력값으로 수정한다)
-      // if (content) myVariables.updateBoardInput.contents = content;
+      const myVariables = {
+        boardId: router.query.id,
+        password,
+        updateBoardInput: {},
+      };
+      if (title) myVariables.updateBoardInput.title = title; // 만약 title에 값이 입력되면, variables에 title을 title로 한다(제목을 입력값으로 수정한다)
+      if (content) myVariables.updateBoardInput.contents = content;
       await updateBoard({
-        // variables: myVariables,
-        variables: {
-          boardId: router.query.id,
-          password,
-          updateBoardInput: {
-            title,
-            contents: content,
-          },
-        },
+        variables: myVariables,
+        // variables: {
+        //   boardId: router.query.id,
+        //   password,
+        //   updateBoardInput: {
+        //     title,
+        //     contents: content,
+        //   },
+        // },
       });
       router.push(`/boards/board_read/${router.query.id}`);
       // router.push(`/boards/board_read/${result.data.createBoard._id}`) //<= 이렇게 써서 boardId 없다고 오류
@@ -166,6 +170,7 @@ export default function BoardWrite(props) {
       onClickSubmit={onClickSubmit}
       buttonAct={buttonAct}
       onClickEdit={onClickEdit}
+      onClickCancle={onClickCancle}
       isEdit={props.isEdit}
       writer={router.query.writer}
       data={props.data}

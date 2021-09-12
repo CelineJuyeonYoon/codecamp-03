@@ -11,5 +11,15 @@ export default function BoardList() {
     router.push(`../../boards/board_read/${event.target.id}`);
   }
 
-  return <BoardListUI data={data} onClickToDetailPage={onClickToDetailPage} />;
+  function onClickToBoardWrite() {
+    router.push(`../../boards/board_new`);
+  }
+
+  return (
+    <BoardListUI
+      data={data}
+      onClickToDetailPage={onClickToDetailPage}
+      onClickToBoardWrite={onClickToBoardWrite}
+    />
+  );
 }

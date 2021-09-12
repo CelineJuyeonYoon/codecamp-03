@@ -2,7 +2,8 @@ import { useQuery, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import BoardReadUI from "./BoardRead.presenter";
 import { FETCH_BOARD, DELETE_BOARD } from "./BoardRead.queries";
-import CommentWrite from "../comment/BoardComment.container";
+import CommentWrite from "../comment/CommentWrite.container";
+import CommentEdit from "../commentEdit/CommentUpdate.container";
 import CommentList from "../commentList/CommentList.container";
 
 export default function BoardRead() {
@@ -17,6 +18,7 @@ export default function BoardRead() {
   async function onClickDelete() {
     await deleteBoard({
       variables: { boardId: router.query.id },
+      // refetchQueries: [{ query: FETCH_BOARD }],
     });
     alert("게시물이 삭제되었습니다.");
     router.push(`/boards/board_list`);
@@ -40,6 +42,7 @@ export default function BoardRead() {
         onClickToList={onClickToList}
       />
       <CommentWrite />
+      {/* <CommentEdit /> */}
       <CommentList />
     </div>
   );

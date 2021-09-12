@@ -1,8 +1,9 @@
-import CommentWriteUI from "./BoardComment.presenter";
-import { CREATE_BOARD_COMMENT } from "../comment/BoardComment.queries";
+import CommentWriteUI from "./CommentWrite.presenter";
+import { CREATE_BOARD_COMMENT } from "./CommentWrite.queries";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
+import { FETCH_BOARD_COMMENTS } from "../commentList/CommentList.queries";
 
 export default function CommentWrite() {
   const router = useRouter();
@@ -19,13 +20,17 @@ export default function CommentWrite() {
     setPassword(event.target.value);
   }
 
-  function onClickRating1(event) {
-    setRating(event.target.value);
-    console.log(event.target.value);
+  function onChangeContents(event) {
+    setContents(event.target.value);
   }
-  function onClickRating2(event) {
-    setRating(event.target.value);
-    console.log(event.target.value);
+
+  function onClickRating1() {
+    setRating(1);
+    console.log(rating);
+  }
+  function onClickRating2() {
+    setRating(2);
+    console.log(rating);
   }
   function onClickRating3() {
     setRating(3);
@@ -40,13 +45,9 @@ export default function CommentWrite() {
     console.log(rating);
   }
 
-  function onChangeContents(event) {
-    setContents(event.target.value);
-  }
-
   async function onClickCommentSubmit() {
     if (contents !== "" && rating !== 0) {
-      const result = await createBoardComment({
+      await createBoardComment({
         variables: {
           boardId: router.query.id,
           createBoardCommentInput: {
@@ -56,9 +57,17 @@ export default function CommentWrite() {
             rating,
           },
         },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD_COMMENTS,
+            variables: {
+              boardId: router.query.id,
+            },
+          },
+        ],
       });
-      console.log(result.data.createBoardComment._id);
-      alert("댓글이 추가되었습니다");
+      console.log(router.query.id);
+      alert(`댓글이 추가되었습니다`);
     }
   }
 

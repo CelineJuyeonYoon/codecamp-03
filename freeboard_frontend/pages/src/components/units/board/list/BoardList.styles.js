@@ -48,6 +48,12 @@ export const Row = styled.div`
   align-items: center;
   padding-left: 30px;
   border-bottom: 1px solid #bdbdbd;
+  :hover {
+    background-color: #ffd600;
+    border: none;
+    font-weight: 500;
+    font-size: 18px;
+  }
 `;
 export const Number = styled.span`
   width: 5%;
@@ -100,15 +106,32 @@ export const SearchBtn = styled.button`
   font-size: 16px;
   cursor: pointer;
 `;
-// export const Date = styled.span`
-
-//   `
-// export const Date = styled.span`
-
-//   `
-// export const Date = styled.span`
-
-//   `
+export const BoardWriteBtn = styled.button`
+  width: 171px;
+  height: 52px;
+  border: 1px solid #f2f2f2;
+  border-radius: 10px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  :hover {
+    background-color: #ffd600;
+    border: none;
+  }
+`;
+export const Footer = styled.span`
+  width: 1200px;
+  padding-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+`;
+export const BoardWrite = styled.span`
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 11px;
+`;
 // export const Date = styled.span`
 
 //   `

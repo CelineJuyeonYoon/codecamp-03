@@ -18,7 +18,7 @@ export default function CommentListUI(props) {
   return (
     <Wrapper>
       {props.data?.fetchBoardComments.map((el) => (
-        <CommentWrapper>
+        <CommentWrapper key={el._id}>
           <Comment>
             <ProfileImg src="/images/profile.png" />
             <CommentInfo>
@@ -37,7 +37,7 @@ export default function CommentListUI(props) {
             </CommentInfo>
           </Comment>
           <CommentButtons>
-            <CommentEditBtn>
+            <CommentEditBtn onClick={props.onClickEditComment} id={el._id}>
               <img src="/images/edit.png" />
             </CommentEditBtn>
             <CommentDeleteBtn>

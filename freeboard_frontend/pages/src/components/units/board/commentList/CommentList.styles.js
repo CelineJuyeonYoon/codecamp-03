@@ -48,8 +48,10 @@ export const CommentButtons = styled.div`
 export const CommentEditBtn = styled.button`
   border: none;
   background-color: transparent;
+  cursor: pointer;
 `;
 export const CommentDeleteBtn = styled.button`
   border: none;
   background-color: transparent;
+  cursor: pointer;
 `;

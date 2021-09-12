@@ -15,6 +15,9 @@ import {
   SearchBar,
   SearchDate,
   SearchBtn,
+  Footer,
+  BoardWriteBtn,
+  BoardWrite,
 } from "./BoardList.styles";
 
 export default function BoardListUI(props) {
@@ -44,6 +47,14 @@ export default function BoardListUI(props) {
         ))}
         {/* )).reverse()} */}
       </BoardList>
+      <Footer>
+        <BoardWriteBtn>
+          <img src="../../../images/boardwrite.png" />
+          <BoardWrite onClick={props.onClickToBoardWrite}>
+            게시물 등록하기
+          </BoardWrite>
+        </BoardWriteBtn>
+      </Footer>
     </Wrapper>
   );
 }
