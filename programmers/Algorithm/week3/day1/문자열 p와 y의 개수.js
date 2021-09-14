@@ -10,3 +10,14 @@ function solution(s) {
   }
   return pcount === ycount;
 }
+
+function solution(s) {
+  const check = {};
+  const result = s
+    .toLowerCase()
+    .split("")
+    .forEach((str) => {
+      check[str] === undefined ? (check[str] = 1) : (check[str] += 1);
+    });
+  return check.p === check.y;
+}

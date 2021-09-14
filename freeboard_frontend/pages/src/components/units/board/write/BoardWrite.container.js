@@ -172,8 +172,8 @@ export default function BoardWrite(props) {
       onClickEdit={onClickEdit}
       onClickCancle={onClickCancle}
       isEdit={props.isEdit}
-      writer={router.query.writer}
       data={props.data}
+      // writer={router.query.writer}
     />
   );
 }

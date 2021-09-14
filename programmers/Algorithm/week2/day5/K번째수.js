@@ -13,19 +13,14 @@
 // commands의 길이는 1 이상 50 이하입니다.
 // commands의 각 원소는 길이가 3입니다.
 
-
 function solution(array, commands) {
   var answer = [];
-  for(let idx=0; idx<commands.length; idx++){
-      const i = commands[idx][0]
-      const j = commands[idx][1]
-      const k = commands[idx][2]
+  for (let idx = 0; idx < commands.length; idx++) {
+    const i = commands[idx][0];
+    const j = commands[idx][1];
+    const k = commands[idx][2];
 
-      answer.push(
-        array
-        .slice(i-1, j)
-        .sort((a,b) => a-b)[k-1]
-      )
+    answer.push(array.slice(i - 1, j).sort((a, b) => a - b)[k - 1]);
   }
   return answer;
 }

@@ -59,8 +59,8 @@ export const CommentCount = styled.span`
   color: #bdbdbd;
   padding-left: 20px;
 `;
-export const SubmitBtn = styled.button`
-  background-color: black;
+export const Button = styled.button`
+  background-color: ${(props) => (props.isEdit === true ? "#ffd600" : "black")};
   color: white;
   border-style: none;
   width: 91px;

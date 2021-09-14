@@ -1,51 +1,11 @@
-import {
-  Wrapper,
-  CommentWrapper,
-  Comment,
-  ProfileImg,
-  CommentInfo,
-  CommentWriterAndRating,
-  CommentWriter,
-  CommentRating,
-  CommentContent,
-  CommentDate,
-  CommentButtons,
-  CommentEditBtn,
-  CommentDeleteBtn,
-} from "./CommentList.styles";
+import CommentListUIItem from "./CommentList.presenterItem";
 
 export default function CommentListUI(props) {
   return (
-    <Wrapper>
+    <>
       {props.data?.fetchBoardComments.map((el) => (
-        <CommentWrapper key={el._id}>
-          <Comment>
-            <ProfileImg src="/images/profile.png" />
-            <CommentInfo>
-              <CommentWriterAndRating>
-                <CommentWriter>{el.writer}</CommentWriter>
-                <CommentRating>
-                  <img src="/images/star.png" />
-                  <img src="/images/star.png" />
-                  <img src="/images/star.png" />
-                  <img src="/images/star.png" />
-                  <img src="/images/star.png" />
-                </CommentRating>
-              </CommentWriterAndRating>
-              <CommentContent>{el.contents}</CommentContent>
-              <CommentDate>{el.createdAt.slice(0, 10)}</CommentDate>
-            </CommentInfo>
-          </Comment>
-          <CommentButtons>
-            <CommentEditBtn onClick={props.onClickEditComment} id={el._id}>
-              <img src="/images/edit.png" />
-            </CommentEditBtn>
-            <CommentDeleteBtn>
-              <img src="/images/delete.png" />
-            </CommentDeleteBtn>
-          </CommentButtons>
-        </CommentWrapper>
+        <CommentListUIItem key={el._id} el={el} />
       ))}
-    </Wrapper>
+    </>
   );
 }
