@@ -60,7 +60,7 @@ export const CommentCount = styled.span`
   padding-left: 20px;
 `;
 export const Button = styled.button`
-  background-color: ${(props) => (props.isEdit === true ? "#ffd600" : "black")};
+  background-color: ${(props) => (props.isEdit === true ? "#FFD600" : "black")};
   color: white;
   border-style: none;
   width: 91px;
