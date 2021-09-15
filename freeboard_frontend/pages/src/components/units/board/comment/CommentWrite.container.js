@@ -72,7 +72,7 @@ export default function CommentWrite(props) {
       alert(`댓글이 추가되었습니다`);
     }
   }
-
+  console.log(props);
   async function onClickCommentEdit(event) {
     if (!contents) {
       alert("내용이 수정되지 않았습니다.");

@@ -62,7 +62,11 @@ export default function CommentWriteUI(props) {
           <Button onClick={props.onClickCommentSubmit}>등록하기</Button>
         )}
         {props.isEdit && (
-          <Button onClick={props.onClickCommentEdit} id={props.el?._id}>
+          <Button
+            onClick={props.onClickCommentEdit}
+            id={props.el?._id}
+            isEdit={props.isEdit}
+          >
             수정하기
           </Button>
         )}

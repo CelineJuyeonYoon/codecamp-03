@@ -1,9 +1,12 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  padding-bottom: 20px;
+`;
 export const CommentHead = styled.div`
   display: flex;
   align-items: center;
+  padding-bottom: 20px;
 `;
 export const CommentImg = styled.img``;
 export const Comment = styled.span`
@@ -12,7 +15,7 @@ export const Comment = styled.span`
   font-weight: 500;
 `;
 export const CommentInfo = styled.div`
-  padding-top: 40px;
+  padding-top: 20px;
 `;
 export const Writer = styled.input`
   width: 180px;

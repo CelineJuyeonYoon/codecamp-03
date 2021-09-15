@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 1200px;
-  padding-top: 20px;
+  /* padding-top: 20px; */
 `;
 export const CommentWrapper = styled.div`
   display: flex;

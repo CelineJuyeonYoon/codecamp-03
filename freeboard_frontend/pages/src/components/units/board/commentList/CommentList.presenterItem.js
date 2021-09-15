@@ -95,6 +95,7 @@ export default function CommentListUIItem(props) {
       {isEdit && (
         <CommentWrite
           isEdit={isEdit}
+          setIsEdit={setIsEdit} //
           el={props.el} // 수정하기에서 defaultValue 주기위해
         />
       )}
