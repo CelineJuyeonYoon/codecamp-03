@@ -17,6 +17,7 @@ import {
   CommentButtons,
   CommentEditBtn,
   CommentDeleteBtn,
+  StarRating,
 } from "./CommentList.styles";
 
 const DELETE_COMMENT = gql`
@@ -30,6 +31,7 @@ export default function CommentListUIItem(props) {
   const [isEdit, setIsEdit] = useState(false);
   const [deleteBoardComment] = useMutation(DELETE_COMMENT);
   const [myPassword, setMyPassword] = useState("");
+  // const [myStar, setMyStar] = useState(0)
 
   async function onClickEditComment() {
     setIsEdit(true);
@@ -67,11 +69,7 @@ export default function CommentListUIItem(props) {
                 <CommentWriterAndRating>
                   <CommentWriter>{props.el.writer}</CommentWriter>
                   <CommentRating>
-                    <img src="/images/star.png" />
-                    <img src="/images/star.png" />
-                    <img src="/images/star.png" />
-                    <img src="/images/star.png" />
-                    <img src="/images/star.png" />
+                    <StarRating value={props.el.rating} disabled />
                   </CommentRating>
                 </CommentWriterAndRating>
                 <CommentContent>{props.el.contents}</CommentContent>
@@ -79,15 +77,16 @@ export default function CommentListUIItem(props) {
               </CommentInfo>
             </Comment>
             <CommentButtons>
-              <CommentEditBtn onClick={onClickEditComment} id={props.el._id}>
-                <img src="/images/edit.png" />
-              </CommentEditBtn>
+              <CommentEditBtn
+                src="/images/edit.png"
+                onClick={onClickEditComment}
+                id={props.el._id}
+              ></CommentEditBtn>
               <CommentDeleteBtn
                 onClick={onClickDeleteComment}
+                src="/images/delete.png"
                 id={props.el._id}
-              >
-                <img src="/images/delete.png" />
-              </CommentDeleteBtn>
+              ></CommentDeleteBtn>
             </CommentButtons>
           </CommentWrapper>
         </Wrapper>

@@ -38,9 +38,11 @@ export const WriteInfo = styled.div`
   justify-content: center;
   padding-left: 16.67px;
 `;
-// export const WriterProfile = styled.img`
-
-// `
+export const WriterProfile = styled.img`
+  width: 46.67px;
+  height: 46.67px;
+  margin-top: 4px;
+`;
 export const LinkImg = styled.img`
   width: 26.67px;
   height: 13.33px;
@@ -64,37 +66,6 @@ export const Contents = styled.div`
 export const Vedio = styled.img`
   padding-top: 120px;
   padding-left: 245px;
-`;
-export const LikeDislike = styled.div`
-  padding-top: 163px;
-  padding-bottom: 80px;
-  display: flex;
-  justify-content: center;
-`;
-export const LikeBtn = styled.button`
-  color: #ffd600;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-export const DislikeBtn = styled.button`
-  color: #828282;
-  margin-left: 40px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-export const LikeImg = styled.img`
-  padding-bottom: 4px;
-`;
-export const DislikeImg = styled.img`
-  padding-bottom: 1px;
 `;
 export const Buttons = styled.div`
   display: flex;
@@ -139,4 +110,37 @@ export const EditBTn = styled.button`
     background-color: #ffd600;
     border-color: #ffd600;
   }
+`;
+export const LikeCount = styled.div``;
+export const DislikeCount = styled.div``;
+
+export const Like = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const Dislike = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+`;
+export const LikeDislike = styled.div`
+  padding-top: 163px;
+  padding-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const LikeBtn = styled.img`
+  padding-bottom: 4px;
+  color: #ffd600;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
+export const DislikeBtn = styled.img`
+  padding-bottom: 1px;
+  color: #828282;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 `;

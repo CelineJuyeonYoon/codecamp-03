@@ -1,4 +1,8 @@
 import styled from "@emotion/styled";
+import { Rate } from "antd";
+import "antd/dist/antd.css";
+
+export const StarRating = styled(Rate)``;
 
 export const Wrapper = styled.div`
   padding-bottom: 20px;
@@ -30,13 +34,6 @@ export const Password = styled.input`
   border: 1px solid #bdbdbd;
   margin-right: 26px;
   padding-left: 20px;
-`;
-export const RatingBtn = styled.button`
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  width: 20px;
-  height: 20px;
 `;
 export const CommentInput = styled.textarea`
   width: 1200px;

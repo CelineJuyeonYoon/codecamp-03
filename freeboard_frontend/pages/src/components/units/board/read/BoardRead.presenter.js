@@ -23,6 +23,10 @@ import {
   ToListBtn,
   DeleteBTn,
   EditBTn,
+  LikeCount,
+  DislikeCount,
+  Like,
+  Dislike,
 } from "./BoardRead.styles";
 
 export default function BoardReadUI(props) {
@@ -31,10 +35,12 @@ export default function BoardReadUI(props) {
       <Box>
         <Header>
           <WriterWrapper>
-            <img src="../../images/profile.png"></img>
+            <WriterProfile src="../../images/profile.png" />
             <WriteInfo>
               <WriterName>{props.data?.fetchBoard.writer}</WriterName>
-              <WriteDate>{props.data?.fetchBoard.createdAt}</WriteDate>
+              <WriteDate>
+                Date: {props.data?.fetchBoard.createdAt.slice(0, 10)}
+              </WriteDate>
             </WriteInfo>
           </WriterWrapper>
           <Icons>
@@ -47,14 +53,17 @@ export default function BoardReadUI(props) {
         <Contents>{props.data?.fetchBoard.contents}</Contents>
         <Vedio src="../../images/video.png"></Vedio>
         <LikeDislike>
-          <LikeBtn>
-            <LikeImg src="../../images/like.png"></LikeImg>
-            1920
-          </LikeBtn>
-          <DislikeBtn>
-            <DislikeImg src="../../images/dislike.png"></DislikeImg>
-            1920
-          </DislikeBtn>
+          <Like>
+            <LikeBtn src="../../images/like.png" onClick={props.onClickLike} />
+            <LikeCount>{props.data?.fetchBoard.likeCount}</LikeCount>
+          </Like>
+          <Dislike>
+            <DislikeBtn
+              src="../../images/dislike.png"
+              onClick={props.onClickDislike}
+            />
+            <DislikeCount>{props.data?.fetchBoard.dislikeCount}</DislikeCount>
+          </Dislike>
         </LikeDislike>
       </Box>
       <Buttons>

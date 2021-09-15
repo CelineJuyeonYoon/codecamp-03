@@ -6,11 +6,11 @@ import {
   CommentInfo,
   Writer,
   Password,
-  RatingBtn,
   CommentInput,
   CommentSubmitBar,
   CommentCount,
   Button,
+  StarRating,
 } from "./CommentWrite.styles";
 
 export default function CommentWriteUI(props) {
@@ -35,21 +35,7 @@ export default function CommentWriteUI(props) {
           placeholder="비밀번호"
           onChange={props.onChangePassword}
         />
-        <RatingBtn onClick={props.onClickRating1} value={1}>
-          <img src="../../images/star.png" />
-        </RatingBtn>
-        <RatingBtn onClick={props.onClickRating2} value={2}>
-          <img src="../../images/star.png" />
-        </RatingBtn>
-        <RatingBtn onClick={props.onClickRating3}>
-          <img src="../../images/star.png" />
-        </RatingBtn>
-        <RatingBtn onClick={props.onClickRating4}>
-          <img src="../../images/star.png" />
-        </RatingBtn>
-        <RatingBtn onClick={props.onClickRating5}>
-          <img src="../../images/star.png" />
-        </RatingBtn>
+        <StarRating onChange={props.onChangeStar} />
       </CommentInfo>
       <CommentInput
         onChange={props.onChangeContents}

@@ -14,7 +14,7 @@ export default function CommentWrite(props) {
   const [updateBoardComment] = useMutation(UPDATE_BOARD_COMMENT);
   const [writer, setWriter] = useState("익명");
   const [password, setPassword] = useState("");
-  const [rating, setRating] = useState();
+  const [rating, setRating] = useState(0);
   const [contents, setContents] = useState("");
   function onChangeWriter(event) {
     setWriter(event.target.value);
@@ -28,26 +28,9 @@ export default function CommentWrite(props) {
     setContents(event.target.value);
   }
 
-  function onClickRating1() {
-    setRating(1);
-    console.log(rating);
-  }
-  function onClickRating2() {
-    setRating(2);
-    console.log(rating);
-  }
-  function onClickRating3() {
-    setRating(3);
-    console.log(rating);
-  }
-  function onClickRating4() {
-    setRating(4);
-    console.log(rating);
-  }
-  function onClickRating5() {
-    setRating(5);
-    console.log(rating);
-  }
+  function onChangeStar(value) {
+    setRating(value);
+  } // 별 누른 value값을 rating에 저장
 
   async function onClickCommentSubmit() {
     if (contents !== "" && rating !== 0) {
@@ -72,7 +55,7 @@ export default function CommentWrite(props) {
       alert(`댓글이 추가되었습니다`);
     }
   }
-  console.log(props);
+
   async function onClickCommentEdit(event) {
     if (!contents) {
       alert("내용이 수정되지 않았습니다.");
@@ -89,7 +72,7 @@ export default function CommentWrite(props) {
           password,
           updateBoardCommentInput: {
             contents,
-            rating,
+            rating: rating,
           },
         },
         refetchQueries: [
@@ -100,8 +83,6 @@ export default function CommentWrite(props) {
         ],
       });
       props.setIsEdit?.(false); // 수정버튼 눌러서 수정되면 다시 수정박스 닫기!
-      console.log(router.query.id);
-      alert(`댓글이 수정되었습니다`);
     } catch (err) {
       alert(err.message);
     }
@@ -111,11 +92,7 @@ export default function CommentWrite(props) {
     <CommentWriteUI
       onChangeWriter={onChangeWriter}
       onChangePassword={onChangePassword}
-      onClickRating1={onClickRating1}
-      onClickRating2={onClickRating2}
-      onClickRating3={onClickRating3}
-      onClickRating4={onClickRating4}
-      onClickRating5={onClickRating5}
+      onChangeStar={onChangeStar}
       onChangeContents={onChangeContents}
       onClickCommentSubmit={onClickCommentSubmit}
       onClickCommentEdit={onClickCommentEdit}

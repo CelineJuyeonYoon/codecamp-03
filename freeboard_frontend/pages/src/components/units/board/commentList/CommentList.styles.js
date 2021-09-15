@@ -1,4 +1,7 @@
 import styled from "@emotion/styled";
+import { Rate } from "antd";
+
+export const StarRating = styled(Rate)``;
 
 export const Wrapper = styled.div`
   width: 1200px;
@@ -16,12 +19,14 @@ export const Comment = styled.div`
 export const ProfileImg = styled.img`
   width: 40px;
   height: 40px;
+  margin-top: 6px;
 `;
 export const CommentInfo = styled.div`
   margin-left: 16px;
 `;
 export const CommentWriterAndRating = styled.div`
   display: flex;
+  align-items: center;
 `;
 export const CommentWriter = styled.div`
   font-weight: 500;
@@ -45,13 +50,14 @@ export const CommentButtons = styled.div`
   align-items: center;
   height: 20px;
 `;
-export const CommentEditBtn = styled.button`
+export const CommentEditBtn = styled.img`
   border: none;
   background-color: transparent;
   cursor: pointer;
 `;
-export const CommentDeleteBtn = styled.button`
+export const CommentDeleteBtn = styled.img`
   border: none;
   background-color: transparent;
   cursor: pointer;
+  margin-left: 16px;
 `;
