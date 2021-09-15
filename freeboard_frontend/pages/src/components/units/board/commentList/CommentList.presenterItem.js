@@ -29,6 +29,7 @@ export default function CommentListUIItem(props) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
   const [deleteBoardComment] = useMutation(DELETE_COMMENT);
+  const [myPassword, setMyPassword] = useState("");
 
   async function onClickEditComment() {
     setIsEdit(true);
@@ -95,7 +96,7 @@ export default function CommentListUIItem(props) {
       {isEdit && (
         <CommentWrite
           isEdit={isEdit}
-          setIsEdit={setIsEdit} //
+          setIsEdit={setIsEdit} // 수정하기 버튼을 누르면 setIsEdit로 이 파일의 state를 바꿔서 댓글상세가 보이는 걸로 바꿔야함!!
           el={props.el} // 수정하기에서 defaultValue 주기위해
         />
       )}
