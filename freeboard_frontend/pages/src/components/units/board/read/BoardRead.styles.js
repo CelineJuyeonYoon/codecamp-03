@@ -63,7 +63,7 @@ export const Image = styled.img`
 export const Contents = styled.div`
   padding-top: 40px;
 `;
-export const Vedio = styled.img`
+export const Video = styled.div`
   padding-top: 120px;
   padding-left: 245px;
 `;

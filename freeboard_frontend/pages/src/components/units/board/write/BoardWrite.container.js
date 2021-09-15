@@ -21,6 +21,8 @@ export default function BoardWrite(props) {
   const [content, setContent] = useState("");
   const [contentErr, setContentErr] = useState("");
 
+  const [youtubeUrl, setYoutubeUrl] = useState("");
+
   const [buttonAct, setButtonAct] = useState("");
 
   function onChangeName(event) {
@@ -88,6 +90,10 @@ export default function BoardWrite(props) {
     }
   }
 
+  function onChangeYoutubeUrl(event) {
+    setYoutubeUrl(event.target.value);
+  }
+
   function onClickCancle() {
     router.push(`../../../boards/board_list`);
   }
@@ -121,6 +127,7 @@ export default function BoardWrite(props) {
             password: password,
             title: title,
             contents: content,
+            youtubeUrl,
           },
         },
       });
@@ -173,6 +180,7 @@ export default function BoardWrite(props) {
       onClickCancle={onClickCancle}
       isEdit={props.isEdit}
       data={props.data}
+      onChangeYoutubeUrl={onChangeYoutubeUrl}
       // writer={router.query.writer}
     />
   );

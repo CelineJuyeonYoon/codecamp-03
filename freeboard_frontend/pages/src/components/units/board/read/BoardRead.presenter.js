@@ -1,3 +1,4 @@
+import ReactPlayer from "react-player";
 import {
   Wrapper,
   Box,
@@ -13,12 +14,10 @@ import {
   Title,
   Image,
   Contents,
-  Vedio,
+  Video,
   LikeDislike,
   LikeBtn,
   DislikeBtn,
-  LikeImg,
-  DislikeImg,
   Buttons,
   ToListBtn,
   DeleteBTn,
@@ -51,7 +50,13 @@ export default function BoardReadUI(props) {
         <Title>{props.data?.fetchBoard.title}</Title>
         <Image src="../../images/image.png"></Image>
         <Contents>{props.data?.fetchBoard.contents}</Contents>
-        <Vedio src="../../images/video.png"></Vedio>
+        <Video>
+          <ReactPlayer
+            url={props.data?.fetchBoard.youtubeUrl}
+            width={486}
+            height={240}
+          />
+        </Video>
         <LikeDislike>
           <Like>
             <LikeBtn src="../../images/like.png" onClick={props.onClickLike} />
