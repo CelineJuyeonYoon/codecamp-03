@@ -18,6 +18,10 @@ import {
   Footer,
   BoardWriteBtn,
   BoardWrite,
+  Page,
+  Pages,
+  ToPrev,
+  ToNext,
 } from "./BoardList.styles";
 
 export default function BoardListUI(props) {
@@ -48,6 +52,28 @@ export default function BoardListUI(props) {
         {/* )).reverse()} */}
       </BoardList>
       <Footer>
+        <Pages>
+          <ToPrev
+            onClick={props.onClickPrevPage}
+            src="../../../images/toLeft.png"
+          />
+          {new Array(10).fill(1).map(
+            (_, index) =>
+              props.startPage + index <= props.lastPage && (
+                <Page
+                  key={props.startPage + index}
+                  id={String(props.startPage + index)}
+                  onClick={props.onClickPage}
+                >
+                  {props.startPage + index}
+                </Page>
+              )
+          )}
+          <ToNext
+            onClick={props.onClickNextPage}
+            src="../../../images/toRight.png"
+          />
+        </Pages>
         <BoardWriteBtn>
           <img src="../../../images/boardwrite.png" />
           <BoardWrite onClick={props.onClickToBoardWrite}>

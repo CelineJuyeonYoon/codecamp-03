@@ -49,10 +49,8 @@ export const Row = styled.div`
   padding-left: 30px;
   border-bottom: 1px solid #bdbdbd;
   :hover {
-    background-color: #ffd600;
+    background-color: #f2f2f2;
     border: none;
-    font-weight: 500;
-    font-size: 18px;
   }
 `;
 export const Number = styled.span`
@@ -117,7 +115,7 @@ export const BoardWriteBtn = styled.button`
   align-items: center;
   cursor: pointer;
   :hover {
-    background-color: #ffd600;
+    background-color: #f2f2f2;
     border: none;
   }
 `;
@@ -126,12 +124,29 @@ export const Footer = styled.span`
   padding-top: 40px;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `;
 export const BoardWrite = styled.span`
   font-size: 16px;
   font-weight: 500;
   padding-left: 11px;
 `;
-// export const Date = styled.span`
-
-//   `
+export const Page = styled.span`
+  cursor: pointer;
+  margin: 10px;
+  :hover {
+    color: darkgray;
+  }
+`;
+export const Pages = styled.div`
+  position: absolute;
+  left: 41%;
+`;
+export const ToPrev = styled.img`
+  margin-right: 3px;
+  cursor: pointer;
+`;
+export const ToNext = styled.img`
+  margin-left: 3px;
+  cursor: pointer;
+`;

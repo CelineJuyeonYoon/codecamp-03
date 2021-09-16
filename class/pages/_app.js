@@ -7,7 +7,7 @@ import { globalStyles } from "../src/commons/styles/globalStyles";
 
 function MyApp({ Component, pageProps }) {
   const client = new ApolloClient({
-    uri: "http://backend03.codebootcamp.co.kr/graphql", // 실제에러가 아닌데 eslint규칙에 어긋나서 빨간줄
+    uri: "http://backend03.codebootcamp.co.kr/graphql",
     cache: new InMemoryCache(),
   });
 
