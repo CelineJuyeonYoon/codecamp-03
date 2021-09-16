@@ -22,6 +22,10 @@ export default function BoardWrite(props) {
   const [contentErr, setContentErr] = useState("");
 
   const [youtubeUrl, setYoutubeUrl] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [zipcode, setZipcode] = useState("");
+  const [address, setAddress] = useState("");
 
   const [buttonAct, setButtonAct] = useState("");
 
@@ -94,6 +98,20 @@ export default function BoardWrite(props) {
     setYoutubeUrl(event.target.value);
   }
 
+  function onChangeAddressDetail(event) {
+    setAddressDetail(event.target.value);
+  }
+
+  function onToggleZipcode() {
+    setIsOpen((prev) => !prev);
+  }
+
+  function handleComplete(data) {
+    setAddress(data.address);
+    setZipcode(data.zonecode);
+    setIsOpen(false);
+  }
+
   function onClickCancle() {
     router.push(`../../../boards/board_list`);
   }
@@ -128,6 +146,11 @@ export default function BoardWrite(props) {
             title: title,
             contents: content,
             youtubeUrl,
+            boardAddress: {
+              zipcode,
+              address,
+              addressDetail,
+            },
           },
         },
       });
@@ -181,6 +204,10 @@ export default function BoardWrite(props) {
       isEdit={props.isEdit}
       data={props.data}
       onChangeYoutubeUrl={onChangeYoutubeUrl}
+      onChangeAddressDetail={onChangeAddressDetail}
+      onToggleZipcode={onToggleZipcode}
+      isOpen={isOpen}
+      handleComplete={handleComplete}
       // writer={router.query.writer}
     />
   );

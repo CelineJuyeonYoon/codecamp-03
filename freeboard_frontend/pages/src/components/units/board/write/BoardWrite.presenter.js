@@ -1,3 +1,4 @@
+import DaumPostcode from "react-daum-postcode";
 import {
   AddBox,
   AddBoxWrapper,
@@ -84,12 +85,13 @@ export default function BoardWriteUI(props) {
       </InputWrapper>
       <AddressWrapper>
         <Label>주소</Label>
+        <DaumPostcode onComplete={props.handleComplete} />
         <ZipcodeWrapper>
           <ZipcodeInput placeholder="07250"></ZipcodeInput>
-          <ZipcodeBtn>우편번호 검색</ZipcodeBtn>
+          <ZipcodeBtn onClick={props.onToggleZipcode}>우편번호 검색</ZipcodeBtn>
         </ZipcodeWrapper>
         <Address></Address>
-        <Address></Address>
+        <Address onChange={props.onChangeAddressDetail}></Address>
       </AddressWrapper>
       <InputWrapper>
         <Label>유튜브</Label>
