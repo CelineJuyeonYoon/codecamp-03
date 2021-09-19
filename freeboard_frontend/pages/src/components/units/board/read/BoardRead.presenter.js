@@ -1,4 +1,5 @@
 import ReactPlayer from "react-player";
+import { Tooltip } from "antd";
 import {
   Wrapper,
   Box,
@@ -43,8 +44,12 @@ export default function BoardReadUI(props) {
             </WriteInfo>
           </WriterWrapper>
           <Icons>
-            <LinkImg src="../../images/link.png"></LinkImg>
-            <LocaImg src="../../images/loca.png"></LocaImg>
+            <LinkImg src="../../images/link.png" />
+            <Tooltip
+              title={`${props.data?.fetchBoard.boardAddress?.address} ${props.data?.fetchBoard.boardAddress?.addressDetail}`}
+            >
+              <LocaImg src="../../images/loca.png" />
+            </Tooltip>
           </Icons>
         </Header>
         <Title>{props.data?.fetchBoard.title}</Title>

@@ -10,6 +10,8 @@ export default function LayoutBannerUI() {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000
   };
   return (
     <Wrapper>

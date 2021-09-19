@@ -40,11 +40,9 @@ export default function BoardListUI(props) {
           <HeadDate>날짜</HeadDate>
         </Header>
         {props.data?.fetchBoards.map((el, index) => (
-          <Row key={el._id}>
+          <Row key={el._id} id={el._id} onClick={props.onClickToDetailPage}>
             <Number>{10 - index}</Number> {/*가장 최신글이 맨 위, 글번호 10번*/}
-            <Title onClick={props.onClickToDetailPage} id={el._id}>
-              {el.title}
-            </Title>
+            <Title id={el._id}>{el.title}</Title>
             <Writer>{el.writer}</Writer>
             <Date>{el.createdAt.slice(0, 10)}</Date>
           </Row>

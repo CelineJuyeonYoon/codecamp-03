@@ -22,10 +22,10 @@ export default function BoardWrite(props) {
   const [contentErr, setContentErr] = useState("");
 
   const [youtubeUrl, setYoutubeUrl] = useState("");
-  const [addressDetail, setAddressDetail] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
 
   const [buttonAct, setButtonAct] = useState("");
 
@@ -102,18 +102,19 @@ export default function BoardWrite(props) {
     setAddressDetail(event.target.value);
   }
 
-  function onToggleZipcode() {
-    setIsOpen((prev) => !prev);
+  function onClickZipcodeSearch() {
+    setIsOpen(true);
   }
 
-  function handleComplete(data) {
-    setAddress(data.address);
+  function onCompleteAddressSearch(data) {
+    // 우편번호 검색이 끝났을 때 사용자가 선택한 정보를 받아올 콜백함수
     setZipcode(data.zonecode);
+    setAddress(`${data.address} ${data.buildingName}`);
     setIsOpen(false);
   }
 
   function onClickCancle() {
-    router.push(`../../../boards/board_list`);
+    router.push(`../../../boards/board_read/${router.query.id}`);
   }
 
   async function onClickSubmit() {
@@ -161,16 +162,26 @@ export default function BoardWrite(props) {
   }
 
   async function onClickEdit() {
+    const myVariables = {
+      boardId: router.query.id,
+      password,
+      updateBoardInput: {boardAddress:{}},
+    };
+    if (title) myVariables.updateBoardInput.title = title; // 만약 title에 값이 입력되면, variables에 title을 title로 한다(제목을 입력값으로 수정한다)
+    if (content) myVariables.updateBoardInput.contents = content;
+    if (youtubeUrl) myVariables.updateBoardInput.youtubeUrl = youtubeUrl;
+    if (zipcode || address || addressDetail) {
+      if (zipcode)
+      myVariables.updateBoardInput.boardAddress.zipcode = zipcode;
+      if (address)
+      myVariables.updateBoardInput.boardAddress.address = address;
+      if (addressDetail)
+      myVariables.updateBoardInput.boardAddress.addressDetail = addressDetail;
+    }
+    
     try {
-      const myVariables = {
-        boardId: router.query.id,
-        password,
-        updateBoardInput: {},
-      };
-      if (title) myVariables.updateBoardInput.title = title; // 만약 title에 값이 입력되면, variables에 title을 title로 한다(제목을 입력값으로 수정한다)
-      if (content) myVariables.updateBoardInput.contents = content;
       await updateBoard({
-        variables: myVariables,
+      variables: myVariables,
         // variables: {
         //   boardId: router.query.id,
         //   password,
@@ -205,9 +216,11 @@ export default function BoardWrite(props) {
       data={props.data}
       onChangeYoutubeUrl={onChangeYoutubeUrl}
       onChangeAddressDetail={onChangeAddressDetail}
-      onToggleZipcode={onToggleZipcode}
+      onClickZipcodeSearch={onClickZipcodeSearch}
       isOpen={isOpen}
-      handleComplete={handleComplete}
+      onCompleteAddressSearch={onCompleteAddressSearch}
+      zipcode={zipcode}
+      address={address}
       // writer={router.query.writer}
     />
   );

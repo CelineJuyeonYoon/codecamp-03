@@ -1,4 +1,5 @@
 import DaumPostcode from "react-daum-postcode";
+import { Modal } from "antd";
 import {
   AddBox,
   AddBoxWrapper,
@@ -24,7 +25,7 @@ import {
   WriterInput,
   WriterWrapper,
   ZipcodeBtn,
-  ZipcodeInput,
+  Zipcode,
   ZipcodeWrapper,
   NameErr,
   PasswordErr,
@@ -35,6 +36,11 @@ import {
 export default function BoardWriteUI(props) {
   return (
     <Wrapper>
+      {props.isOpen && (
+        <Modal visible={true}>
+          <DaumPostcode onComplete={props.onCompleteAddressSearch} />
+        </Modal>
+      )}
       <Title>{props.isEdit ? "게시물 수정" : "게시물 등록"}</Title>
       <WriterWrapper>
         <InputWrapper>
@@ -85,12 +91,22 @@ export default function BoardWriteUI(props) {
       </InputWrapper>
       <AddressWrapper>
         <Label>주소</Label>
-        <DaumPostcode onComplete={props.handleComplete} />
         <ZipcodeWrapper>
-          <ZipcodeInput placeholder="07250"></ZipcodeInput>
-          <ZipcodeBtn onClick={props.onToggleZipcode}>우편번호 검색</ZipcodeBtn>
+          <Zipcode
+            placeholder="07250"
+            readOnly
+            value={
+              props.zipcode || props.data?.fetchBoard.boardAddress?.zipcode
+            }
+          ></Zipcode>
+          <ZipcodeBtn onClick={props.onClickZipcodeSearch}>
+            우편번호 검색
+          </ZipcodeBtn>
         </ZipcodeWrapper>
-        <Address></Address>
+        <Address
+          readOnly
+          value={props.address || props.data?.fetchBoard.boardAddress?.address}
+        ></Address>
         <Address onChange={props.onChangeAddressDetail}></Address>
       </AddressWrapper>
       <InputWrapper>
@@ -98,6 +114,7 @@ export default function BoardWriteUI(props) {
         <Input
           placeholder="링크를 복사해주세요."
           onChange={props.onChangeYoutubeUrl}
+          defaultValue={props.data?.fetchBoard.youtubeUrl}
         ></Input>
       </InputWrapper>
       <AddWrapper>

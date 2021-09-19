@@ -14,7 +14,7 @@ export default function BoardList() {
   const lastPage = Math.ceil(fetchBoardsCountData?.fetchBoardsCount / 10);
 
   function onClickToDetailPage(event) {
-    router.push(`../../boards/board_read/${event.target.id}`);
+    router.push(`../../boards/board_read/${event.currentTarget.id}`);
   }
 
   function onClickToBoardWrite() {

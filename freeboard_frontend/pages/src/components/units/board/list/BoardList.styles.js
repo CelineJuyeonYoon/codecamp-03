@@ -48,6 +48,7 @@ export const Row = styled.div`
   align-items: center;
   padding-left: 30px;
   border-bottom: 1px solid #bdbdbd;
+  cursor: pointer;
   :hover {
     background-color: #f2f2f2;
     border: none;
@@ -62,7 +63,6 @@ export const Title = styled.div`
   width: 65%;
   text-align: center;
   color: #4f4f4f;
-  cursor: pointer;
 `;
 export const Writer = styled.span`
   width: 15%;

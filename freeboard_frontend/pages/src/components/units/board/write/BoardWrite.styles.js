@@ -79,7 +79,7 @@ export const ZipcodeWrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const ZipcodeInput = styled.input`
+export const Zipcode = styled.input`
   border: 1px solid #bdbdbd;
   width: 77px;
   height: 52px;
