@@ -137,10 +137,14 @@ export const Page = styled.span`
   :hover {
     color: darkgray;
   }
+  color:
+  ${(props) => props.id == props.thisPage ? '#FFD600' : 'black'};
 `;
 export const Pages = styled.div`
-  position: absolute;
-  left: 41%;
+  /* position: absolute; */
+  /* left: 43%; */
+  margin:auto;
+  padding-left: 170px;
 `;
 export const ToPrev = styled.img`
   margin-right: 3px;

@@ -30,7 +30,7 @@ export default function CommentWrite(props) {
 
   function onChangeStar(value) {
     setRating(value);
-  } // 별 누른 value값을 rating에 저장
+  } // 별 누른 value값을 rating에 저장되도록 antd에서 만든 함수임
 
   async function onClickCommentSubmit() {
     if (contents !== "" && rating !== 0) {

@@ -29,7 +29,7 @@ export default function BoardListUI(props) {
     <Wrapper>
       <SearchBar>
         <SearchTitle type="text" placeholder="제목을 검색해주세요" />
-        <SearchDate type="text" placeholder="YYYY.MM.DD ~ YYYY.MM.DD" />
+        <SearchDate type="text" placeholder="YYYY.MM.DD ~ YYYY.MM.DD"/>
         <SearchBtn>검색하기</SearchBtn>
       </SearchBar>
       <BoardList>
@@ -62,6 +62,7 @@ export default function BoardListUI(props) {
                   key={props.startPage + index}
                   id={String(props.startPage + index)}
                   onClick={props.onClickPage}
+                  thisPage={props.thisPage}
                 >
                   {props.startPage + index}
                 </Page>

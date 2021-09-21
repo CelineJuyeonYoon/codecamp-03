@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function BoardList() {
   const router = useRouter();
   const [startPage, setStartPage] = useState(1);
+  const [thisPage, setThisPage] = useState(1);
   const { data, refetch } = useQuery(FETCH_BOARDS, {
     variables: { page: startPage },
   });
@@ -23,17 +24,28 @@ export default function BoardList() {
 
   function onClickPage(event) {
     refetch({ page: Number(event.target.id) });
-    console.log(event.target.id);
+    setThisPage(Number(event.target.id))
+    console.log(`--id: ${event.target.id}`)
+    console.log(`startP: ${startPage}`)
+    console.log(`thisP: ${thisPage}`)
   }
 
   function onClickPrevPage() {
     if (startPage === 1) return;
     setStartPage((prev) => prev - 10);
+    setThisPage(startPage)
+
+    console.log(`startP: ${startPage}`)
+    console.log(`thisP: ${thisPage}`)
   }
 
   function onClickNextPage() {
     if (startPage + 10 > lastPage) return;
     setStartPage((prev) => prev + 10);
+    setThisPage(startPage)
+
+    console.log(`startP: ${startPage}`)
+    console.log(`thisP: ${thisPage}`)
   }
 
   return (
@@ -47,6 +59,7 @@ export default function BoardList() {
       onClickPrevPage={onClickPrevPage}
       onClickNextPage={onClickNextPage}
       lastPage={lastPage}
+      thisPage={thisPage}
     />
   );
 }
