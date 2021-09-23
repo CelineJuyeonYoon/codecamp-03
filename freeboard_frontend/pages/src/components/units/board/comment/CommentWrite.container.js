@@ -1,8 +1,5 @@
 import CommentWriteUI from "./CommentWrite.presenter";
-import {
-  CREATE_BOARD_COMMENT,
-  UPDATE_BOARD_COMMENT,
-} from "./CommentWrite.queries";
+import { CREATE_BOARD_COMMENT, UPDATE_BOARD_COMMENT } from "./CommentWrite.queries";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
@@ -65,15 +62,16 @@ export default function CommentWrite(props) {
       alert("비밀번호가 입력되지 않았습니다.");
       return;
     }
+    const myUpdateBoardCommentInput = {
+      contents,
+    }
+    if(rating) myUpdateBoardCommentInput.rating = rating
     try {
       await updateBoardComment({
         variables: {
           boardCommentId: event.target.id,
           password,
-          updateBoardCommentInput: {
-            contents,
-            rating: rating,
-          },
+          updateBoardCommentInput: myUpdateBoardCommentInput,
         },
         refetchQueries: [
           {

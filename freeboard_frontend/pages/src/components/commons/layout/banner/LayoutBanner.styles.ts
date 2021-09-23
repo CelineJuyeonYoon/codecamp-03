@@ -6,8 +6,8 @@ export const Wrapper = styled.div`
   /* display: flex; */
   /* align-items: center; */
 `;
+
 export const SliderItem = styled.img`
   height: 400px;
-  text-align: center;
   margin: auto;
-`;
+`

@@ -52,6 +52,7 @@ export default function BoardWriteUI(props) {
             type="text"
             placeholder="이름을 적어주세요."
             onChange={props.onChangeName}
+            // readOnly={Boolean(props.data?.fetchBoard.writer)}
             defaultValue={props.data?.fetchBoard.writer}
           ></WriterInput>
           <NameErr>{props.nameErr}</NameErr>

@@ -165,12 +165,13 @@ export default function BoardWrite(props) {
     const myVariables = {
       boardId: router.query.id,
       password,
-      updateBoardInput: {boardAddress:{}},
+      updateBoardInput: {},
     };
     if (title) myVariables.updateBoardInput.title = title; // 만약 title에 값이 입력되면, variables에 title을 title로 한다(제목을 입력값으로 수정한다)
     if (content) myVariables.updateBoardInput.contents = content;
     if (youtubeUrl) myVariables.updateBoardInput.youtubeUrl = youtubeUrl;
     if (zipcode || address || addressDetail) {
+      myVariables.updateBoardInput.boardAddress = {}
       if (zipcode)
       myVariables.updateBoardInput.boardAddress.zipcode = zipcode;
       if (address)
