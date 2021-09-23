@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Rate } from "antd";
 
 export const StarRating = styled(Rate)`
+  pointer-events: none;
 `;
 
 export const Wrapper = styled.div`
