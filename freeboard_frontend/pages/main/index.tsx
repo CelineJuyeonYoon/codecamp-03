@@ -14,7 +14,9 @@ const SearchBar = styled.input`
   margin-right: 10px;
 `
 const BookList = styled.div`
-  /* height: 500px; */
+`
+const SearchWrapper = styled.div`
+  height: 500px;
 `
 
 export default function MainPage(){
@@ -45,7 +47,7 @@ export default function MainPage(){
       Authorization: 'KakaoAK 8a27084212735d701e7d345258350d65'
     }})
     setList(data)
-  } 
+  }
   return(
     <>
       <ReactPlayer url='https://www.youtube.com/watch?v=mlbZE-0A2EM'></ReactPlayer>
@@ -53,8 +55,10 @@ export default function MainPage(){
       <SearchBar type='text' ref={inputRef} onChange={onChangeSearch} placeholder='book title'/>
       <button onClick={onClickSearch}>검색</button>
       </Wrapper>
-      {list && list.documents.map((data) => 
-      <BookList key={data.isbn}>{data.title}</BookList>)}
+      <SearchWrapper>
+        {list && list.documents.map((data) => 
+        <BookList key={data.isbn}>{data.title}</BookList>)}
+      </SearchWrapper>
     </>
   )
 }
