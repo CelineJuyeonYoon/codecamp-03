@@ -15,11 +15,11 @@ const Sidebar = styled.div`
   background-color: yellow;
 `;
 
-const HIDDEN_FOOTER = ["/13-01-layout-hidden"];
+const HIDDEN_FOOTER = ["/13-01-layout-hidden", '/landing']; // 배열에 hidden할 pathname 들 입력
 
 export default function Layout(props) {
   const router = useRouter();
-  const isHiddenFooter = HIDDEN_FOOTER.includes(router.pathname);
+  const isHiddenFooter = HIDDEN_FOOTER.includes(router.pathname); // HIDDEN_FOOTER가 현재 페이지의 pathname을 포함하고 있는지 true/false
 
   console.log(router);
   return (

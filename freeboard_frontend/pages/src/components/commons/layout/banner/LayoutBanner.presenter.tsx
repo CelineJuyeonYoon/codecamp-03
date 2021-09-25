@@ -8,7 +8,7 @@ export default function LayoutBannerUI() {
     // dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000
@@ -17,7 +17,10 @@ export default function LayoutBannerUI() {
     <Wrapper>
       <Slider {...settings}>
         <div>
-          <SliderItem src="../images/newyork1.jpg" />
+          <SliderItem src="../images/banner.jpg" />
+        </div>
+        <div>
+          <SliderItem src="../images/premium.jpg" />
         </div>
         <div>
           <SliderItem src="../images/newyork2.jpg" />

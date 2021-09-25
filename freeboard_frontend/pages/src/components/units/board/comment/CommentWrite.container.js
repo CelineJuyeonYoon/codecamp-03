@@ -96,6 +96,7 @@ export default function CommentWrite(props) {
       onClickCommentEdit={onClickCommentEdit}
       isEdit={props.isEdit}
       el={props.el}
+      contents={contents}
     />
   );
 }

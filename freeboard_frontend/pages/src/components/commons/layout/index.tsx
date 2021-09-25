@@ -3,11 +3,11 @@ import LayoutHeader from "./header/LayoutHeader.container";
 import LayoutBanner from "./banner/LayoutBanner.container";
 import LayoutNavigation from "./navigation/LayoutNavagation.container";
 import LayoutFooter from "./footer/LayoutFooter.container";
+import { useRouter } from "next/dist/client/router";
 
 const Wrapper = styled.div`
   /* display: flex;
   flex-direction: column; */
-  /* align-items: stretch; */
 `;
 
 const Body = styled.div`
@@ -20,12 +20,17 @@ const Body = styled.div`
   align-items: center;
 `;
 
+const HIDDEN_PAGE = ['/landing']
+
 export default function Layout(props) {
+  const router = useRouter()
+  const isHiddenPage = HIDDEN_PAGE.includes(router.pathname)
+
   return (
     <Wrapper>
-      <LayoutHeader />
-      <LayoutBanner />
-      <LayoutNavigation />
+      {!isHiddenPage && <LayoutHeader />}
+      {!isHiddenPage && <LayoutBanner />}
+      {!isHiddenPage && <LayoutNavigation />}
       <Body>{props.children}</Body>
       <LayoutFooter />
     </Wrapper>
