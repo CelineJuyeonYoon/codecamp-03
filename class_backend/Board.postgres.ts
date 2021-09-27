@@ -5,6 +5,9 @@ export default class Board extends BaseEntity {
   @PrimaryGeneratedColumn('increment') // PK
   number!: number
 
+  @PrimaryGeneratedColumn('uuid')
+  _id!: string
+
   @Column({type: 'text'})
   writer!: string
 
