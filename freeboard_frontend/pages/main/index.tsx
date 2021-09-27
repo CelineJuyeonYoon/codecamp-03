@@ -21,7 +21,7 @@ const SearchWrapper = styled.div`
 
 export default function MainPage(){
   const[search, setSearch] = useState('')
-  const[list, setList] = useState('')
+  const[list, setList] = useState<any>('')
   const[isSearch, setIsSearch] = useState(false)
 
   const inputRef = useRef<HTMLInputElement>()
@@ -32,6 +32,7 @@ export default function MainPage(){
   }, [search])
 
   function onChangeSearch(){
+    // @ts-ignore
     setSearch(inputRef.current.value)
     // setSearch(event.target.value)
   }
@@ -52,11 +53,12 @@ export default function MainPage(){
     <>
       <ReactPlayer url='https://www.youtube.com/watch?v=mlbZE-0A2EM'></ReactPlayer>
       <Wrapper>
+      {/* @ts-ignore */}
       <SearchBar type='text' ref={inputRef} onChange={onChangeSearch} placeholder='book title'/>
       <button onClick={onClickSearch}>검색</button>
       </Wrapper>
       <SearchWrapper>
-        {list && list.documents.map((data) => 
+        {list && list.documents.map((data: any) => 
         <BookList key={data.isbn}>{data.title}</BookList>)}
       </SearchWrapper>
     </>

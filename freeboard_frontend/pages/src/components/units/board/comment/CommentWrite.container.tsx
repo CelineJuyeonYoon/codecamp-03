@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 import { FETCH_BOARD_COMMENTS } from "../commentList/CommentList.queries";
 
-export default function CommentWrite(props) {
+export default function CommentWrite(props: any) {
   const router = useRouter();
   const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
   const [updateBoardComment] = useMutation(UPDATE_BOARD_COMMENT);
@@ -13,19 +13,19 @@ export default function CommentWrite(props) {
   const [password, setPassword] = useState("");
   const [rating, setRating] = useState(0);
   const [contents, setContents] = useState("");
-  function onChangeWriter(event) {
+  function onChangeWriter(event: any) {
     setWriter(event.target.value);
   }
 
-  function onChangePassword(event) {
+  function onChangePassword(event: any) {
     setPassword(event.target.value);
   }
 
-  function onChangeContents(event) {
+  function onChangeContents(event: any) {
     setContents(event.target.value);
   }
 
-  function onChangeStar(value) {
+  function onChangeStar(value: any) {
     setRating(value);
   } // 별 누른 value값을 rating에 저장되도록 antd에서 만든 함수임
 
@@ -53,7 +53,7 @@ export default function CommentWrite(props) {
     }
   }
 
-  async function onClickCommentEdit(event) {
+  async function onClickCommentEdit(event: any) {
     if (!contents) {
       alert("내용이 수정되지 않았습니다.");
       return;
@@ -64,6 +64,7 @@ export default function CommentWrite(props) {
     }
     const myUpdateBoardCommentInput = {
       contents,
+      rating,
     }
     if(rating) myUpdateBoardCommentInput.rating = rating
     try {

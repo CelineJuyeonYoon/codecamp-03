@@ -25,11 +25,10 @@ const Store = styled.img`
   cursor: pointer;
 `;
 
-
 export default function LandingPage(){
   const router = useRouter()
 
-  function onClickMove(event){
+  function onClickMove(event: any){
     router.push(event.target.id)
   }
 

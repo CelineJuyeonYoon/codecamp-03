@@ -22,7 +22,7 @@ const Body = styled.div`
 
 const HIDDEN_PAGE = ['/landing']
 
-export default function Layout(props) {
+export default function Layout(props: any) {
   const router = useRouter()
   const isHiddenPage = HIDDEN_PAGE.includes(router.pathname)
 
