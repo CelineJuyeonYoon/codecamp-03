@@ -59,6 +59,7 @@ export const Title = styled.div`
 `;
 export const Image = styled.img`
   padding-top: 40px;
+  width: 996px;
 `;
 export const Contents = styled.div`
   padding-top: 40px;

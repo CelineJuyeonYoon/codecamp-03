@@ -20,7 +20,7 @@ export const firebaseApp = initializeApp({
 function MyApp({ Component, pageProps }) {
 
   const uploadLink = createUploadLink({
-    uri: "http://backend02.codebootcamp.co.kr/graphql",
+    uri: "http://backend03.codebootcamp.co.kr/graphql",
   }) // 필요한 부분만 따로 만들어서 조립하는 방식
 
   const client = new ApolloClient({

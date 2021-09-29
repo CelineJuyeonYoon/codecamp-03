@@ -123,7 +123,8 @@ export default function BoardWriteUI(props) {
         <AddBoxWrapper>
           <AddBox>
             <Vector src="../Vector.png"></Vector>
-            <div>Upload</div>
+            <div onClick={props.onClickUploadImg}>Upload</div>
+            <input ref={props.inputRef} type="file" onChange={props.onChangeFile} style={{display: 'none'}}/>
           </AddBox>
           <AddBox>
             <Vector src="../Vector.png"></Vector>

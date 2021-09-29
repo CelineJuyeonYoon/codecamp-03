@@ -1,13 +1,15 @@
 import BoardWriteUI from "./BoardWrite.presenter";
-import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
 import { useMutation } from "@apollo/client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function BoardWrite(props) {
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
   const router = useRouter();
+  const inputRef = useRef();
 
   const [name, setName] = useState("");
   const [nameErr, setNameErr] = useState("");
@@ -28,6 +30,8 @@ export default function BoardWrite(props) {
   const [addressDetail, setAddressDetail] = useState("");
 
   const [buttonAct, setButtonAct] = useState("");
+
+  const [imgUrl, setImgUrl] = useState("")
 
   function onChangeName(event) {
     setName(event.target.value);
@@ -152,6 +156,7 @@ export default function BoardWrite(props) {
               address,
               addressDetail,
             },
+            images: [imgUrl]
           },
         },
       });
@@ -199,6 +204,28 @@ export default function BoardWrite(props) {
     }
   }
 
+  async function onChangeFile(event){
+    const myFile = event.target.files[0]
+    console.log(myFile)
+
+    if(!myFile){
+      alert('파일이 없습니다')
+      return
+    }
+
+    const result = await uploadFile({
+      variables: {
+        file: myFile
+      }
+    })
+    console.log(result)
+    setImgUrl(result.data.uploadFile.url)
+  }
+
+  function onClickUploadImg(){
+    inputRef.current?.click()
+  }
+
   return (
     <BoardWriteUI
       onChangeName={onChangeName}
@@ -223,6 +250,9 @@ export default function BoardWrite(props) {
       zipcode={zipcode}
       address={address}
       // writer={router.query.writer}
+      onChangeFile={onChangeFile}
+      onClickUploadImg={onClickUploadImg}
+      inputRef={inputRef}
     />
   );
 }

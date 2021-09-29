@@ -53,7 +53,7 @@ export default function BoardReadUI(props) {
           </Icons>
         </Header>
         <Title>{props.data?.fetchBoard.title}</Title>
-        <Image src="../../images/image.png"></Image>
+        <Image src={`https://storage.googleapis.com/${props.data?.fetchBoard.images}`}></Image>
         <Contents>{props.data?.fetchBoard.contents}</Contents>
         <Video>
           <ReactPlayer
