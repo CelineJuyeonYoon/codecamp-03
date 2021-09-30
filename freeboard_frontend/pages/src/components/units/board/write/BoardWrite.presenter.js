@@ -32,6 +32,7 @@ import {
   TitleErr,
   ContentErr,
 } from "./BoardWrite.styles";
+import Uploads01 from '../../../commons/uploads/Uploads01'
 
 export default function BoardWriteUI(props) {
   return (
@@ -121,7 +122,15 @@ export default function BoardWriteUI(props) {
       <AddWrapper>
         <Label>사진 첨부</Label>
         <AddBoxWrapper>
-          <AddBox>
+          {props.imgUrls.map((el, index) => 
+            <Uploads01 
+            key={el+index}
+            index={index}
+            imgUrl={el}
+            onChangeImageUrls={props.onChangeImageUrls}
+            />
+          )}
+          {/* <AddBox>
             <Vector src="../Vector.png"></Vector>
             <div onClick={props.onClickUploadImg}>Upload</div>
             <input ref={props.inputRef} type="file" onChange={props.onChangeFile} style={{display: 'none'}}/>
@@ -133,7 +142,7 @@ export default function BoardWriteUI(props) {
           <AddBox>
             <Vector src="../Vector.png"></Vector>
             <div>Upload</div>
-          </AddBox>
+          </AddBox> */}
         </AddBoxWrapper>
       </AddWrapper>
       <SelectWrapper>

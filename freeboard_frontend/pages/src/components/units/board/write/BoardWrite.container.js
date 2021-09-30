@@ -31,7 +31,7 @@ export default function BoardWrite(props) {
 
   const [buttonAct, setButtonAct] = useState("");
 
-  const [imgUrl, setImgUrl] = useState("")
+  const [imgUrls, setImgUrls] = useState(["","",""])
 
   function onChangeName(event) {
     setName(event.target.value);
@@ -156,7 +156,7 @@ export default function BoardWrite(props) {
               address,
               addressDetail,
             },
-            images: [imgUrl]
+            images: [...imgUrls]
           },
         },
       });
@@ -219,11 +219,17 @@ export default function BoardWrite(props) {
       }
     })
     console.log(result)
-    setImgUrl(result.data.uploadFile.url)
+    // setImgUrl(result.data.uploadFile.url)
   }
 
   function onClickUploadImg(){
     inputRef.current?.click()
+  }
+
+  function onChangeImageUrls(imgUrl, index){
+    const newImgUrls = [...imgUrls]
+    newImgUrls[index] = imgUrl
+    setImgUrls(newImgUrls)
   }
 
   return (
@@ -253,6 +259,8 @@ export default function BoardWrite(props) {
       onChangeFile={onChangeFile}
       onClickUploadImg={onClickUploadImg}
       inputRef={inputRef}
+      imgUrls={imgUrls}
+      onChangeImageUrls={onChangeImageUrls}
     />
   );
 }
