@@ -1,40 +1,42 @@
-import { gql, useQuery } from '@apollo/client'
-import styled from '@emotion/styled'
-import { useState } from 'react'
-import { v4 as uuidv4 } from 'uuid' // as는 이름변경 용도(필수x)
-import _ from 'lodash' // _로 쓰는거 암묵적 룰
+import { gql, useQuery } from "@apollo/client";
+import styled from "@emotion/styled";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid"; // as는 이름변경 용도(필수x)
+import _ from "lodash"; // _로 쓰는거 암묵적 룰
 
 const FETCH_BOARDS = gql`
-  query fetchBoards($search: String, $page: Int){
-    fetchBoards(search: $search, page: $page){
+  query fetchBoards($search: String, $page: Int) {
+    fetchBoards(search: $search, page: $page) {
       _id
       writer
       title
       createdAt
     }
   }
-`
+`;
 
 const Column = styled.span`
   padding: 0px 50px;
-`
+`;
 const Page = styled.span`
   padding: 0px 10px;
   cursor: pointer;
-`
+`;
 
-export default function SearchDebouncePage(){
+export default function SearchDebouncePage() {
   // const [mySearch, setMySearch] = useState("")
-  const [myKeyword, setMyKeyword] = useState("")
-  const { data, refetch } = useQuery(FETCH_BOARDS)
+  const [myKeyword, setMyKeyword] = useState("");
+  const { data, refetch } = useQuery(FETCH_BOARDS);
 
   const getDebounce = _.debounce((data) => {
-    refetch({search: data})
-    setMyKeyword(data)
-  }, 500) // 0.5초 간격 debounce
+    refetch({ search: data });
+    setMyKeyword(data);
+  }, 500); // 0.5초 간격 debounce
+  // data는 입력받은 인자, getDebounce 실행시 data로 refetch되고, myKeyword가 data로 바뀐다!
 
-  function onChangeSearch(event){
-    getDebounce(event.target.value)
+  function onChangeSearch(event) {
+    getDebounce(event.target.value);
+    console.log(event.target.value);
     // refetch({search: event.target.value})
     // setMyKeyword(event.target.value)
     // setMySearch(event.target.value)
@@ -45,15 +47,15 @@ export default function SearchDebouncePage(){
   //   setMyKeyword(mySearch)
   // }
 
-  function onClickPage(event){
-    refetch({search: myKeyword, page: Number(event.target.id)})
+  function onClickPage(event) {
+    refetch({ search: myKeyword, page: Number(event.target.id) });
   }
   // 페이지를 눌렀을 때, 검색어의 해당페이지를 불러올 수 있게!
 
-  return(
+  return (
     <>
       <div>검색페이지</div>
-      검색어: <input type="text" onChange={onChangeSearch}/> 
+      검색어: <input type="text" onChange={onChangeSearch} />
       {/* <button onClick={onClickSearch}>검색</button> */}
       {data?.fetchBoards.map((el) => (
         <div key={el._id}>
@@ -63,9 +65,10 @@ export default function SearchDebouncePage(){
         </div>
       ))}
       {new Array(10).fill(1).map((_, index) => (
-        <Page key={uuidv4()} onClick={onClickPage} id={String(index+1)} >{index + 1} 
+        <Page key={uuidv4()} onClick={onClickPage} id={String(index + 1)}>
+          {index + 1}
         </Page>
       ))}
     </>
-  )
+  );
 }
