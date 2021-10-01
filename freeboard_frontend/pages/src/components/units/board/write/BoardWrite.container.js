@@ -31,7 +31,7 @@ export default function BoardWrite(props) {
 
   const [buttonAct, setButtonAct] = useState("");
 
-  const [imgUrls, setImgUrls] = useState(["","",""])
+  const [imgUrls, setImgUrls] = useState([""]);
 
   function onChangeName(event) {
     setName(event.target.value);
@@ -156,7 +156,8 @@ export default function BoardWrite(props) {
               address,
               addressDetail,
             },
-            images: [...imgUrls]
+            images: [...imgUrls],
+            // images: myImages, // 이미지 2차 실습
           },
         },
       });
@@ -176,18 +177,16 @@ export default function BoardWrite(props) {
     if (content) myVariables.updateBoardInput.contents = content;
     if (youtubeUrl) myVariables.updateBoardInput.youtubeUrl = youtubeUrl;
     if (zipcode || address || addressDetail) {
-      myVariables.updateBoardInput.boardAddress = {}
-      if (zipcode)
-      myVariables.updateBoardInput.boardAddress.zipcode = zipcode;
-      if (address)
-      myVariables.updateBoardInput.boardAddress.address = address;
+      myVariables.updateBoardInput.boardAddress = {};
+      if (zipcode) myVariables.updateBoardInput.boardAddress.zipcode = zipcode;
+      if (address) myVariables.updateBoardInput.boardAddress.address = address;
       if (addressDetail)
-      myVariables.updateBoardInput.boardAddress.addressDetail = addressDetail;
+        myVariables.updateBoardInput.boardAddress.addressDetail = addressDetail;
     }
-    
+
     try {
       await updateBoard({
-      variables: myVariables,
+        variables: myVariables,
         // variables: {
         //   boardId: router.query.id,
         //   password,
@@ -204,33 +203,41 @@ export default function BoardWrite(props) {
     }
   }
 
-  async function onChangeFile(event){
-    const myFile = event.target.files[0]
-    console.log(myFile)
+  async function onChangeFile(event) {
+    const myFile = event.target.files[0];
+    console.log(myFile);
 
-    if(!myFile){
-      alert('파일이 없습니다')
-      return
+    if (!myFile) {
+      alert("파일이 없습니다");
+      return;
     }
 
     const result = await uploadFile({
       variables: {
-        file: myFile
-      }
-    })
-    console.log(result)
+        file: myFile,
+      },
+    });
+    console.log(result);
     // setImgUrl(result.data.uploadFile.url)
   }
 
-  function onClickUploadImg(){
-    inputRef.current?.click()
+  // function onClickUploadImg() {
+  //   inputRef.current?.click();
+  // }
+
+  function onChangeImageUrls(imgUrl, index) {
+    const newImgUrls = [...imgUrls]; // 얕은복사 => 원본을 건드리지 않는 것이 암묵룰!
+    newImgUrls[index] = imgUrl;
+    setImgUrls(newImgUrls);
+    console.log(imgUrl);
   }
 
-  function onChangeImageUrls(imgUrl, index){
-    const newImgUrls = [...imgUrls]
-    newImgUrls[index] = imgUrl
-    setImgUrls(newImgUrls)
-  }
+  /////////////// 이미지 2차 실습 /////////////////
+  // function onChangeFiles(file, index){
+  //   const newFiles = [...files]
+  //   newFiles[index] = file
+  //   setFiles(newFiles)
+  // }
 
   return (
     <BoardWriteUI
@@ -255,12 +262,12 @@ export default function BoardWrite(props) {
       onCompleteAddressSearch={onCompleteAddressSearch}
       zipcode={zipcode}
       address={address}
-      // writer={router.query.writer}
-      onChangeFile={onChangeFile}
-      onClickUploadImg={onClickUploadImg}
-      inputRef={inputRef}
+      // onChangeFile={onChangeFile}
+      // onClickUploadImg={onClickUploadImg}
+      // inputRef={inputRef}
       imgUrls={imgUrls}
       onChangeImageUrls={onChangeImageUrls}
+      // onChangeFiles={onChangeFiles} // 이미지 2차 실습
     />
   );
 }

@@ -42,7 +42,7 @@ export default function MySearchPage() {
   const getDebounce = _.debounce((word) => {
     refetch({ search: word, page: 1 }); // 수업때는 page: 1 안넣어줘서 이전페이지값으로 refetch됐음
     setKeyword(word);
-  }, 500);
+  }, 500); // 0.5초 후에 실행
 
   function onChangeSearch(event) {
     getDebounce(event.target.value);
@@ -67,7 +67,7 @@ export default function MySearchPage() {
           <Column>{el.writer}</Column>
           <Column>
             {el.title // 안녕하세요
-              .replaceAll(keyword, `^^${keyword}^^`) // 안녕 => ^^안녕^^하세요
+              .replaceAll(keyword, `^^${keyword}^^`) // keyword: 안녕 => ^^안녕^^하세요
               .split("^^") // ["안녕", "하세요"]
               .map((el) => (
                 <MyWord key={key()} isMatched={keyword === el}>

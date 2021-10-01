@@ -11,7 +11,7 @@ import {
 export default function LayoutHeaderUI() {
   return (
     <Wrapper>
-      <Logo src="../images/logo.png"></Logo>
+      <Logo src="/images/logo.png"></Logo>
       <LoginWrapper>
         <Login>로그인</Login>
         {/* <Profile></Profile> */}

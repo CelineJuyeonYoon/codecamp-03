@@ -32,7 +32,7 @@ import {
   TitleErr,
   ContentErr,
 } from "./BoardWrite.styles";
-import Uploads01 from '../../../commons/uploads/Uploads01'
+import Uploads01 from "../../../commons/uploads/Uploads01";
 
 export default function BoardWriteUI(props) {
   return (
@@ -122,14 +122,16 @@ export default function BoardWriteUI(props) {
       <AddWrapper>
         <Label>사진 첨부</Label>
         <AddBoxWrapper>
-          {props.imgUrls.map((el, index) => 
-            <Uploads01 
-            key={el+index}
-            index={index}
-            imgUrl={el}
-            onChangeImageUrls={props.onChangeImageUrls}
-            />
-          )}
+          {props.imgUrls
+            // .filter((el) => el) // 이미지 2차 실습
+            .map((el, index) => (
+              <Uploads01
+                key={`${el}_${index}`}
+                index={index} // imgUrls 배열의 index로 사용
+                imgUrl={el} // 실제 url
+                onChangeImageUrls={props.onChangeImageUrls}
+              />
+            ))}
           {/* <AddBox>
             <Vector src="../Vector.png"></Vector>
             <div onClick={props.onClickUploadImg}>Upload</div>
