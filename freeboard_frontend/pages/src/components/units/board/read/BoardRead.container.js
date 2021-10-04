@@ -14,6 +14,7 @@ export default function BoardRead() {
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.id },
   });
+  console.log("이미지들: " + data?.fetchBoard.images);
 
   const [deleteBoard] = useMutation(DELETE_BOARD);
   const [likeBoard] = useMutation(LIKE_BOARD);

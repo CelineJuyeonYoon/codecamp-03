@@ -1,7 +1,6 @@
 import DaumPostcode from "react-daum-postcode";
 import { Modal } from "antd";
 import {
-  AddBox,
   AddBoxWrapper,
   Address,
   AddressWrapper,
@@ -20,7 +19,6 @@ import {
   SelectWrapper,
   SubmitBtn,
   Title,
-  Vector,
   Wrapper,
   WriterInput,
   WriterWrapper,
@@ -53,7 +51,7 @@ export default function BoardWriteUI(props) {
             type="text"
             placeholder="이름을 적어주세요."
             onChange={props.onChangeName}
-            // readOnly={Boolean(props.data?.fetchBoard.writer)}
+            readOnly={Boolean(props.data?.fetchBoard.writer)}
             defaultValue={props.data?.fetchBoard.writer}
           ></WriterInput>
           <NameErr>{props.nameErr}</NameErr>
@@ -122,29 +120,14 @@ export default function BoardWriteUI(props) {
       <AddWrapper>
         <Label>사진 첨부</Label>
         <AddBoxWrapper>
-          {props.imgUrls
-            // .filter((el) => el) // 이미지 2차 실습
-            .map((el, index) => (
-              <Uploads01
-                key={`${el}_${index}`}
-                index={index} // imgUrls 배열의 index로 사용
-                imgUrl={el} // 실제 url
-                onChangeImageUrls={props.onChangeImageUrls}
-              />
-            ))}
-          {/* <AddBox>
-            <Vector src="../Vector.png"></Vector>
-            <div onClick={props.onClickUploadImg}>Upload</div>
-            <input ref={props.inputRef} type="file" onChange={props.onChangeFile} style={{display: 'none'}}/>
-          </AddBox>
-          <AddBox>
-            <Vector src="../Vector.png"></Vector>
-            <div>Upload</div>
-          </AddBox>
-          <AddBox>
-            <Vector src="../Vector.png"></Vector>
-            <div>Upload</div>
-          </AddBox> */}
+          {props.imgUrls.map((el, index) => (
+            <Uploads01
+              key={`${el}_${index}`}
+              index={index} // imgUrls 배열의 index로 사용
+              imgUrl={el} // 실제 url
+              onChangeImageUrls={props.onChangeImageUrls}
+            />
+          ))}
         </AddBoxWrapper>
       </AddWrapper>
       <SelectWrapper>

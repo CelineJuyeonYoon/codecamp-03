@@ -7,9 +7,7 @@ import { useRouter } from "next/router";
 export default function BoardWrite(props) {
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
-  const [uploadFile] = useMutation(UPLOAD_FILE);
   const router = useRouter();
-  const inputRef = useRef();
 
   const [name, setName] = useState("");
   const [nameErr, setNameErr] = useState("");
@@ -31,7 +29,7 @@ export default function BoardWrite(props) {
 
   const [buttonAct, setButtonAct] = useState("");
 
-  const [imgUrls, setImgUrls] = useState([""]);
+  const [imgUrls, setImgUrls] = useState(["", "", ""]);
 
   function onChangeName(event) {
     setName(event.target.value);
@@ -173,7 +171,7 @@ export default function BoardWrite(props) {
       password,
       updateBoardInput: {},
     };
-    if (title) myVariables.updateBoardInput.title = title; // 만약 title에 값이 입력되면, variables에 title을 title로 한다(제목을 입력값으로 수정한다)
+    if (title) myVariables.updateBoardInput.title = title;
     if (content) myVariables.updateBoardInput.contents = content;
     if (youtubeUrl) myVariables.updateBoardInput.youtubeUrl = youtubeUrl;
     if (zipcode || address || addressDetail) {
@@ -185,51 +183,18 @@ export default function BoardWrite(props) {
     }
 
     try {
-      await updateBoard({
-        variables: myVariables,
-        // variables: {
-        //   boardId: router.query.id,
-        //   password,
-        //   updateBoardInput: {
-        //     title,
-        //     contents: content,
-        //   },
-        // },
-      });
+      await updateBoard({ variables: myVariables });
       router.push(`/boards/board_read/${router.query.id}`);
-      // router.push(`/boards/board_read/${result.data.createBoard._id}`) //<= 이렇게 써서 boardId 없다고 오류
     } catch (error) {
       alert(error.message);
     }
   }
 
-  async function onChangeFile(event) {
-    const myFile = event.target.files[0];
-    console.log(myFile);
-
-    if (!myFile) {
-      alert("파일이 없습니다");
-      return;
-    }
-
-    const result = await uploadFile({
-      variables: {
-        file: myFile,
-      },
-    });
-    console.log(result);
-    // setImgUrl(result.data.uploadFile.url)
-  }
-
-  // function onClickUploadImg() {
-  //   inputRef.current?.click();
-  // }
-
   function onChangeImageUrls(imgUrl, index) {
     const newImgUrls = [...imgUrls]; // 얕은복사 => 원본을 건드리지 않는 것이 암묵룰!
     newImgUrls[index] = imgUrl;
     setImgUrls(newImgUrls);
-    console.log(imgUrl);
+    console.log("이미지url: " + imgUrl);
   }
 
   /////////////// 이미지 2차 실습 /////////////////
@@ -262,9 +227,6 @@ export default function BoardWrite(props) {
       onCompleteAddressSearch={onCompleteAddressSearch}
       zipcode={zipcode}
       address={address}
-      // onChangeFile={onChangeFile}
-      // onClickUploadImg={onClickUploadImg}
-      // inputRef={inputRef}
       imgUrls={imgUrls}
       onChangeImageUrls={onChangeImageUrls}
       // onChangeFiles={onChangeFiles} // 이미지 2차 실습

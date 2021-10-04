@@ -53,7 +53,12 @@ export default function BoardReadUI(props) {
           </Icons>
         </Header>
         <Title>{props.data?.fetchBoard.title}</Title>
-        <Image src={`https://storage.googleapis.com/${props.data?.fetchBoard.images}`}></Image>
+        {/* <Image src={`https://storage.googleapis.com/${props.data?.fetchBoard.images}`} />*/}
+        {props.data?.fetchBoard.images
+          ?.filter((el) => el) // 비어있는 imgUrls 배열 요소 제거하기
+          .map((el) => (
+            <Image key={el} src={`https://storage.googleapis.com/${el}`} /> // 각각의 url을 넣어 이미지 보여주기
+          ))}
         <Contents>{props.data?.fetchBoard.contents}</Contents>
         <Video>
           <ReactPlayer

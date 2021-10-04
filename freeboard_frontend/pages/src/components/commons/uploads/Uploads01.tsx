@@ -31,7 +31,7 @@ const UploadFile = styled.input`
 
 export default function Uploads01(props) {
   const fileRef = useRef<HTMLInputElement>();
-  const [imgUrl, setImgUrl] = useState("");
+  // const [imgUrl, setImgUrl] = useState("");
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
   function onClickUpload() {
@@ -40,7 +40,6 @@ export default function Uploads01(props) {
 
   async function onChangeFile(event) {
     const file = event.target.files[0]; // file 정보
-    console.log(event.target.files[0]);
 
     if (!file) {
       alert("파일이 없습니다");
@@ -49,7 +48,6 @@ export default function Uploads01(props) {
 
     const result = await uploadFile({ variables: { file } });
     props.onChangeImageUrls(result.data.uploadFile.url, props.index);
-    console.log(result);
 
     //   const fileReader = new FileReader();
     //   fileReader.readAsDataURL(file);
@@ -63,7 +61,7 @@ export default function Uploads01(props) {
     <>
       {props.imgUrl ? (
         <UploadImg
-          onClick={onClickUpload}
+          onClick={onClickUpload} // 이미지가 처음 클릭되고 나서도 다시 클릭할 수 있어야 함
           src={`https://storage.googleapis.com/${props.imgUrl}`}
         />
       ) : (
