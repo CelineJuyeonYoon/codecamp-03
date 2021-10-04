@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 export default function BoardWrite(props) {
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
   const router = useRouter();
 
   const [name, setName] = useState("");
@@ -29,7 +30,9 @@ export default function BoardWrite(props) {
 
   const [buttonAct, setButtonAct] = useState("");
 
-  const [imgUrls, setImgUrls] = useState(["", "", ""]);
+  // const [imgUrls, setImgUrls] = useState(["", "", ""]);
+  const [files, setFiles] = useState([null, null, null]);
+  // const [files, setFiles] = useState(["", "", ""]);
 
   function onChangeName(event) {
     setName(event.target.value);
@@ -141,6 +144,14 @@ export default function BoardWrite(props) {
     }
 
     try {
+      /////////////// 이미지 2차 실습 /////////////////
+      const uploadFiles = files // [File1, null, File2]
+        .filter((el) => el) // [File1, File2]
+        .map((el) => uploadFile({ variables: { file: el } })); // [result1, result2]
+      const results = await Promise.all(uploadFiles); // 위 과정이 다 끝날때까지 기다려줌
+      const myImages = results.map((el) => el.data.uploadFile.url); // url 가져오기
+      /////////////////////////////////////////////
+
       const result = await createBoard({
         variables: {
           createBoardInput: {
@@ -154,8 +165,8 @@ export default function BoardWrite(props) {
               address,
               addressDetail,
             },
-            images: [...imgUrls],
-            // images: myImages, // 이미지 2차 실습
+            // images: [...imgUrls],
+            images: myImages, // 이미지 2차 실습
           },
         },
       });
@@ -190,19 +201,19 @@ export default function BoardWrite(props) {
     }
   }
 
-  function onChangeImageUrls(imgUrl, index) {
-    const newImgUrls = [...imgUrls]; // 얕은복사 => 원본을 건드리지 않는 것이 암묵룰!
-    newImgUrls[index] = imgUrl;
-    setImgUrls(newImgUrls);
-    console.log("이미지url: " + imgUrl);
-  }
+  // function onChangeImageUrls(imgUrl, index) {
+  //   const newImgUrls = [...imgUrls]; // 얕은복사 => 원본을 건드리지 않는 것이 암묵룰!
+  //   newImgUrls[index] = imgUrl;
+  //   setImgUrls(newImgUrls);
+  //   console.log("이미지url: " + imgUrl);
+  // }
 
   /////////////// 이미지 2차 실습 /////////////////
-  // function onChangeFiles(file, index){
-  //   const newFiles = [...files]
-  //   newFiles[index] = file
-  //   setFiles(newFiles)
-  // }
+  function onChangeFiles(file, index) {
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
+  }
 
   return (
     <BoardWriteUI
@@ -227,9 +238,10 @@ export default function BoardWrite(props) {
       onCompleteAddressSearch={onCompleteAddressSearch}
       zipcode={zipcode}
       address={address}
-      imgUrls={imgUrls}
-      onChangeImageUrls={onChangeImageUrls}
-      // onChangeFiles={onChangeFiles} // 이미지 2차 실습
+      // imgUrls={imgUrls}
+      files={files}
+      // onChangeImageUrls={onChangeImageUrls}
+      onChangeFiles={onChangeFiles} // 이미지 2차 실습
     />
   );
 }

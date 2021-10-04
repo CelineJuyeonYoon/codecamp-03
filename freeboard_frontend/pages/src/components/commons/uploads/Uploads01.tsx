@@ -2,13 +2,13 @@ import styled from "@emotion/styled";
 import { useRef, useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 
-const UPLOAD_FILE = gql`
-  mutation ($file: Upload!) {
-    uploadFile(file: $file) {
-      url
-    }
-  }
-`;
+// const UPLOAD_FILE = gql`
+//   mutation ($file: Upload!) {
+//     uploadFile(file: $file) {
+//       url
+//     }
+//   }
+// `;
 
 const UploadImg = styled.img`
   width: 78px;
@@ -31,8 +31,8 @@ const UploadFile = styled.input`
 
 export default function Uploads01(props) {
   const fileRef = useRef<HTMLInputElement>();
-  // const [imgUrl, setImgUrl] = useState("");
-  const [uploadFile] = useMutation(UPLOAD_FILE);
+  const [imgUrl, setImgUrl] = useState(""); // 임시 미리보기 주소 넣을 state
+  // const [uploadFile] = useMutation(UPLOAD_FILE);
 
   function onClickUpload() {
     fileRef.current.click();
@@ -46,23 +46,25 @@ export default function Uploads01(props) {
       return;
     }
 
-    const result = await uploadFile({ variables: { file } });
-    props.onChangeImageUrls(result.data.uploadFile.url, props.index);
+    // const result = await uploadFile({ variables: { file } });
+    // props.onChangeImageUrls(result.data.uploadFile.url, props.index);
 
-    //   const fileReader = new FileReader();
-    //   fileReader.readAsDataURL(file);
-    //   fileReader.onload = (data) => {
-    //     setImgUrl(data.target?.result as string);
-    //     props.onChangeImageUrls(file, props.index);
-    //   };
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file); // 임시 미리보기 주소 생성
+    fileReader.onload = (data) => {
+      setImgUrl(data.target?.result as string); // 생성된 임시 미리보기 주소 imgUrl(현재 컴포넌트 state)에 저장
+      props.onChangeFiles(file, props.index); // 실제 파일은 BoardWrite.container에 저장(그곳에서 uploadFile)
+    };
   }
 
   return (
     <>
-      {props.imgUrl ? (
+      {/* 임시 미리보기 주소가 있으면, */}
+      {imgUrl ? (
         <UploadImg
           onClick={onClickUpload} // 이미지가 처음 클릭되고 나서도 다시 클릭할 수 있어야 함
-          src={`https://storage.googleapis.com/${props.imgUrl}`}
+          // src={`https://storage.googleapis.com/${props.imgUrl}`}
+          src={imgUrl} // 임시 미리보기 주소
         />
       ) : (
         <UploadButton onClick={onClickUpload}>

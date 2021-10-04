@@ -120,12 +120,21 @@ export default function BoardWriteUI(props) {
       <AddWrapper>
         <Label>사진 첨부</Label>
         <AddBoxWrapper>
+          {/* /////////// 1차 이미지 실습 ///////////
           {props.imgUrls.map((el, index) => (
             <Uploads01
               key={`${el}_${index}`}
               index={index} // imgUrls 배열의 index로 사용
               imgUrl={el} // 실제 url
               onChangeImageUrls={props.onChangeImageUrls}
+            />
+          ))} */}
+          {new Array(3).fill(1).map((el, index) => (
+            // {props.files.map((el, index) => (
+            <Uploads01
+              key={`${el}_${index}`}
+              index={index}
+              onChangeFiles={props.onChangeFiles}
             />
           ))}
         </AddBoxWrapper>
