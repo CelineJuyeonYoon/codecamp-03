@@ -11,7 +11,7 @@ import {
   Title,
   Writer,
   Date,
-  SearchTitle,
+  // SearchTitle,
   SearchBar,
   SearchDate,
   SearchBtn,
@@ -22,14 +22,21 @@ import {
   Pages,
   ToPrev,
   ToNext,
+  TextToken,
 } from "./BoardList.styles";
+import SearchBars01 from "../../../commons/searchbars/Searchbars01";
+import { v4 as key } from "uuid";
 
 export default function BoardListUI(props) {
   return (
     <Wrapper>
       <SearchBar>
-        <SearchTitle type="text" placeholder="제목을 검색해주세요" />
-        <SearchDate type="text" placeholder="YYYY.MM.DD ~ YYYY.MM.DD"/>
+        {/* <SearchTitle type="text" placeholder="제목을 검색해주세요" /> */}
+        <SearchBars01
+          refetch={props.refetch}
+          onChangeKeyword={props.onChangeKeyword}
+        />
+        <SearchDate type="text" placeholder="YYYY.MM.DD ~ YYYY.MM.DD" />
         <SearchBtn>검색하기</SearchBtn>
       </SearchBar>
       <BoardList>
@@ -41,8 +48,18 @@ export default function BoardListUI(props) {
         </Header>
         {props.data?.fetchBoards.map((el, index) => (
           <Row key={el._id} id={el._id} onClick={props.onClickToDetailPage}>
-            <Number>{10 - index}</Number> {/*가장 최신글이 맨 위, 글번호 10번*/}
-            <Title id={el._id}>{el.title}</Title>
+            <Number>{10 - index}</Number>
+            {/* <Title id={el._id}>{el.title}</Title> */}
+            <Title id={el._id}>
+              {el.title
+                .replaceAll(props.keyword, `^^${props.keyword}^^`)
+                .split("^^")
+                .map((el) => (
+                  <TextToken key={key()} isMatched={props.keyword === el}>
+                    {el}
+                  </TextToken>
+                ))}
+            </Title>
             <Writer>{el.writer}</Writer>
             <Date>{el.createdAt.slice(0, 10)}</Date>
           </Row>

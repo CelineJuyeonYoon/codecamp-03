@@ -74,15 +74,15 @@ export const Date = styled.span`
   text-align: center;
   color: #4f4f4f;
 `;
-export const SearchTitle = styled.input`
-  width: 776px;
-  height: 52px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  border: none;
-  font-size: 16px;
-  padding-left: 20px;
-`;
+// export const SearchTitle = styled.input`
+//   width: 776px;
+//   height: 52px;
+//   background-color: #f2f2f2;
+//   border-radius: 10px;
+//   border: none;
+//   font-size: 16px;
+//   padding-left: 20px;
+// `;
 export const SearchBar = styled.div`
   width: 1200px;
   display: flex;
@@ -137,13 +137,12 @@ export const Page = styled.span`
   :hover {
     color: darkgray;
   }
-  color:
-  ${(props) => props.id == props.thisPage ? '#FFD600' : 'black'};
+  color: ${(props) => (props.id == props.thisPage ? "#FFD600" : "black")};
 `;
 export const Pages = styled.div`
   /* position: absolute; */
   /* left: 43%; */
-  margin:auto;
+  margin: auto;
   padding-left: 170px;
 `;
 export const ToPrev = styled.img`
@@ -153,4 +152,7 @@ export const ToPrev = styled.img`
 export const ToNext = styled.img`
   margin-left: 3px;
   cursor: pointer;
+`;
+export const TextToken = styled.span`
+  color: ${(props) => (props.isMatched ? "red" : "black")};
 `;

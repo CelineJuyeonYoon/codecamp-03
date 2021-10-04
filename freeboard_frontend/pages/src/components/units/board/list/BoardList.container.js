@@ -8,10 +8,13 @@ export default function BoardList() {
   const router = useRouter();
   const [startPage, setStartPage] = useState(1);
   const [thisPage, setThisPage] = useState(1);
+  const [keyword, setKeyword] = useState("");
   const { data, refetch } = useQuery(FETCH_BOARDS, {
-    variables: { page: startPage },
+    variables: { page: startPage, search: keyword },
   });
-  const { data: fetchBoardsCountData } = useQuery(FETCH_BOARDS_COUNT);
+  const { data: fetchBoardsCountData } = useQuery(FETCH_BOARDS_COUNT, {
+    variables: { search: keyword },
+  });
   const lastPage = Math.ceil(fetchBoardsCountData?.fetchBoardsCount / 10);
 
   function onClickToDetailPage(event) {
@@ -24,28 +27,32 @@ export default function BoardList() {
 
   function onClickPage(event) {
     refetch({ page: Number(event.target.id) });
-    setThisPage(Number(event.target.id))
-    console.log(`--id: ${event.target.id}`)
-    console.log(`startP: ${startPage}`)
-    console.log(`thisP: ${thisPage}`)
+    setThisPage(Number(event.target.id));
+    console.log(`--id: ${event.target.id}`);
+    console.log(`startP: ${startPage}`);
+    console.log(`thisP: ${thisPage}`);
   }
 
   function onClickPrevPage() {
     if (startPage === 1) return;
     setStartPage((prev) => prev - 10);
-    setThisPage(startPage)
+    setThisPage(startPage);
 
-    console.log(`startP: ${startPage}`)
-    console.log(`thisP: ${thisPage}`)
+    console.log(`startP: ${startPage}`);
+    console.log(`thisP: ${thisPage}`);
   }
 
   function onClickNextPage() {
     if (startPage + 10 > lastPage) return;
     setStartPage((prev) => prev + 10);
-    setThisPage(startPage)
+    setThisPage(startPage);
 
-    console.log(`startP: ${startPage}`)
-    console.log(`thisP: ${thisPage}`)
+    console.log(`startP: ${startPage}`);
+    console.log(`thisP: ${thisPage}`);
+  }
+
+  function onChangeKeyword(value) {
+    setKeyword(value);
   }
 
   return (
@@ -60,6 +67,9 @@ export default function BoardList() {
       onClickNextPage={onClickNextPage}
       lastPage={lastPage}
       thisPage={thisPage}
+      refetch={refetch}
+      onChangeKeyword={onChangeKeyword}
+      keyword={keyword}
     />
   );
 }
