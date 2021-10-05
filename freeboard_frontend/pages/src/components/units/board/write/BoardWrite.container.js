@@ -193,6 +193,23 @@ export default function BoardWrite(props) {
         myVariables.updateBoardInput.boardAddress.addressDetail = addressDetail;
     }
 
+    /////////////// 이미지 수정 ///////////////// 이미지 업로드와 거의 동일, filter 없음
+    const uploadFiles = files // [File1, null, File2]
+      .map((el) => (el ? uploadFile({ variables: { file: el } }) : null)); // [File1, null, File2]
+    const results = await Promise.all(uploadFiles); // 위 과정이 다 끝날때까지 기다려줌
+    const myImages = results.map((el) => el?.data.uploadFile.url || ""); // url 가져오기
+    myVariables.updateBoardInput.images = myImages;
+
+    if (props.data?.fetchBoard.images?.length) {
+      // 기존에 이미지가 있었으면,
+      const prevImages = [...props.data?.fetchBoard.images]; // 기존 이미지 배열
+      myVariables.updateBoardInput.images = prevImages.map((el, index) => myImages[index] || el); // prettier-ignore
+      // 새로운 이미지가 들어왔으면 대체, 없으면 기존꺼
+    } else {
+      myVariables.updateBoardInput.images = myImages;
+    }
+    ////////////////////////////////////////////////////////////////////////////
+
     try {
       await updateBoard({ variables: myVariables });
       router.push(`/boards/board_read/${router.query.id}`);
