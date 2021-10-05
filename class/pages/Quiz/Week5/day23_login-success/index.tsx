@@ -1,6 +1,6 @@
 import { useQuery, gql } from "@apollo/client";
 import { useEffect, useContext } from "react";
-import { GlobalContext } from "../../_app";
+import { GlobalContext } from "../../../../pages/_app";
 import { useRouter } from "next/router";
 
 const FETCH_USER_LOGGED_IN = gql`
@@ -12,7 +12,7 @@ const FETCH_USER_LOGGED_IN = gql`
   }
 `;
 
-export default function QuizLogginSuccessPage() {
+export default function MyLogginSuccessPage() {
   const router = useRouter();
   const { setUserInfo, userInfo, accessToken } = useContext(GlobalContext);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
@@ -30,7 +30,7 @@ export default function QuizLogginSuccessPage() {
     );
     if (!localStorage.getItem("accessToken")) {
       alert("로그인을 먼저 해주세요");
-      router.push("/quiz/1005-login");
+      router.push("/Quiz/Week5/day23_login");
     }
   }, []);
 

@@ -11,7 +11,7 @@ const LOGIN_USER = gql`
   }
 `;
 
-export default function LoginPage() {
+export default function MyLoginPage() {
   const router = useRouter(); // 페이지 새로고침하면 입력값 날라가기 때문에, SPA 이용하기 위해, router.push로 이동
   const { setAccessToken } = useContext(GlobalContext); // Context 이용해서 setAccessToken가져옴
   const [email, setEmail] = useState("");
@@ -35,7 +35,7 @@ export default function LoginPage() {
     });
     localStorage.setItem("accessToken", result.data?.loginUser.accessToken);
     setAccessToken(result.data?.loginUser.accessToken); // Context의 변수에 저장
-    router.push("/23-02-login-success");
+    router.push("/Quiz/Week5/day23_login-success");
   }
 
   return (

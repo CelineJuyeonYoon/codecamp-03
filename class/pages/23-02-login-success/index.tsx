@@ -26,6 +26,7 @@ export default function LoginSuccessPage() {
     }); // 어디서든 email, name, picture 가져다 쓸 수 있게 됨
   }, [data]);
 
+  console.log("이름", data?.fetchUserLoggedIn.name);
   return (
     <>
       <div>로그인에 성공하셨습니다!</div>

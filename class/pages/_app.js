@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToket") || "";
+    const accessToken = localStorage.getItem("accessToken") || "";
     setAccessToken(accessToken);
   }, []);
 

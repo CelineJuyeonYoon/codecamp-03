@@ -13,7 +13,7 @@ const LOGIN_USER = gql`
 
 export default function LoginPage() {
   const router = useRouter(); // 페이지 새로고침하면 입력값 날라가기 때문에, SPA 이용하기 위해, router.push로 이동
-  const { setAccessToken } = useContext(GlobalContext); // Context 이용해서 setAccessToken가져옴
+  const { setAccessToken } = useContext(GlobalContext); // GlobalContext 이용해서 setAccessToken가져옴
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginUser] = useMutation(LOGIN_USER);
@@ -33,9 +33,10 @@ export default function LoginPage() {
         password,
       },
     });
-    localStorage.setItem("accessToken", result.data?.loginUser.accessToken);
-    setAccessToken(result.data?.loginUser.accessToken); // Context의 변수에 저장
+    localStorage.setItem("accessToken", result.data?.loginUser.accessToken); // setItem하면 key와 값으로 데이터를 저장할 수 있음
+    setAccessToken(result.data?.loginUser.accessToken); // GlobalContext의 변수에 저장
     router.push("/23-02-login-success");
+    // 실험) router.push로 이동 안해도 localStorage에 accessToken 저장되어있기 때문에 주소 직접 입력해도 값 잘 나옴
   }
 
   return (
