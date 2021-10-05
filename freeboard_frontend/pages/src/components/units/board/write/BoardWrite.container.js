@@ -232,6 +232,8 @@ export default function BoardWrite(props) {
     setFiles(newFiles);
   }
 
+  console.log("props" + props.data?.fetchBoard.images);
+
   return (
     <BoardWriteUI
       onChangeName={onChangeName}

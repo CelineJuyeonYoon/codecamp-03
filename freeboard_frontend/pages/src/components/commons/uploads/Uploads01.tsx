@@ -51,6 +51,7 @@ export default function Uploads01(props) {
 
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file); // 임시 미리보기 주소 생성
+
     fileReader.onload = (data) => {
       setImgUrl(data.target?.result as string); // 생성된 임시 미리보기 주소 imgUrl(현재 컴포넌트 state)에 저장
       props.onChangeFiles(file, props.index); // 실제 파일은 BoardWrite.container에 저장(그곳에서 uploadFile)

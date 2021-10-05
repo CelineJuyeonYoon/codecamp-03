@@ -129,8 +129,8 @@ export default function BoardWriteUI(props) {
               onChangeImageUrls={props.onChangeImageUrls}
             />
           ))} */}
-          {new Array(3).fill(1).map((el, index) => (
-            // {props.files.map((el, index) => (
+          {/* {new Array(3).fill(1).map((el, index) => ( */}
+          {props.files.map((el, index) => (
             <Uploads01
               key={`${el}_${index}`}
               index={index}

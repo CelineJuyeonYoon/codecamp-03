@@ -9,6 +9,7 @@ const FETCH_BOARD = gql`
       title
       contents
       _id
+      images
     }
   }
 `;
