@@ -65,7 +65,9 @@ export default function Uploads01(props) {
         <UploadImg
           onClick={onClickUpload} // 이미지가 처음 클릭되고 나서도 다시 클릭할 수 있어야 함
           // src={`https://storage.googleapis.com/${props.imgUrl}`}
-          src={imgUrl || props.defaultImageUrl} // 임시 미리보기 주소
+          src={
+            imgUrl || `https://storage.googleapis.com/${props.defaultImageUrl}`
+          } // 임시 미리보기 주소
         />
       ) : (
         <UploadButton onClick={onClickUpload}>
