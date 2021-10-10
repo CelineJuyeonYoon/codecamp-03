@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup"; // resolbers 안에 yup 내장되어있음
-import * as yup from "yup";
-// * 은 모든 export들을 가져올 때 사용
+import { yupResolver } from "@hookform/resolvers/yup"; // resolvers 안에 yup 내장되어있음
+import * as yup from "yup"; // * 은 모든 export들을 가져올 때 사용
 
 // 어떻게 검증할 건지 => 스키마
 const schema = yup.object().shape({
@@ -18,9 +17,9 @@ const schema = yup.object().shape({
 
 export default function ReactHookFormYupPage() {
   const { handleSubmit, register, formState } = useForm({
-    mode: "onChange",
-    resolver: yupResolver(schema),
-    // yup-yupResolver 연결
+    // yup으로 만든 에러메세지를 보여주기 위해 formState 사용(안에 errors가 내장되어있음)
+    mode: "onChange", // 검증을 언제 할 것인지 => 변경이 일어났을 때 검증
+    resolver: yupResolver(schema), // yup-useForm 연결
   });
 
   function onClickLogin(data) {

@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup"; // resolbers 안에 yup 내장되어있음
+import { yupResolver } from "@hookform/resolvers/yup"; // resolvers 안에 yup 내장되어있음
 import { schema } from "./Myform.validations";
 import MyformUI from "./Myform.presenter";
 

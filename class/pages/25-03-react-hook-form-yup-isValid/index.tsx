@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup"; // resolbers 안에 yup 내장되어있음
+import { yupResolver } from "@hookform/resolvers/yup"; // resolvers 안에 yup 내장되어있음
 import * as yup from "yup";
 import styled from "@emotion/styled";
 // * 은 모든 export들을 가져올 때 사용
