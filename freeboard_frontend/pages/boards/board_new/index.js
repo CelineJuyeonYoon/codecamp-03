@@ -1,3 +1,4 @@
+import { withAuth } from "../../src/components/commons/hocs/withAuth";
 import BoardWrite from "../../src/components/units/board/write/BoardWrite.container";
 // import BoardWrite from "/pages/src/components/units/board/write/BoardWrite.container"
 // 이렇게 절대경로로 지정하면 폴더 경로가 변경되어도 위 주소가 바뀌지 않아 일일이 수정해줘야함
@@ -5,6 +6,12 @@ import BoardWrite from "../../src/components/units/board/write/BoardWrite.contai
 export default function BoardNewPage() {
   return <BoardWrite />;
 }
+
+// const BoardNewPage = () => {
+//   return <BoardWrite />;
+// };
+
+// export default withAuth(BoardNewPage);
 
 // import { useMutation, gql } from '@apollo/client'
 // import { useState } from 'react'

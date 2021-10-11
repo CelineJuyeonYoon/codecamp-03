@@ -113,7 +113,6 @@ export const AddWrapper = styled.div`
 export const AddBoxWrapper = styled.div`
   display: flex;
   width: 282px;
-  display: flex;
   justify-content: space-between;
 `;
 
