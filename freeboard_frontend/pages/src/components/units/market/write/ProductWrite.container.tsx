@@ -27,7 +27,7 @@ export default function ProductWrite(props) {
       },
     });
     console.log(result.data?.createUseditem._id);
-    router.push("./detail");
+    router.push(`/market/${result.data.createUseditem._id}`);
   }
   return (
     <ProductWriteUI

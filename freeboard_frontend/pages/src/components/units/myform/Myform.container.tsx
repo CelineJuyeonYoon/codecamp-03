@@ -6,8 +6,10 @@ import { CREATE_USER, LOGIN_USER } from "./Myform.queries";
 import { schema } from "./Myform.validataion";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../_app";
+import { useRouter } from "next/router";
 
 export default function Myform(props) {
+  const router = useRouter();
   const { setAccessToken } = useContext(GlobalContext);
   const [createUser] = useMutation(CREATE_USER);
   const [loginUser] = useMutation(LOGIN_USER);
@@ -27,6 +29,7 @@ export default function Myform(props) {
         },
       },
     });
+    props.isLogin ? router.push("/landing") : router.push("/login");
   }
 
   async function onClickLogin(data) {

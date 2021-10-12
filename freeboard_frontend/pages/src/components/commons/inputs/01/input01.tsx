@@ -5,6 +5,7 @@ const Label = styled.label``;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 300px;
 `;
 
 export default function Input01(props) {

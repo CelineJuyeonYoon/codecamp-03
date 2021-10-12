@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
 
 const Button = styled.button`
-  background-color: ${(props: any) => (props.isValid ? "yellow" : "#BDBDBD;")};
+  background-color: ${(props: any) => (props.isValid ? "#ffd600" : "#BDBDBD;")};
   width: 179px;
   height: 52px;
+  margin: 0 12px;
   border: none;
   font-size: 16px;
   font-weight: 500;
