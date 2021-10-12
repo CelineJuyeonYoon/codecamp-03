@@ -29,7 +29,7 @@ export default function Myform(props) {
         },
       },
     });
-    props.isLogin ? router.push("/landing") : router.push("/login");
+    router.push("/login");
   }
 
   async function onClickLogin(data) {
@@ -42,6 +42,7 @@ export default function Myform(props) {
     console.log(result.data?.loginUser.accessToken);
     localStorage.setItem("accessToken", result.data?.loginUser.accessToken);
     setAccessToken(result.data?.loginUser.accessToken);
+    router.push("/market");
   }
 
   return (
