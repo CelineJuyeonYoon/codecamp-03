@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-bottom: 40px;
+  padding-top: 40px;
+  /* margin-top: 80px; */
 `;
 
 const Label = styled.label`

@@ -25,19 +25,16 @@ export default function WebEditorDetailPage() {
     <>
       <div>작성자: {data?.fetchBoard.writer}</div>
       <div>제목: {data?.fetchBoard.title}</div>
-      내용:
-      {process.browser && (
-        // <div
-        //   dangerouslySetInnerHTML={{
-        //     __html: Dompurify.sanitize(data?.fetchBoard.contents),
-        //   }}
-        // />
-        <div
-          dangerouslySetInnerHTML={{
-            __html: Dompurify.sanitize(data?.fetchBoard.contents),
-          }}
-        ></div>
-      )}
+      <div>
+        내용:
+        {process.browser && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: Dompurify.sanitize(data?.fetchBoard.contents),
+            }} // Dompurify.sanitize 는 태그가 들어있으면 실행을 막는다.
+          />
+        )}
+      </div>
     </>
   );
 }

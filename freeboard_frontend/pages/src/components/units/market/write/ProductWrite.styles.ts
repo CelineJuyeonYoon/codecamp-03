@@ -14,6 +14,6 @@ export const Wrapper = styled.div`
 export const Title = styled.div`
   font-size: 36px;
   font-weight: bold;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
   text-align: center;
 `;

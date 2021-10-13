@@ -29,6 +29,7 @@ import {
   MiniImg,
   Buttons,
 } from "./ProductDetail.styles";
+import Dompurify from "dompurify";
 
 export default function ProductDetailUI(props) {
   console.log("이거", props.data);
@@ -78,13 +79,19 @@ export default function ProductDetailUI(props) {
             <MiniImg></MiniImg>
           </CarouselImgs>
         </ProductImgs>
-        <ProductContents>{props.data?.fetchUseditem.contents}</ProductContents>
+        {process.browser && (
+          <ProductContents
+            dangerouslySetInnerHTML={{
+              __html: Dompurify.sanitize(props.data?.fetchUseditem.contents),
+            }}
+          />
+        )}
         <ProductTags>{props.data?.fetchUseditem.tags}</ProductTags>
         <LocationBox>
           <Location></Location>
         </LocationBox>
         <Buttons>
-          <Button02 name="목록으로"></Button02>
+          <Button02 name="목록으로" onClick={props.onClickToList}></Button02>
           <Button02 name="구매하기" isValid={true}></Button02>
         </Buttons>
       </Box>

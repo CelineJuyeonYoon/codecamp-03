@@ -4,6 +4,7 @@ import { Wrapper, Title } from "./ProductWrite.styles";
 import Map01 from "../../../commons/maps/01/map01";
 import UploadImage01 from "../../../commons/uploadImages/01/uploadImage01";
 import Radio01 from "../../../commons/radios/01/radio01";
+import Editor01 from "../../../commons/editors/01/editor01";
 
 export default function ProductWriteUI(props) {
   return (
@@ -22,11 +23,12 @@ export default function ProductWriteUI(props) {
           register={props.register("remarks")}
           value={props.formState.errors.remarks?.message}
         />
-        <Input02
+        <Editor01
+          onChange={props.onChangeEditor}
           name="상품설명"
-          type="text"
-          register={props.register("contents")}
-          value={props.formState.errors.contents?.message}
+          // type="text"
+          // register={props.register("contents")}
+          // value={props.formState.errors.contents?.message}
         />
         <Input02
           name="판매가격"

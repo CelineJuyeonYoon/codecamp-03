@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 
 const Wrapper = styled.div``;
 const BestProducts = styled.div``;
@@ -30,7 +31,6 @@ const Count = styled.div``;
 const ProductPrice = styled.div``;
 const Price = styled.div``;
 const SubmitBtn = styled.button``;
-// const ProductList = styled.div``;
 
 const FETCH_USEDITEMS = gql`
   query fetchUseditems {
@@ -52,6 +52,11 @@ const FETCH_USEDITEMS = gql`
 
 export default function MarketMainPage() {
   const { data } = useQuery(FETCH_USEDITEMS);
+  const router = useRouter();
+
+  function onClickToWrite() {
+    router.push("/market/new");
+  }
 
   return (
     <Wrapper>
@@ -93,7 +98,7 @@ export default function MarketMainPage() {
           </Row>
         ))}
       </ProductList>
-      <SubmitBtn>상품 등록하기</SubmitBtn>
+      <SubmitBtn onClick={onClickToWrite}>상품 등록하기</SubmitBtn>
     </Wrapper>
   );
 }

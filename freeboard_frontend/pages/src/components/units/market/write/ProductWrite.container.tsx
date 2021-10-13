@@ -9,7 +9,7 @@ import { schema } from "./ProductWrite.validation";
 export default function ProductWrite(props) {
   const router = useRouter();
   const [createUseditem] = useMutation(CREATE_USEDITEM);
-  const { handleSubmit, register, formState } = useForm({
+  const { handleSubmit, register, formState, setValue, trigger } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
@@ -29,6 +29,12 @@ export default function ProductWrite(props) {
     console.log(result.data?.createUseditem._id);
     router.push(`/market/${result.data.createUseditem._id}`);
   }
+
+  function onChangeEditor(value) {
+    setValue("contents", value === "<p><br></p>" ? "" : value);
+    trigger("contents");
+  }
+
   return (
     <ProductWriteUI
       handleSubmit={handleSubmit}
@@ -36,6 +42,7 @@ export default function ProductWrite(props) {
       formState={formState}
       onClickSubmit={onClickSubmit}
       isEdit={props.isEdit}
+      onChangeEditor={onChangeEditor}
     />
   );
 }

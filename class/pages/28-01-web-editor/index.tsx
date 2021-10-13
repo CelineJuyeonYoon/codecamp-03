@@ -42,11 +42,11 @@ export default function WebEditorPage() {
     }
     // finally {
 
-    // } // 성공했든 실패했든 실행되는 것들(ex.알림)
+    // } // 성공했든 실패했든 실행되는 것들(ex.백엔드에 유저의 시도 자체를 알려줘야한다든지)
   };
 
   function onChangeMyEditor(value) {
-    // event가 아니라 입력한 값이 바로 들어오는 onChange임!
+    // event가 아니라 입력한 값이 바로 value로 들어옴.
     // register로 등록하지 않고, 강제로 값을 넣어주는 기능
     setValue("contents", value === "<p><br></p>" ? "" : value);
     console.log(value);
@@ -63,6 +63,8 @@ export default function WebEditorPage() {
       제목: <input type="text" {...register("title")} />
       <br />
       내용: <ReactQuill onChange={onChangeMyEditor} />
+      {/* ReactQuill은 HTML태그가 아님. onChange는 이벤트함수가 아님!
+          onChange는 react-quill 만든 사람이 만든 함수! */}
       <br />
       <button type="submit">등록하기</button>
       {/* <button type="button" onClick={onClickMyButton}>나의버튼</button>
