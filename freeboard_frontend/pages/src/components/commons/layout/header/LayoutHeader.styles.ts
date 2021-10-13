@@ -18,7 +18,11 @@ export const Login = styled.div`
   font-size: 14px;
   cursor: pointer;
 `;
-export const Profile = styled.img``;
+export const Profile = styled.img`
+  margin-right: 17px;
+  width: 30px;
+  height: 30px;
+`;
 export const Signup = styled.div`
   font-size: 14px;
   cursor: pointer;

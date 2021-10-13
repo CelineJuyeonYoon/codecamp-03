@@ -17,6 +17,7 @@ export default function LayoutHeader() {
 
   function onClickLogout() {
     router.push("/login");
+    localStorage.removeItem("accessToken");
     setAccessToken("");
   }
 
