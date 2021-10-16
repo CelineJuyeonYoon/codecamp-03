@@ -114,7 +114,11 @@ export const CarouselImgs = styled.div`
   justify-content: space-between;
   padding-top: 64px;
 `;
-export const MiniImg = styled.div`
+export const SliderImg = styled.img`
+  width: 296px;
+  height: 296px;
+`;
+export const MiniImg = styled.img`
   background-color: black;
   width: 78px;
   height: 78px;

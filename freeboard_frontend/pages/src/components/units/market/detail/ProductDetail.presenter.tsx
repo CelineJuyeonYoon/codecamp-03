@@ -26,13 +26,26 @@ import {
   ProductImgs,
   CarouselImg,
   CarouselImgs,
+  SliderImg,
   MiniImg,
   Buttons,
 } from "./ProductDetail.styles";
 import Dompurify from "dompurify";
+import Slider from "@ant-design/react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function ProductDetailUI(props) {
   console.log("이거", props.data);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 2000,
+  };
   return (
     <Wrapper>
       <Box>
@@ -71,12 +84,27 @@ export default function ProductDetailUI(props) {
           </ProductInfoRight>
         </ProductInfo>
         <ProductImgs>
-          <CarouselImg></CarouselImg>
+          <CarouselImg>
+            <Slider {...settings}>
+              {props.data?.fetchUseditem.images
+                ?.filter((el) => el)
+                .map((el) => (
+                  <SliderImg
+                    key={el}
+                    src={`https://storage.googleapis.com/${el}`}
+                  ></SliderImg>
+                ))}
+            </Slider>
+          </CarouselImg>
           <CarouselImgs>
-            <MiniImg></MiniImg>
-            <MiniImg></MiniImg>
-            <MiniImg></MiniImg>
-            <MiniImg></MiniImg>
+            {props.data?.fetchUseditem.images
+              ?.filter((el) => el)
+              .map((el) => (
+                <MiniImg
+                  key={el}
+                  src={`https://storage.googleapis.com/${el}`}
+                ></MiniImg>
+              ))}
           </CarouselImgs>
         </ProductImgs>
         {process.browser && (

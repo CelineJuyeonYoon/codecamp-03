@@ -1,6 +1,6 @@
 import Input02 from "../../../commons/inputs/02/input02";
 import Button02 from "../../../commons/buttons/02/button02";
-import { Wrapper, Title } from "./ProductWrite.styles";
+import { Wrapper, Title, ImgAttach } from "./ProductWrite.styles";
 import Map01 from "../../../commons/maps/01/map01";
 import UploadImage01 from "../../../commons/uploadImages/01/uploadImage01";
 import Radio01 from "../../../commons/radios/01/radio01";
@@ -43,7 +43,16 @@ export default function ProductWriteUI(props) {
           value={props.formState.errors.price?.tags}
         />
         <Map01 />
-        <UploadImage01 />
+        <ImgAttach>
+          {new Array(4).fill(1).map((el, index) => (
+            <UploadImage01
+              key={`${el}${index}`}
+              index={index}
+              onChangeFiles={props.onChangeFiles}
+              defaultImageUrl={props.data?.fetchBoard.images?.[index]}
+            />
+          ))}
+        </ImgAttach>
         <Radio01 />
         <Button02 name="등록하기" isValid={props.formState.isValid}></Button02>
       </Wrapper>

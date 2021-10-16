@@ -21,7 +21,7 @@ export default function KakaoMapPage() {
         };
 
         const map = new window.kakao.maps.Map(container, options);
-        console.log(map);
+        console.log("지도", map);
 
         // 지도를 클릭한 위치에 표출할 마커입니다
         const marker = new window.kakao.maps.Marker({

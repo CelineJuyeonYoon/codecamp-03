@@ -17,3 +17,7 @@ export const Title = styled.div`
   padding-bottom: 40px;
   text-align: center;
 `;
+
+export const ImgAttach = styled.div`
+  /* display: flex; */
+`;
