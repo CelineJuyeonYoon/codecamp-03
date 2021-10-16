@@ -19,5 +19,6 @@ export const Title = styled.div`
 `;
 
 export const ImgAttach = styled.div`
-  /* display: flex; */
+  display: flex;
+  width: 996px;
 `;

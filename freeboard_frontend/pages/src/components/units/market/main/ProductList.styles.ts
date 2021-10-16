@@ -30,11 +30,13 @@ export const OnSale = styled.div`
   font-weight: ${(props) => (props.onSale ? "500" : "")};
   margin-right: 20px;
   color: ${(props) => (props.onSale ? "black" : "#4F4F4F")};
+  cursor: pointer;
 `;
 export const SoldOut = styled.div`
   font-size: 18px;
   font-weight: ${(props) => (props.soldOut ? "500" : "")};
   color: ${(props) => (props.soldOut ? "black" : "#4F4F4F")};
+  cursor: pointer;
 `;
 export const SearchBar = styled.div`
   display: flex;
@@ -77,6 +79,7 @@ export const ProductName = styled.div`
   font-weight: 500;
   font-size: 24px;
   margin-top: 8px;
+  cursor: pointer;
 `;
 export const ProductRemarks = styled.div`
   font-weight: 500;

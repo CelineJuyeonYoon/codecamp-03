@@ -5,8 +5,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 40px;
-  /* width: 384px; */
-  width: 996px;
 `;
 const Label = styled.div`
   font-size: 16px;

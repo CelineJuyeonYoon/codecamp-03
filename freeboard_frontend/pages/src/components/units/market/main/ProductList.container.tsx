@@ -5,10 +5,14 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function MarketMain() {
-  const { data } = useQuery(FETCH_USEDITEMS);
+  const { data, fetchMore } = useQuery(FETCH_USEDITEMS);
   const router = useRouter();
   const [onSale, setOnSale] = useState(true);
   const [soldOut, setSoldOut] = useState(false);
+
+  function onClickToDetail(event) {
+    router.push(`/market/${event.target.id}`);
+  }
 
   function onClickToWrite() {
     router.push("/market/new");
@@ -24,14 +28,33 @@ export default function MarketMain() {
     setSoldOut(true);
   }
 
+  function onLoadProductMore() {
+    if (!data) return;
+    fetchMore({
+      variables: {
+        page: Math.ceil(data?.fetchUseditems.length / 10) + 1, // 다음페이지
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        return {
+          fetchUseditems: [
+            ...prev.fetchUseditems,
+            ...fetchMoreResult.fetchUseditems,
+          ],
+        };
+      },
+    });
+  }
+
   return (
     <MarketMainUI
       data={data}
+      onClickToDetail={onClickToDetail}
       onClickToWrite={onClickToWrite}
       onClickOnSale={onClickOnSale}
       onClickSoldOut={onClickSoldOut}
       onSale={onSale}
       soldOut={soldOut}
+      onLoadProductMore={onLoadProductMore}
     />
   );
 }

@@ -26,6 +26,7 @@ import {
   SubmitBtn,
   Buttons,
 } from "./ProductList.styles";
+import InfiniteScroll from "react-infinite-scroller";
 
 export default function MarketMainUI(props) {
   return (
@@ -47,30 +48,38 @@ export default function MarketMainUI(props) {
         </SearchBar>
       </ProductListHeader>
       <ProductList>
-        {props.data?.fetchUseditems.map((el) => (
-          <Row key={el._id}>
-            <ProductImg src="/images/phone.png" />
-            <ProductInfo>
-              <ProductName>{el.name}</ProductName>
-              <ProductRemarks>{el.remarks}</ProductRemarks>
-              <ProductTags>{el.tags}#삼성전자 #갤럭시탭 #갓성비</ProductTags>
-              <SellerAndCount>
-                <Seller>
-                  <img src="/images/seller.png" />
-                  <SellerName>{el.seller.name}</SellerName>
-                </Seller>
-                <Count>
-                  <img src="/images/count.png" />
-                  <PickedCount>{el.pickedCount}</PickedCount>
-                </Count>
-              </SellerAndCount>
-            </ProductInfo>
-            <ProductPrice>
-              <img src="/images/currency.png" />
-              <Price>{el.price.toLocaleString()}원</Price>
-            </ProductPrice>
-          </Row>
-        ))}
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={props.onLoadProductMore}
+          hasMore={true}
+        >
+          {props.data?.fetchUseditems.map((el) => (
+            <Row key={el._id}>
+              <ProductImg src="/images/phone.png" />
+              <ProductInfo>
+                <ProductName id={el._id} onClick={props.onClickToDetail}>
+                  {el.name}
+                </ProductName>
+                <ProductRemarks>{el.remarks}</ProductRemarks>
+                <ProductTags>{el.tags}#삼성전자 #갤럭시탭 #갓성비</ProductTags>
+                <SellerAndCount>
+                  <Seller>
+                    <img src="/images/seller.png" />
+                    <SellerName>{el.seller.name}</SellerName>
+                  </Seller>
+                  <Count>
+                    <img src="/images/count.png" />
+                    <PickedCount>{el.pickedCount}</PickedCount>
+                  </Count>
+                </SellerAndCount>
+              </ProductInfo>
+              <ProductPrice>
+                <img src="/images/currency.png" />
+                <Price>{el.price.toLocaleString()}원</Price>
+              </ProductPrice>
+            </Row>
+          ))}
+        </InfiniteScroll>
       </ProductList>
       <Buttons>
         <SubmitBtn onClick={props.onClickToWrite}>상품 등록하기</SubmitBtn>
