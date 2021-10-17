@@ -63,7 +63,7 @@ export default function UploadImage01(props) {
     <Wrapper>
       <Label>사진첨부</Label>
       <Images>
-        {imgUrl || props.defaultImgUrl ? (
+        {imgUrl || props.defaultImageUrl ? (
           <UploadImage
             onClick={onClickUpload}
             src={

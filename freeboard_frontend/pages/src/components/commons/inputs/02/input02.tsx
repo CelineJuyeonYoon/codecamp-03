@@ -24,6 +24,8 @@ const Input = styled.input`
 
 const Error = styled.div`
   color: red;
+  margin-top: 3px;
+  margin-left: 3px;
 `;
 
 export default function Input02(props) {
@@ -35,9 +37,9 @@ export default function Input02(props) {
         {...props.register}
         // placeholder={props.placeholder}
         // onChange={props.onChange}
-        // defaultValue={props.data?.fetchBoard.title}
+        defaultValue={props.defaultValue}
       ></Input>
-      <Error>{props.value}</Error>
+      <Error>{props.error}</Error>
     </Wrapper>
   );
 }

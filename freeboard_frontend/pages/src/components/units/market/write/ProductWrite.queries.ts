@@ -19,3 +19,17 @@ export const UPLOAD_FILE = gql`
     }
   }
 `;
+
+export const UPDATE_USEDITEM = gql`
+  mutation updateUseditem(
+    $updateUseditemInput: UpdateUseditemInput!
+    $useditemId: ID!
+  ) {
+    updateUseditem(
+      updateUseditemInput: $updateUseditemInput
+      useditemId: $useditemId
+    ) {
+      _id
+    }
+  }
+`;

@@ -8,39 +8,49 @@ import Editor01 from "../../../commons/editors/01/editor01";
 
 export default function ProductWriteUI(props) {
   return (
-    <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+    <form
+      onSubmit={props.handleSubmit(
+        props.isEdit ? props.onClickEdit : props.onClickSubmit
+      )}
+    >
       <Wrapper>
         <Title>{props.isEdit ? "상품 수정하기" : "상품 등록하기"}</Title>
         <Input02
           name="상품명"
           type="text"
           register={props.register("name")}
-          value={props.formState.errors.name?.message}
+          error={props.formState.errors.name?.message}
+          defaultValue={props.data?.fetchUseditem.name}
+          value={props.data?.fetchUseditem.name}
         />
         <Input02
           name="한줄요약"
           type="text"
           register={props.register("remarks")}
-          value={props.formState.errors.remarks?.message}
+          error={props.formState.errors.remarks?.message}
+          defaultValue={props.data?.fetchUseditem.remarks}
         />
         <Editor01
           onChange={props.onChangeEditor}
           name="상품설명"
+          defaultValue={props.data?.fetchUseditem.contents}
           // type="text"
           // register={props.register("contents")}
-          // value={props.formState.errors.contents?.message}
+          // error={props.formState.errors.contents?.message}
         />
         <Input02
           name="판매가격"
           type="text"
           register={props.register("price")}
-          value={props.formState.errors.price?.message}
+          error={props.formState.errors.price?.message}
+          defaultValue={props.data?.fetchUseditem.price}
         />
         <Input02
           name="태그입력"
           type="text"
           register={props.register("tags")}
-          value={props.formState.errors.price?.tags}
+          error={props.formState.errors.price?.tags}
+          defaultValue={props.data?.fetchUseditem.tags}
         />
         <Map01 />
         <ImgAttach>
@@ -49,12 +59,22 @@ export default function ProductWriteUI(props) {
               key={`${el}${index}`}
               index={index}
               onChangeFiles={props.onChangeFiles}
-              defaultImageUrl={props.data?.fetchBoard.images?.[index]}
+              defaultImageUrl={props.data?.fetchUseditem.images?.[index]}
             />
           ))}
         </ImgAttach>
         <Radio01 />
-        <Button02 name="등록하기" isValid={props.formState.isValid}></Button02>
+        {props.isEdit ? (
+          <Button02
+            name="수정하기"
+            isValid={props.formState.isValid}
+          ></Button02>
+        ) : (
+          <Button02
+            name="등록하기"
+            isValid={props.formState.isValid}
+          ></Button02>
+        )}
       </Wrapper>
     </form>
   );

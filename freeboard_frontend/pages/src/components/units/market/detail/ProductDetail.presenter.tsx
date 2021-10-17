@@ -121,6 +121,11 @@ export default function ProductDetailUI(props) {
         <Buttons>
           <Button02 name="목록으로" onClick={props.onClickToList}></Button02>
           <Button02 name="구매하기" isValid={true}></Button02>
+          <Button02
+            name="수정하기"
+            onClick={props.onClickToEdit}
+            isValid={true}
+          ></Button02>
         </Buttons>
       </Box>
     </Wrapper>

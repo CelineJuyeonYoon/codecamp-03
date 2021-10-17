@@ -12,6 +12,7 @@ import {
   SearchBtn,
   Row,
   ProductImg,
+  NoImage,
   ProductInfo,
   ProductName,
   ProductRemarks,
@@ -27,8 +28,8 @@ import {
   Buttons,
 } from "./ProductList.styles";
 import InfiniteScroll from "react-infinite-scroller";
-
 export default function MarketMainUI(props) {
+  console.log(props.data?.fetchUseditems.map((el) => el));
   return (
     <Wrapper>
       <BestProducts></BestProducts>
@@ -55,7 +56,13 @@ export default function MarketMainUI(props) {
         >
           {props.data?.fetchUseditems.map((el) => (
             <Row key={el._id}>
-              <ProductImg src="/images/phone.png" />
+              {el.images[0] ? (
+                <ProductImg
+                  src={`https://storage.googleapis.com/${el.images?.[0]}`}
+                />
+              ) : (
+                <NoImage src="/images/noimage.png" />
+              )}
               <ProductInfo>
                 <ProductName id={el._id} onClick={props.onClickToDetail}>
                   {el.name}
@@ -75,7 +82,7 @@ export default function MarketMainUI(props) {
               </ProductInfo>
               <ProductPrice>
                 <img src="/images/currency.png" />
-                <Price>{el.price.toLocaleString()}원</Price>
+                <Price>{el.price?.toLocaleString()}원</Price>
               </ProductPrice>
             </Row>
           ))}

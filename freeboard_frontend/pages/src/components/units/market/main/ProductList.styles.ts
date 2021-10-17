@@ -69,6 +69,7 @@ export const Row = styled.div`
 `;
 export const ProductImg = styled.img`
   width: 160px;
+  height: 160px;
   margin-right: 40px;
 `;
 export const ProductInfo = styled.div`
@@ -126,4 +127,8 @@ export const SubmitBtn = styled.button`
   height: 52px;
   background-color: white;
   border: 1px solid black;
+`;
+export const NoImage = styled.img`
+  width: 160px;
+  margin-right: 40px;
 `;

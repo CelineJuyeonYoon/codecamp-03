@@ -22,11 +22,18 @@ const Quill = styled(ReactQuill)`
   padding-bottom: 40px;
 `;
 
+const Error = styled.div`
+  color: red;
+  margin-top: 5px;
+  margin-left: 3px;
+`;
+
 export default function Editor01(props) {
   return (
     <Wrapper>
       <Label>{props.name}</Label>
-      <Quill onChange={props.onChange} />
+      <Quill onChange={props.onChange} defaultValue={props.defaultValue} />
+      <Error>{props.error}</Error>
     </Wrapper>
   );
 }
