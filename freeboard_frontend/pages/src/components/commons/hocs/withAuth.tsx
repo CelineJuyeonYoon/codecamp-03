@@ -11,7 +11,7 @@ export const withAuth = (Component) => (props) => {
       alert("로그인을 해주세요!");
       router.push("/login");
     }
-  }, []);
+  }, [accessToken]);
 
   return <Component {...props} />;
 };
