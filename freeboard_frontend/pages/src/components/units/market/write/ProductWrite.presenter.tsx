@@ -34,6 +34,7 @@ export default function ProductWriteUI(props) {
           onChange={props.onChangeEditor}
           name="상품설명"
           defaultValue={props.data?.fetchUseditem.contents}
+          contents={props.contents}
           // type="text"
           // register={props.register("contents")}
           // error={props.formState.errors.contents?.message}

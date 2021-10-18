@@ -17,10 +17,11 @@ export default function ProductWrite(props) {
   const [createUseditem] = useMutation(CREATE_USEDITEM);
   const [updateUseditem] = useMutation(UPDATE_USEDITEM);
   const [uploadFile] = useMutation(UPLOAD_FILE);
-  const { handleSubmit, register, formState, setValue, trigger } = useForm({
-    mode: "onChange",
-    resolver: yupResolver(schema),
-  });
+  const { handleSubmit, register, formState, setValue, trigger, watch } =
+    useForm({
+      mode: "onChange",
+      resolver: yupResolver(schema),
+    });
   const [files, setFiles] = useState(["", "", "", ""]);
   const { data } = useQuery(FETCH_USEDITEM, {
     variables: {
@@ -41,7 +42,6 @@ export default function ProductWrite(props) {
     const results = await Promise.all(uploadFiles);
     const images = results.map((el) => el.data.uploadFile.url);
 
-    console.log(data);
     const result = await createUseditem({
       variables: {
         createUseditemInput: {
@@ -56,18 +56,35 @@ export default function ProductWrite(props) {
     console.log(result.data?.createUseditem._id);
     router.push(`/market/${result.data.createUseditem._id}`);
   }
-
-  // useEffect(() => {
-  //   if (props.isEdit && props.data?.fetchUseditem) {
-  //     setValue("name", props.data?.fetchUseditem?.name);
-  //     setValue("remarks", props.data?.fetchUseditem?.remarks);
-  //     // setValue("contents", props.data?.fetchUseditem?.contents);
-  //     setValue("price", props.data?.fetchUseditem?.price);
-  //     setValue("tags", props.data?.fetchUseditem?.tags);
-  //   }
-  // }, [props?.isEdit, props.data?.fetchUseditem]);
+  console.log(data);
+  useEffect(() => {
+    console.log("데이터", data);
+    if (props?.isEdit && data?.fetchUseditem) {
+      setValue("name", data?.fetchUseditem?.name);
+      setValue("remarks", data?.fetchUseditem?.remarks);
+      setValue("contents", data?.fetchUseditem?.contents);
+      setValue("price", data?.fetchUseditem?.price);
+      setValue("tags", data?.fetchUseditem?.tags);
+    }
+  }, [data]);
+  console.log(watch("contents2"));
 
   async function onClickEdit(Data) {
+    // console.log("수정");
+    // alert("수정하겠습니다");
+    // if (props.isEdit) {
+    //   setValue("name", props.data?.fetchUseditem?.name);
+    //   trigger("name");
+    //   setValue("remarks", props.data?.fetchUseditem?.remarks);
+    //   trigger("remarks");
+    //   setValue("contents", props.data?.fetchUseditem?.contents);
+    //   trigger("contents");
+    //   setValue("price", props.data?.fetchUseditem?.price);
+    //   trigger("price");
+    //   setValue("tags", props.data?.fetchUseditem?.tags);
+    //   trigger("tags");
+    // }
+
     const myUpdate = {};
     if (Data.name) myUpdate.name = Data.name;
     if (Data.remarks) myUpdate.remarks = Data.remarks;
@@ -108,6 +125,7 @@ export default function ProductWrite(props) {
       onChangeFiles={onChangeFiles}
       onClickEdit={onClickEdit}
       data={data}
+      contents={watch("contents")} // 리엑트 훅 폼에 있는 contents라는 데이터값을 찾아서 props에 담아 보내줌
     />
   );
 }

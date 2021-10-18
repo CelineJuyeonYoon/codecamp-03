@@ -48,11 +48,12 @@ export default function MarketMainUI(props) {
           <SearchBtn>검색</SearchBtn>
         </SearchBar>
       </ProductListHeader>
-      <ProductList>
+      <ProductList style={{ overflow: "auto", height: 1000 }}>
         <InfiniteScroll
           pageStart={0}
           loadMore={props.onLoadProductMore}
           hasMore={true}
+          useWindow={false}
         >
           {props.data?.fetchUseditems.map((el) => (
             <Row key={el._id}>

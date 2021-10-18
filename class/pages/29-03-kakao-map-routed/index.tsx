@@ -56,6 +56,7 @@ export default function KakaoMapPage() {
           src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1283e91757dafae0f985204d3c20d319"
         ></script>
       </Head> */}
+      {/* script 다운받는 속도보다 페이지 이동 속도가 더 빨라서 지도 안뜸 => useEffect의 맨 위로 옮기자 */}
       <div id="map" style={{ width: "500px", height: "400px" }}></div>
     </>
   );

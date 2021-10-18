@@ -15,6 +15,12 @@ export const FETCH_USEDITEM = gql`
       }
       tags
       images
+      useditemAddress {
+        lat
+        lng
+        address
+        addressDetail
+      }
     }
   }
 `;

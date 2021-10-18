@@ -29,10 +29,12 @@ const Error = styled.div`
 `;
 
 export default function Editor01(props) {
+  console.log(props);
   return (
     <Wrapper>
       <Label>{props.name}</Label>
-      <Quill onChange={props.onChange} defaultValue={props.defaultValue} />
+      <Quill onChange={props.onChange} value={props.contents || ""} />
+      {/* watch("contents")를 받아오기 전에는 undefined이므로 에러 호출하기 때문에 || "" 붙여줌 */}
       <Error>{props.error}</Error>
     </Wrapper>
   );

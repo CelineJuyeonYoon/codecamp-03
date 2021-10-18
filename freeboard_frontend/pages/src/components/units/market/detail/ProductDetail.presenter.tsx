@@ -22,7 +22,7 @@ import {
   ProductContents,
   ProductTags,
   LocationBox,
-  Location,
+  // Location,
   ProductImgs,
   CarouselImg,
   CarouselImgs,
@@ -34,8 +34,44 @@ import Dompurify from "dompurify";
 import Slider from "@ant-design/react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useEffect } from "react";
+
+declare const window: typeof globalThis & {
+  kakao: any;
+};
 
 export default function ProductDetailUI(props) {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=1283e91757dafae0f985204d3c20d319";
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      window.kakao.maps.load(function () {
+        const container = document.getElementById("map");
+        const options = {
+          center: new window.kakao.maps.LatLng(
+            props.data?.fetchUseditem.useditemAddress?.lat || 37.578054,
+            props.data?.fetchUseditem.useditemAddress?.lng || 126.9746933
+          ),
+          level: 3,
+        };
+
+        const map = new window.kakao.maps.Map(container, options);
+        console.log("지도", map);
+
+        // 지도를 클릭한 위치에 표출할 마커입니다
+        const marker = new window.kakao.maps.Marker({
+          // 지도 중심좌표에 마커를 생성합니다
+          position: map.getCenter(),
+        });
+        // 지도에 마커를 표시합니다
+        marker.setMap(map);
+      });
+    };
+  }, []);
+
   console.log("이거", props.data);
   const settings = {
     dots: true,
@@ -73,7 +109,7 @@ export default function ProductDetailUI(props) {
             <ProductRemarks>{props.data?.fetchUseditem.remarks}</ProductRemarks>
             <ProductName>{props.data?.fetchUseditem.name}</ProductName>
             <ProductPrice>
-              {props.data?.fetchUseditem.price.toLocaleString()}원
+              {props.data?.fetchUseditem.price?.toLocaleString()}원
             </ProductPrice>
           </ProductInfoLeft>
           <ProductInfoRight>
@@ -116,7 +152,7 @@ export default function ProductDetailUI(props) {
         )}
         <ProductTags>{props.data?.fetchUseditem.tags}</ProductTags>
         <LocationBox>
-          <Location></Location>
+          <div id="map" style={{ width: "792px", height: "360px" }}></div>
         </LocationBox>
         <Buttons>
           <Button02 name="목록으로" onClick={props.onClickToList}></Button02>
