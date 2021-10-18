@@ -70,9 +70,8 @@ export default function ProductDetailUI(props) {
         marker.setMap(map);
       });
     };
-  }, []);
+  }, [props.data?.fetchUseditem]); // !의존성배열에 값 안넣으면 불러오기 전에 그려져서 제대로 안나타남
 
-  console.log("이거", props.data);
   const settings = {
     dots: true,
     infinite: true,
