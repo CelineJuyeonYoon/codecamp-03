@@ -16,7 +16,7 @@ export default function LayoutHeader() {
   }
 
   function onClickLogout() {
-    // router.push("/login");
+    // router.push("/login"); => 권한분기해서 필요없어짐
     localStorage.removeItem("accessToken");
     setAccessToken("");
   }

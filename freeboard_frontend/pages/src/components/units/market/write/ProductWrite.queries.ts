@@ -8,6 +8,12 @@ export const CREATE_USEDITEM = gql`
       remarks
       contents
       price
+      useditemAddress {
+        address
+        addressDetail
+        lat
+        lng
+      }
     }
   }
 `;

@@ -55,7 +55,7 @@ declare const window: typeof globalThis & {
   kakao: any;
 };
 
-export default function Map01() {
+export default function Map01(props) {
   const [mylatlng, setMylatlng] = useState({});
   // const [lat, setLat] = useState();
   // const [lng, setLng] = useState();

@@ -111,7 +111,7 @@ export const CarouselImg = styled.div`
 export const CarouselImgs = styled.div`
   display: flex;
   width: 384px;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding-top: 64px;
 `;
 export const SliderImg = styled.img`

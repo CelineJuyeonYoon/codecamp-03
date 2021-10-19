@@ -50,6 +50,12 @@ export default function ProductWrite(props) {
           contents: data.contents,
           price: Number(data.price),
           images: images,
+          useditemAddress: {
+            address: data.address,
+            addressDetail: data.addressDetail,
+            lat: data.lat,
+            lng: data.lng,
+          },
         },
       },
     });
@@ -57,6 +63,7 @@ export default function ProductWrite(props) {
     router.push(`/market/${result.data.createUseditem._id}`);
   }
   console.log(data);
+  // 수정시 form에 기존의 데이터 넣어주기(수정시 아무것도 변경하지 않아도 데이터가 폼에 저장됨)
   useEffect(() => {
     console.log("데이터", data);
     if (props?.isEdit && data?.fetchUseditem) {
@@ -67,24 +74,8 @@ export default function ProductWrite(props) {
       setValue("tags", data?.fetchUseditem?.tags);
     }
   }, [data]);
-  console.log(watch("contents2"));
 
   async function onClickEdit(Data) {
-    // console.log("수정");
-    // alert("수정하겠습니다");
-    // if (props.isEdit) {
-    //   setValue("name", props.data?.fetchUseditem?.name);
-    //   trigger("name");
-    //   setValue("remarks", props.data?.fetchUseditem?.remarks);
-    //   trigger("remarks");
-    //   setValue("contents", props.data?.fetchUseditem?.contents);
-    //   trigger("contents");
-    //   setValue("price", props.data?.fetchUseditem?.price);
-    //   trigger("price");
-    //   setValue("tags", props.data?.fetchUseditem?.tags);
-    //   trigger("tags");
-    // }
-
     const myUpdate = {};
     if (Data.name) myUpdate.name = Data.name;
     if (Data.remarks) myUpdate.remarks = Data.remarks;
@@ -126,6 +117,7 @@ export default function ProductWrite(props) {
       onClickEdit={onClickEdit}
       data={data}
       contents={watch("contents")} // 리엑트 훅 폼에 있는 contents라는 데이터값을 찾아서 props에 담아 보내줌
+      setValue={setValue}
     />
   );
 }

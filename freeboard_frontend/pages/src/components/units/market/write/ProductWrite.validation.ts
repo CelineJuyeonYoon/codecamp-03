@@ -8,7 +8,8 @@ export const schema = yup.object().shape({
     .max(200, "최대 200자까지 입력할 수 있습니다.")
     .required("필수 입력사항입니다."),
   price: yup
-    .string()
+    .number()
+    .typeError("올바른 금액을 입력해주세요.")
     .min(0, "올바른 금액을 입력해주세요.")
     .required("필수 입력사항입니다."),
 });
