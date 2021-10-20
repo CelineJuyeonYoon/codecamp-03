@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }) {
     // const token = localStorage.getItem("accessToken") || "";
     // setAccessToken(token);
     if (localStorage.getItem("refreshToken")) getAccessToken(setAccessToken);
-  }, [accessToken]);
+  }, []);
 
   const errorLink = onError(
     // 객체 구조분해할당 graphQL 에러, 실행했던 쿼리, 재전송(요청)할 forward

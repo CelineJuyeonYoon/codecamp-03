@@ -39,9 +39,10 @@ export default function Myform(props) {
         password: data.password,
       },
     });
-    console.log(result.data?.loginUser.accessToken);
-    localStorage.setItem("accessToken", result.data?.loginUser.accessToken);
+    // console.log(result.data?.loginUser.accessToken);
+    // localStorage.setItem("accessToken", result.data?.loginUser.accessToken); // 이제 토큰은 변수에 저장
     setAccessToken(result.data?.loginUser.accessToken);
+    localStorage.setItem("refreshToken", "true"); // 로컬스토리지에는 refreshToken이 있다는 true값만 저장
     router.push("/market");
   }
 

@@ -10,8 +10,8 @@ const RESTORE_ACCESS_TOKEN = gql`
     }
   }
 `;
-// 새 accessToken 저장
-// 1. refreshToken으로 새로운 accessToken 재발급 받기
+
+// 1. refreshToken으로 새로운 accessToken 재발급받기 & 새 accessToken globalContext에 저장
 export async function getAccessToken(
   setAccessToken: Dispatch<SetStateAction<string>>
 ) {
