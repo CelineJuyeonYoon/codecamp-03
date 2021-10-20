@@ -50,6 +50,7 @@ export default function ProductWrite(props) {
           contents: data.contents,
           price: Number(data.price),
           images: images,
+          tags: data.tags.split(","),
           useditemAddress: {
             address: data.address,
             addressDetail: data.addressDetail,
@@ -59,10 +60,11 @@ export default function ProductWrite(props) {
         },
       },
     });
+    console.log(data.tags);
     console.log(result.data?.createUseditem._id);
     router.push(`/market/${result.data.createUseditem._id}`);
   }
-  console.log(data);
+  // console.log(data);
   // 수정시 form에 기존의 데이터 넣어주기(수정시 아무것도 변경하지 않아도 데이터가 폼에 저장됨)
   useEffect(() => {
     console.log("데이터", data);

@@ -37,6 +37,7 @@ function MyApp({ Component, pageProps }) {
     if (localStorage.getItem("refreshToken")) getAccessToken(setAccessToken);
   }, []);
   console.log(accessToken);
+
   const errorLink = onError(
     // 객체 구조분해할당 graphQL 에러, 실행했던 쿼리, 재전송(요청)할 forward
     ({ graphQLErrors, operation, forward }) => {

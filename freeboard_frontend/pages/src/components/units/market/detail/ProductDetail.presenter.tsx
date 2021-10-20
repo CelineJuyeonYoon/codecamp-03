@@ -25,6 +25,7 @@ import {
   // Location,
   ProductImgs,
   CarouselImg,
+  Noimg,
   CarouselImgs,
   SliderImg,
   MiniImg,
@@ -120,16 +121,20 @@ export default function ProductDetailUI(props) {
         </ProductInfo>
         <ProductImgs>
           <CarouselImg>
-            <Slider {...settings}>
-              {props.data?.fetchUseditem.images
-                ?.filter((el) => el)
-                .map((el) => (
-                  <SliderImg
-                    key={el}
-                    src={`https://storage.googleapis.com/${el}`}
-                  ></SliderImg>
-                ))}
-            </Slider>
+            {props.data?.fetchUseditem.images[0] ? (
+              <Slider {...settings}>
+                {props.data?.fetchUseditem.images
+                  ?.filter((el) => el)
+                  .map((el) => (
+                    <SliderImg
+                      key={el}
+                      src={`https://storage.googleapis.com/${el}`}
+                    ></SliderImg>
+                  ))}
+              </Slider>
+            ) : (
+              <Noimg>이미지 준비중</Noimg>
+            )}
           </CarouselImg>
           <CarouselImgs>
             {props.data?.fetchUseditem.images
@@ -149,7 +154,9 @@ export default function ProductDetailUI(props) {
             }}
           />
         )}
-        <ProductTags>{props.data?.fetchUseditem.tags}</ProductTags>
+        <ProductTags>
+          {props.data?.fetchUseditem.tags.map((el) => `#${el} `)}
+        </ProductTags>
         <LocationBox>
           <div id="map" style={{ width: "792px", height: "360px" }}></div>
         </LocationBox>

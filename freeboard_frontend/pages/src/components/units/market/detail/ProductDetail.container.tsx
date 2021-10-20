@@ -16,7 +16,7 @@ export default function ProductDetail() {
   function onClickToEdit() {
     router.push(`/market/${router.query.productid}/edit`);
   }
-
+  console.log("?", data?.fetchUseditem.tags);
   return (
     <ProductDetailUI
       data={data}

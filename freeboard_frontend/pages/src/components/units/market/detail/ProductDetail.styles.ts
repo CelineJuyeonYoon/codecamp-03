@@ -82,9 +82,11 @@ export const Likes = styled.div`
 `;
 export const ProductContents = styled.div`
   padding-top: 80px;
+  width: 792px;
 `;
 export const ProductTags = styled.div`
   padding-top: 40px;
+  color: #3f729b;
 `;
 export const LocationBox = styled.div`
   border-top: 1px solid #bdbdbd;
@@ -104,9 +106,9 @@ export const ProductImgs = styled.div`
   align-items: center;
 `;
 export const CarouselImg = styled.div`
-  background-color: #bdbdbd;
-  width: 296px;
-  height: 296px;
+  /* background-color: #bdbdbd; */
+  /* width: 296px;
+  height: 296px; */
 `;
 export const CarouselImgs = styled.div`
   display: flex;
@@ -127,4 +129,12 @@ export const Buttons = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 84px;
+`;
+export const Noimg = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+  width: 296px;
+  height: 296px;
 `;

@@ -29,7 +29,7 @@ const Error = styled.div`
 `;
 
 export default function Editor01(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <Wrapper>
       <Label>{props.name}</Label>
