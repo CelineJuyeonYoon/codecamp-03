@@ -17,7 +17,7 @@ export default function LayoutHeader() {
 
   function onClickLogout() {
     // router.push("/login"); => 권한분기해서 필요없어짐
-    localStorage.removeItem("accessToken");
+    // localStorage.removeItem("accessToken"); // refreshToken 넣으면서 이제 변수에 저장
     setAccessToken("");
   }
 

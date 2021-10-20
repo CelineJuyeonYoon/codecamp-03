@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
 
+interface IProps {
+  sale: string;
+  sold: string;
+}
+
 export const Wrapper = styled.div`
   width: 1200px;
   display: flex;
@@ -27,15 +32,15 @@ export const ProductStatus = styled.div`
 `;
 export const OnSale = styled.div`
   font-size: 18px;
-  font-weight: ${(props) => (props.onSale ? "500" : "")};
+  font-weight: ${(props) => (props.sale ? "500" : "")};
   margin-right: 20px;
-  color: ${(props) => (props.onSale ? "black" : "#4F4F4F")};
+  color: ${(props) => (props.sale ? "black" : "#4F4F4F")};
   cursor: pointer;
 `;
 export const SoldOut = styled.div`
   font-size: 18px;
-  font-weight: ${(props) => (props.soldOut ? "500" : "")};
-  color: ${(props) => (props.soldOut ? "black" : "#4F4F4F")};
+  font-weight: ${(props) => (props.sold ? "500" : "")};
+  color: ${(props) => (props.sold ? "black" : "#4F4F4F")};
   cursor: pointer;
 `;
 export const SearchBar = styled.div`
