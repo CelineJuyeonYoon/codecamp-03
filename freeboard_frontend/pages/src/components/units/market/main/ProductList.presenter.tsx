@@ -70,9 +70,11 @@ export default function MarketMainUI(props) {
                     {el.name}
                   </ProductName>
                   <ProductRemarks>{el.remarks}</ProductRemarks>
+
                   <ProductTags>
-                    {el.tags}#삼성전자 #갤럭시탭 #갓성비
+                    {el.tags ? el.tags.map((el) => `#${el} `) : <div />}
                   </ProductTags>
+
                   <SellerAndCount>
                     <Seller>
                       <img src="/images/seller.png" />

@@ -30,17 +30,13 @@ export default function ProductWrite(props) {
   });
 
   async function onClickSubmit(data) {
-    const uploadFiles = files
-      .filter((el) => el)
-      .map((el) =>
-        uploadFile({
-          variables: {
-            file: el,
-          },
-        })
-      );
+    const uploadFiles = files.map((el) =>
+      el ? uploadFile({ variables: { file: el } }) : null
+    );
+
     const results = await Promise.all(uploadFiles);
-    const images = results.map((el) => el.data.uploadFile.url);
+    const images = results.map((el) => el?.data.uploadFile.url || "");
+    // ! 빈값도 그대로 넣어줘야함. 수정할 때 map 돌려야해서
 
     const result = await createUseditem({
       variables: {
@@ -84,7 +80,23 @@ export default function ProductWrite(props) {
     if (Data.contents) myUpdate.contents = Data.contents;
     if (Data.price) myUpdate.price = Number(Data.price);
     if (Data.tags) myUpdate.tags = Data.tags;
-    if (Data.images) myUpdate.images = Data.images;
+
+    const uploadFiles = files // [File1, null, File2]
+      .map((el) => (el ? uploadFile({ variables: { file: el } }) : null)); // [File1, null, File2]
+    const results = await Promise.all(uploadFiles); // 위 과정이 다 끝날때까지 기다려줌
+    const images = results.map((el) => el?.data.uploadFile.url || ""); // url 가져오기 [url1, "", url2]
+    myUpdate.images = images;
+
+    if (data?.fetchUseditem.images?.length) {
+      // 기존에 이미지가 있었으면,
+      console.log("기존이미지 있음", data?.fetchUseditem.images);
+      const prevImages = [...data?.fetchUseditem.images]; // 기존 이미지 배열 (배열길이: 4)
+      myUpdate.images = prevImages.map((el, index) => images[index] || el); // prettier-ignore
+      // 새로운 이미지가 들어왔으면 대체, 없으면 기존꺼
+    } else {
+      // 기존에 이미지가 없었으면,
+      myUpdate.images = images; // 현재 이미지들로 다 덮어씌우기
+    }
 
     await updateUseditem({
       variables: {

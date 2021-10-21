@@ -197,12 +197,13 @@ export default function BoardWrite(props) {
     const uploadFiles = files // [File1, null, File2]
       .map((el) => (el ? uploadFile({ variables: { file: el } }) : null)); // [File1, null, File2]
     const results = await Promise.all(uploadFiles); // 위 과정이 다 끝날때까지 기다려줌
-    const myImages = results.map((el) => el?.data.uploadFile.url || ""); // url 가져오기
+    const myImages = results.map((el) => el?.data.uploadFile.url || ""); // url 가져오기 [url1, "", url2]
     myVariables.updateBoardInput.images = myImages;
 
     if (props.data?.fetchBoard.images?.length) {
       // 기존에 이미지가 있었으면,
       const prevImages = [...props.data?.fetchBoard.images]; // 기존 이미지 배열
+      console.log("기존이미지!", prevImages);
       myVariables.updateBoardInput.images = prevImages.map((el, index) => myImages[index] || el); // prettier-ignore
       // 새로운 이미지가 들어왔으면 대체, 없으면 기존꺼
     } else {

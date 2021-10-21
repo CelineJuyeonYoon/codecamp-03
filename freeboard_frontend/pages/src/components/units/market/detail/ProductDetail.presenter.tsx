@@ -82,6 +82,7 @@ export default function ProductDetailUI(props) {
     autoplay: false,
     autoplaySpeed: 2000,
   };
+
   return (
     <Wrapper>
       <Box>
@@ -121,20 +122,16 @@ export default function ProductDetailUI(props) {
         </ProductInfo>
         <ProductImgs>
           <CarouselImg>
-            {props.data?.fetchUseditem.images[0] ? (
-              <Slider {...settings}>
-                {props.data?.fetchUseditem.images
-                  ?.filter((el) => el)
-                  .map((el) => (
-                    <SliderImg
-                      key={el}
-                      src={`https://storage.googleapis.com/${el}`}
-                    ></SliderImg>
-                  ))}
-              </Slider>
-            ) : (
-              <Noimg>이미지 준비중</Noimg>
-            )}
+            <Slider {...settings}>
+              {props.data?.fetchUseditem.images
+                ?.filter((el) => el)
+                .map((el) => (
+                  <SliderImg
+                    key={el}
+                    src={`https://storage.googleapis.com/${el}`}
+                  ></SliderImg>
+                ))}
+            </Slider>
           </CarouselImg>
           <CarouselImgs>
             {props.data?.fetchUseditem.images
@@ -147,12 +144,14 @@ export default function ProductDetailUI(props) {
               ))}
           </CarouselImgs>
         </ProductImgs>
-        {process.browser && (
+        {process.browser ? (
           <ProductContents
             dangerouslySetInnerHTML={{
               __html: Dompurify.sanitize(props.data?.fetchUseditem.contents),
             }}
           />
+        ) : (
+          <div />
         )}
         <ProductTags>
           {props.data?.fetchUseditem.tags.map((el) => `#${el} `)}

@@ -106,9 +106,9 @@ export const ProductImgs = styled.div`
   align-items: center;
 `;
 export const CarouselImg = styled.div`
-  /* background-color: #bdbdbd; */
-  /* width: 296px;
-  height: 296px; */
+  background-color: #bdbdbd;
+  width: 296px;
+  height: 296px;
 `;
 export const CarouselImgs = styled.div`
   display: flex;
