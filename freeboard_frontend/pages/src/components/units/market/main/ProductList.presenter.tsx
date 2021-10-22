@@ -70,11 +70,9 @@ export default function MarketMainUI(props) {
                     {el.name}
                   </ProductName>
                   <ProductRemarks>{el.remarks}</ProductRemarks>
-
                   <ProductTags>
-                    {el.tags ? el.tags.map((el) => `#${el} `) : <div />}
+                    {el.tags.length ? el.tags.map((el) => `#${el} `) : "#"}
                   </ProductTags>
-
                   <SellerAndCount>
                     <Seller>
                       <img src="/images/seller.png" />

@@ -12,6 +12,7 @@ export const FETCH_USEDITEM = gql`
       pickedCount
       seller {
         name
+        _id
       }
       tags
       images
@@ -22,5 +23,11 @@ export const FETCH_USEDITEM = gql`
         addressDetail
       }
     }
+  }
+`;
+
+export const TOGGLE_USEDITEM_PICK = gql`
+  mutation toggleUseditemPick($useditemId: ID!) {
+    toggleUseditemPick(useditemId: $useditemId)
   }
 `;

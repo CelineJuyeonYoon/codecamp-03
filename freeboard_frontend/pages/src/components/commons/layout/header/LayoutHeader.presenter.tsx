@@ -12,6 +12,7 @@ export default function LayoutHeaderUI(props) {
   return (
     <Wrapper>
       <Logo src="/images/logo.png"></Logo>
+      <div>{props.data?.fetchUserLoggedIn.name}</div>
       <LoginWrapper>
         {props.accessToken && <Profile src="/images/profile.png" />}
         {props.accessToken ? (

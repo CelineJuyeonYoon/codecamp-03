@@ -18,11 +18,12 @@ import { getAccessToken } from "./src/commons/libraries/getAccessToken";
 // function MyApp({ Component, pageProps }) {
 //   return <Component {...pageProps} />
 // }
+
 export const GlobalContext = createContext(null);
 
 function MyApp({ Component, pageProps }) {
   const [accessToken, setAccessToken] = useState("");
-  const [userInfo, setUserInfo] = useState("");
+  const [userInfo, setUserInfo] = useState({});
 
   const value = {
     accessToken,

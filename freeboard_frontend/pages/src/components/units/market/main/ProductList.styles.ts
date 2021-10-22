@@ -66,6 +66,7 @@ export const SearchBtn = styled.button`
   height: 52px;
 `;
 export const Row = styled.div`
+  height: 200px;
   display: flex;
   align-items: center;
   width: 1200px;

@@ -80,6 +80,9 @@ export const Likes = styled.div`
   align-items: center;
   padding-right: 20px;
 `;
+export const Picked = styled.img`
+  cursor: pointer;
+`;
 export const ProductContents = styled.div`
   padding-top: 80px;
   width: 792px;

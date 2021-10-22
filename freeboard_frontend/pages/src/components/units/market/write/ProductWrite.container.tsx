@@ -46,7 +46,7 @@ export default function ProductWrite(props) {
           contents: data.contents,
           price: Number(data.price),
           images: images,
-          tags: data.tags.split(","),
+          tags: data.tags.split(" "),
           useditemAddress: {
             address: data.address,
             addressDetail: data.addressDetail,

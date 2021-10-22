@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 
 export default function Myform(props) {
   const router = useRouter();
-  const { setAccessToken } = useContext(GlobalContext);
+  const { setAccessToken, setUserInfo } = useContext(GlobalContext);
   const [createUser] = useMutation(CREATE_USER);
   const [loginUser] = useMutation(LOGIN_USER);
   const { handleSubmit, register, formState } = useForm({
@@ -44,6 +44,7 @@ export default function Myform(props) {
     setAccessToken(result.data?.loginUser.accessToken);
     localStorage.setItem("refreshToken", "true"); // 로컬스토리지에는 refreshToken이 있다는 true값만 저장
     router.push("/market");
+    // setUserInfo(data.email);
   }
 
   return (
