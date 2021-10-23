@@ -34,10 +34,8 @@ export default function ProductDetail() {
       ],
     });
     // refetch({ useditemId: router.query.productid }); // 얘도가능
-    console.log("픽!");
   }
-  console.log("w", data);
-  console.log("d", userInfo);
+
   return (
     <ProductDetailUI
       data={data}
