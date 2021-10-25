@@ -1,3 +1,4 @@
+import { User } from "../../../commons/layout/header/LayoutHeader.styles";
 import {
   Wrapper,
   CommentWrapper,
@@ -8,6 +9,8 @@ import {
   CommentContent,
   CommentDate,
   CommentEditBtn,
+  CommentButtons,
+  CommentDeleteBtn,
 } from "./ProductQuestions.styles";
 
 export default function ProductQuestionsUI(props) {
@@ -23,7 +26,14 @@ export default function ProductQuestionsUI(props) {
             <CommentDate>{el?.createdAt.slice(0, 10)}</CommentDate>
           </CommentInfo>
         </Comment>
-        <CommentEditBtn src="/images/question.png"></CommentEditBtn>
+        {el?.user._id === props.userInfo?._id ? (
+          <CommentButtons>
+            <CommentEditBtn src="/images/edit.png"></CommentEditBtn>
+            <CommentDeleteBtn src="/images/delete.png"></CommentDeleteBtn>
+          </CommentButtons>
+        ) : (
+          <CommentEditBtn src="/images/question.png"></CommentEditBtn>
+        )}
       </CommentWrapper>
     </Wrapper>
   ));

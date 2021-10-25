@@ -7,6 +7,7 @@ export const FETCH_USEDITEM_QUESTIONS = gql`
       contents
       createdAt
       user {
+        _id
         name
       }
     }

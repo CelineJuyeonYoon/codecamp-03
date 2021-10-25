@@ -9,6 +9,14 @@ export const Wrapper = styled.div`
   border-bottom: 1px solid lightgray;
 `;
 export const Logo = styled.img``;
+export const User = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+export const UserName = styled.div`
+  /* margin-right: 17px; */
+`;
 export const LoginWrapper = styled.div`
   display: flex;
   align-items: center;
