@@ -1,20 +1,11 @@
-import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../../_app";
 import LayoutHeaderUI from "./LayoutHeader.presenter";
-import { FETCH_USER_LOGGEDIN } from "./LayoutHeader.queries";
 
 export default function LayoutHeader() {
   const router = useRouter();
-  const { accessToken, setAccessToken, setUserInfo } =
-    useContext(GlobalContext);
-  const { data } = useQuery(FETCH_USER_LOGGEDIN);
-
-  useEffect(() => {
-    setUserInfo(data.fetchUserLoggedIn);
-  }, []);
+  const { accessToken, setAccessToken } = useContext(GlobalContext);
 
   function onClickToLogin() {
     router.push("/login");
@@ -37,7 +28,6 @@ export default function LayoutHeader() {
       onClickToSignup={onClickToSignup}
       accessToken={accessToken}
       onClickLogout={onClickLogout}
-      data={data}
     />
   );
 }

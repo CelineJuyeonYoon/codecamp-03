@@ -167,7 +167,7 @@ export default function ProductDetailUI(props) {
           </LocationBox>
           <Buttons>
             <Button02 name="목록으로" onClick={props.onClickToList}></Button02>
-            {props.userInfo._id === props.data?.fetchUseditem.seller?._id ? (
+            {props.userInfo?._id === props.data?.fetchUseditem.seller?._id ? (
               <Button02
                 name="수정하기"
                 onClick={props.onClickToEdit}

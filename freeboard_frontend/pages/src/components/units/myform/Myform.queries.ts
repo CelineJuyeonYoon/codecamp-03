@@ -18,3 +18,18 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const FETCH_USER_LOGGEDIN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      _id
+      email
+      name
+      picture
+      userPoint {
+        _id
+        amount
+      }
+    }
+  }
+`;
