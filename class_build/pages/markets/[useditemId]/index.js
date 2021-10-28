@@ -12,7 +12,7 @@ export default function MarketPage(props) {
           content={`https://storage.googleapis.com/${props.fetchUseditem.images[0]}`}
         />
       </Head>
-      <div>마켓페이지 입니다!</div>;
+      <div>마켓페이지 입니다!</div>
     </>
   );
 }
