@@ -33,10 +33,15 @@ export default function LayoutHeader() {
     localStorage.removeItem("refreshToken");
   }
 
+  function onClickHome() {
+    router.push("/market");
+  }
+
   return (
     <LayoutHeaderUI
       onClickToLogin={onClickToLogin}
       onClickToSignup={onClickToSignup}
+      onClickHome={onClickHome}
       accessToken={accessToken}
       onClickLogout={onClickLogout}
       data={data}

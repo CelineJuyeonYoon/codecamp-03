@@ -11,7 +11,7 @@ import {
 export default function LayoutHeaderUI(props) {
   return (
     <Wrapper>
-      <Logo src="/images/logo.png" />
+      <Logo src="/images/logo.png" onClick={props.onClickHome} />
       <span>{props.data?.fetchUserLoggedIn.name}님 안녕하세요</span>
       <LoginWrapper>
         {props.accessToken && <Profile src="/images/profile.png" />}
