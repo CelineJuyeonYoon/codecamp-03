@@ -2,18 +2,16 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import MyformUI from "./Myform.presenter";
 import { useApolloClient, useMutation } from "@apollo/client";
-import { CREATE_USER, LOGIN_USER } from "./Myform.queries";
+import { CREATE_USER } from "./Myform.queries";
 import { schema } from "./Myform.validataion";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../_app";
 import { useRouter } from "next/router";
-import { FETCH_USER_LOGGEDIN } from "./Myform.queries";
 
 export default function Myform(props) {
   const router = useRouter();
   const { setAccessToken, setUserInfo } = useContext(GlobalContext);
   const [createUser] = useMutation(CREATE_USER);
-  const [loginUser] = useMutation(LOGIN_USER);
   const { handleSubmit, register, formState } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
@@ -34,41 +32,12 @@ export default function Myform(props) {
     router.push("/login");
   }
 
-  async function onClickLogin(data) {
-    const result = await loginUser({
-      variables: {
-        email: data.email,
-        password: data.password,
-      },
-    });
-    const accessToken = result.data?.loginUser.accessToken;
-    // useApolloClient 로 query 하기
-    const resultUserInfo = await client.query({
-      query: FETCH_USER_LOGGEDIN,
-      context: {
-        headers: {
-          authorization: `Bearer ${accessToken}`,
-        },
-      },
-    });
-    const userInfo = resultUserInfo.data.fetchUserLoggedIn;
-    setUserInfo(userInfo);
-    // console.log(result.data?.loginUser.accessToken);
-    // localStorage.setItem("accessToken", result.data?.loginUser.accessToken); // 이제 토큰은 변수에 저장
-    setAccessToken(accessToken);
-    localStorage.setItem("refreshToken", "true"); // 로컬스토리지에는 refreshToken이 있다는 true값만 저장
-    router.push("/market");
-    // setUserInfo(data.email);
-  }
-
   return (
     <MyformUI
       onClickSignup={onClickSignup}
-      onClickLogin={onClickLogin}
       handleSubmit={handleSubmit}
       register={register}
       formState={formState}
-      isLogin={props.isLogin}
     />
   );
 }
