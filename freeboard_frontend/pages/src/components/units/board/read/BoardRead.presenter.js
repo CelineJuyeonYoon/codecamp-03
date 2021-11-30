@@ -35,7 +35,7 @@ export default function BoardReadUI(props) {
       <Box>
         <Header>
           <WriterWrapper>
-            <WriterProfile src="../../images/profile.png" />
+            <WriterProfile src="/images/profile.png" />
             <WriteInfo>
               <WriterName>{props.data?.fetchBoard.writer}</WriterName>
               <WriteDate>
@@ -44,11 +44,11 @@ export default function BoardReadUI(props) {
             </WriteInfo>
           </WriterWrapper>
           <Icons>
-            <LinkImg src="../../images/link.png" />
+            <LinkImg src="/images/link.png" />
             <Tooltip
               title={`${props.data?.fetchBoard.boardAddress?.address} ${props.data?.fetchBoard.boardAddress?.addressDetail}`}
             >
-              <LocaImg src="../../images/loca.png" />
+              <LocaImg src="/images/loca.png" />
             </Tooltip>
           </Icons>
         </Header>
@@ -69,12 +69,12 @@ export default function BoardReadUI(props) {
         </Video>
         <LikeDislike>
           <Like>
-            <LikeBtn src="../../images/like.png" onClick={props.onClickLike} />
+            <LikeBtn src="/images/like.png" onClick={props.onClickLike} />
             <LikeCount>{props.data?.fetchBoard.likeCount}</LikeCount>
           </Like>
           <Dislike>
             <DislikeBtn
-              src="../../images/dislike.png"
+              src="/images/dislike.png"
               onClick={props.onClickDislike}
             />
             <DislikeCount>{props.data?.fetchBoard.dislikeCount}</DislikeCount>

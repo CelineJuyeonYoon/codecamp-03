@@ -18,7 +18,7 @@ export default function CommentWriteUI(props) {
     <Wrapper>
       {!props.isEdit && (
         <CommentHead>
-          <CommentImg src="../../images/comment.png" />
+          <CommentImg src="/images/comment.png" />
           <Comment>댓글</Comment>
         </CommentHead>
       )}

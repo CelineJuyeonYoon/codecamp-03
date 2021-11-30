@@ -7,9 +7,12 @@ import { useContext } from "react";
 
 export default function ProductQuestions() {
   const router = useRouter();
-  const { data } = useQuery(FETCH_USEDITEM_QUESTIONS, {
+  const { data, refetch } = useQuery(FETCH_USEDITEM_QUESTIONS, {
     variables: { useditemId: router.query.productid },
   });
   const { userInfo } = useContext(GlobalContext);
-  return <ProductQuestionsUI data={data} userInfo={userInfo} />;
+
+  return (
+    <ProductQuestionsUI data={data} userInfo={userInfo} refetch={refetch} />
+  );
 }

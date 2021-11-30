@@ -37,7 +37,6 @@ function MyApp({ Component, pageProps }) {
     // setAccessToken(token);
     if (localStorage.getItem("refreshToken")) getAccessToken(setAccessToken);
   }, []);
-  console.log("엑세스토큰 재발급완료", accessToken);
 
   const errorLink = onError(
     // 객체 구조분해할당 graphQL 에러, 실행했던 쿼리, 재전송(요청)할 forward
@@ -62,7 +61,7 @@ function MyApp({ Component, pageProps }) {
   );
 
   const uploadLink = createUploadLink({
-    uri: "https://backend03.codebootcamp.co.kr/graphql",
+    uri: "https://backend03-team.codebootcamp.co.kr/team04",
     headers: { authorization: `Bearer ${accessToken}` },
     credentials: "include", // 중요한 정보들을 포함시켜줘. 이거 해야 쿠키에 저장됨
   });

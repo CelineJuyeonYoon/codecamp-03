@@ -2,6 +2,7 @@ import { gql, useMutation } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { FETCH_USEDITEM_QUESTIONS } from "../../../units/market/questions/ProductQuestions.queries";
 
 export const Wrapper = styled.div`
   padding-bottom: 20px;
@@ -86,8 +87,13 @@ export default function Comment01(props) {
           contents,
         },
       },
+      refetchQueries: [
+        {
+          query: FETCH_USEDITEM_QUESTIONS,
+          variables: { useditemId: router.query.productid },
+        },
+      ],
     });
-    console.log(result.data.createUseditemQuestion.contents);
   };
 
   return (

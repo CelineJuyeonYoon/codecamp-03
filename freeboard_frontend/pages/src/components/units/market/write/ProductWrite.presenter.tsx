@@ -6,7 +6,7 @@ import UploadImage01 from "../../../commons/uploadImages/01/uploadImage01";
 import Radio01 from "../../../commons/radios/01/radio01";
 import Editor01 from "../../../commons/editors/01/editor01";
 
-export default function ProductWriteUI(props) {
+export default function ProductWriteUI(props: any) {
   return (
     <form
       onSubmit={props.handleSubmit(
