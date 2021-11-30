@@ -2,13 +2,12 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 1200px;
-  /* padding-top: 20px; */
+  border-bottom: 1px solid #bdbdbd;
+  padding: 20px 0;
 `;
 export const QuestionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #bdbdbd;
-  padding: 20px 5px 20px 5px;
 `;
 export const Question = styled.div`
   display: flex;
@@ -16,7 +15,9 @@ export const Question = styled.div`
 export const ProfileImg = styled.img`
   width: 40px;
   height: 40px;
+  object-fit: cover;
   margin-top: 6px;
+  border-radius: 50%;
 `;
 export const QuestionInfo = styled.div`
   margin-left: 16px;
@@ -58,47 +59,37 @@ export const QuestionDeleteBtn = styled.img`
   cursor: pointer;
   margin-left: 16px;
 `;
-export const QuestionEditWrapper = styled.div`
-  display: flex;
-`;
-export const UpdateContentWrapper = styled.div``;
-export const UpdateContentInput = styled.input`
-  width: 1140px;
-  height: 64px;
-`;
-export const UpdateContentBtn = styled.button`
-  background-color: #ffd600;
-`;
-export const UpdateCancelBtn = styled.button`
-  background-color: black;
-  color: #fff;
-`;
 export const QuestionAnswerBtn = styled.img`
   cursor: pointer;
   width: 20px;
   height: 20px;
 `;
-export const QuestionAnswerInput = styled.input`
-  width: 1095px;
-  height: 64px;
-`;
-export const AnswerSubmitBtn = styled.button`
-  width: 91px;
-  height: 52px;
-  background-color: #ffd600;
-`;
-export const SubmitAnswer = styled.div`
-  /* display: flex; */
-`;
 export const AnswerWrapper = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 60px;
+  padding-top: 20px;
+`;
+export const Answer = styled.div`
+  display: flex;
+`;
+export const AnswerInfo = styled.div`
+  padding-left: 15px;
 `;
 export const AnswerContents = styled.div``;
-export const AnswerWriter = styled.div``;
+export const AnswerWriter = styled.div`
+  font-weight: bold;
+`;
 export const AnswerWriterProfile = styled.img`
   width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-left: 15px;
+  border-radius: 50%;
 `;
 export const Arrow = styled.img`
   width: 15px;
   height: 17px;
 `;
+export const AnswerButtons = styled.div``;

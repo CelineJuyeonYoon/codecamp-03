@@ -9,6 +9,7 @@ export const FETCH_USEDITEM_QUESTIONS = gql`
       user {
         _id
         name
+        picture
       }
     }
   }
@@ -20,44 +21,32 @@ export const DELETE_USEDITEM_QUESTION = gql`
   }
 `;
 
-export const UPDATE_USEDITEM_QUESTION = gql`
-  mutation updateUseditemQuestion(
-    $updateUseditemQuestionInput: UpdateUseditemQuestionInput!
-    $useditemQuestionId: ID!
-  ) {
-    updateUseditemQuestion(
-      updateUseditemQuestionInput: $updateUseditemQuestionInput
-      useditemQuestionId: $useditemQuestionId
-    ) {
-      _id
-    }
-  }
-`;
-
-export const CREATE_USEDITEM_QUESTION_ANSWER = gql`
-  mutation createUseditemQuestionAnswer(
-    $createUseditemQuestionAnswerInput: CreateUseditemQuestionAnswerInput!
-    $useditemQuestionId: ID!
-  ) {
-    createUseditemQuestionAnswer(
-      createUseditemQuestionAnswerInput: $createUseditemQuestionAnswerInput
-      useditemQuestionId: $useditemQuestionId
-    ) {
-      _id
-    }
-  }
-`;
-
 export const FETCH_USEDITEM_QUESTION_ANSWERS = gql`
   query fetchUseditemQuestionAnswers($useditemQuestionId: ID!) {
     fetchUseditemQuestionAnswers(useditemQuestionId: $useditemQuestionId) {
       _id
       contents
+      useditemQuestion {
+        _id
+        # user {
+        #   _id
+        # }
+        ###### 위 user 를 추가하면 fetch자체가 안됨..
+      }
       createdAt
       user {
+        _id
         name
         picture
       }
     }
+  }
+`;
+
+export const DELETE_USEDITEM_QUESTION_ANSWER = gql`
+  mutation deleteUseditemQuestionAnswer($useditemQuestionAnswerId: ID!) {
+    deleteUseditemQuestionAnswer(
+      useditemQuestionAnswerId: $useditemQuestionAnswerId
+    )
   }
 `;

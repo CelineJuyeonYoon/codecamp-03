@@ -10,40 +10,36 @@ import {
   QuestionEditBtn,
   QuestionButtons,
   QuestionDeleteBtn,
-  QuestionEditWrapper,
-  UpdateContentWrapper,
-  UpdateContentInput,
-  UpdateContentBtn,
-  UpdateCancelBtn,
-  SubmitAnswer,
   QuestionAnswerBtn,
-  QuestionAnswerInput,
-  AnswerSubmitBtn,
   AnswerWrapper,
+  Answer,
   AnswerContents,
   AnswerWriter,
   AnswerWriterProfile,
   Arrow,
+  AnswerButtons,
+  AnswerInfo,
 } from "./ProductQuestions.styles";
 import {
   DELETE_USEDITEM_QUESTION,
   FETCH_USEDITEM_QUESTIONS,
-  UPDATE_USEDITEM_QUESTION,
-  CREATE_USEDITEM_QUESTION_ANSWER,
   FETCH_USEDITEM_QUESTION_ANSWERS,
+  DELETE_USEDITEM_QUESTION_ANSWER,
 } from "./ProductQuestions.queries";
 import { FETCH_USEDITEM } from "../detail/ProductDetail.queries";
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Answer01 from "../../../commons/answers/01/answer01";
+import Comment02 from "../../../commons/comments/02/comment02";
 
 export default function ProductQuestionsItem(props: any) {
   const router = useRouter();
   const [deleteUseditemQuestion] = useMutation(DELETE_USEDITEM_QUESTION);
-  const [updateUseditemQuestion] = useMutation(UPDATE_USEDITEM_QUESTION);
-  const [createUseditemQuestionAnswer] = useMutation(
-    CREATE_USEDITEM_QUESTION_ANSWER
+  const [deleteUseditemQuestionAnswer] = useMutation(
+    DELETE_USEDITEM_QUESTION_ANSWER
   );
+
   const { data } = useQuery(FETCH_USEDITEM, {
     variables: {
       useditemId: router.query.productid,
@@ -56,8 +52,6 @@ export default function ProductQuestionsItem(props: any) {
   });
   const [isEdit, setIsEdit] = useState(false);
   const [isAnswer, setIsAnswer] = useState(false);
-  const [contents, setContents] = useState("");
-  const [answer, setAnswer] = useState("");
 
   async function onClickDeleteQuestion() {
     try {
@@ -81,51 +75,12 @@ export default function ProductQuestionsItem(props: any) {
     setIsEdit(true);
   }
 
-  function onClickCancel() {
-    setIsEdit(false);
-  }
-
-  function onChangeContents(event: any) {
-    setContents(event.target.value);
-  }
-
-  async function onClickEditQuestion() {
-    if (contents) {
-      await updateUseditemQuestion({
-        variables: {
-          useditemQuestionId: props.el?._id,
-          updateUseditemQuestionInput: {
-            contents,
-          },
-        },
-        refetchQueries: [
-          {
-            query: FETCH_USEDITEM_QUESTIONS,
-            variables: { useditemId: router.query.productid },
-          },
-        ],
-      });
-    }
-    setIsEdit(false);
-  }
-
   function onClickAnswer() {
     setIsAnswer((prev) => !prev);
   }
 
-  function onChangeAnswer(event: any) {
-    setAnswer(event.target.value);
-  }
-
-  function onClickSubmitAnswer() {
-    createUseditemQuestionAnswer({
-      variables: {
-        createUseditemQuestionAnswerInput: {
-          contents: answer,
-        },
-        useditemQuestionId: props.el?._id,
-      },
-    });
+  async function onClickDeleteAnswer() {
+    await deleteUseditemQuestionAnswer({ variables: {} });
   }
 
   return (
@@ -133,7 +88,7 @@ export default function ProductQuestionsItem(props: any) {
       {!isEdit ? (
         <QuestionWrapper>
           <Question>
-            <ProfileImg src="/images/profile.png" />
+            <ProfileImg src={props.el?.user.picture} />
             <QuestionInfo>
               <QuestionWriter>{props.el?.user.name}</QuestionWriter>
               <QuestionContent>{props.el?.contents}</QuestionContent>
@@ -160,45 +115,52 @@ export default function ProductQuestionsItem(props: any) {
           )}
         </QuestionWrapper>
       ) : (
-        <QuestionEditWrapper>
-          <ProfileImg src="/images/profile.png" />
-          <UpdateContentWrapper>
-            <QuestionWriter>{props.el?.user.name}</QuestionWriter>
-            <UpdateContentInput
-              onChange={onChangeContents}
-              defaultValue={props.el?.contents}
-            ></UpdateContentInput>
-            <UpdateContentBtn onClick={onClickEditQuestion}>
-              수정하기
-            </UpdateContentBtn>
-            <UpdateCancelBtn onClick={onClickCancel}>취소</UpdateCancelBtn>
-          </UpdateContentWrapper>
-        </QuestionEditWrapper>
+        <Comment02 name="수정하기" setIsEdit={setIsEdit} el={props?.el} />
       )}
+      {/* 답글 */}
       {answerData &&
         answerData?.fetchUseditemQuestionAnswers.map((el) => (
           <AnswerWrapper key={el._id}>
-            <Arrow src="/images/response.png" />
-            <AnswerWriterProfile src={el.user.picture} />
-            <div>
-              <AnswerWriter>{el.user.name}</AnswerWriter>
-              <AnswerContents>{el.contents}</AnswerContents>
-            </div>
+            <Answer>
+              <Arrow src="/images/response.png" />
+              <AnswerWriterProfile src={el.user.picture} />
+              <AnswerInfo>
+                <AnswerWriter>{el.user.name}</AnswerWriter>
+                <AnswerContents>{el.contents}</AnswerContents>
+              </AnswerInfo>
+            </Answer>
+            {el?.user._id === props.userInfo?._id ? (
+              <QuestionButtons>
+                <QuestionEditBtn
+                  src="/images/edit.png"
+                  onClick={onClickEdit}
+                ></QuestionEditBtn>
+                <QuestionDeleteBtn
+                  src="/images/delete.png"
+                  onClick={onClickDeleteAnswer}
+                ></QuestionDeleteBtn>
+              </QuestionButtons>
+            ) : (
+              <AnswerButtons>
+                <QuestionAnswerBtn
+                  src="/images/question.png"
+                  onClick={onClickAnswer}
+                ></QuestionAnswerBtn>
+              </AnswerButtons>
+            )}
+            {/* 내가 쓴 글의 댓글이면 답글버튼 보이기 */}
+            {/* {el?.useditemQuestion?.user._id === props.userInfo?.email && (
+              <AnswerButtons>
+                <QuestionAnswerBtn
+                  src="/images/question.png"
+                  onClick={onClickAnswer}
+                ></QuestionAnswerBtn>
+              </AnswerButtons>
+            )} */}
           </AnswerWrapper>
         ))}
       {isAnswer && (
-        <SubmitAnswer>
-          <Arrow src="/images/response.png" />
-          <div>
-            <QuestionAnswerInput
-              placeholder="답글을 등록해주세요."
-              onChange={onChangeAnswer}
-            />
-            <AnswerSubmitBtn onClick={onClickSubmitAnswer}>
-              답글등록
-            </AnswerSubmitBtn>
-          </div>
-        </SubmitAnswer>
+        <Answer01 name="답글등록" el={props.el} setIsAnswer={setIsAnswer} />
       )}
     </Wrapper>
   );
