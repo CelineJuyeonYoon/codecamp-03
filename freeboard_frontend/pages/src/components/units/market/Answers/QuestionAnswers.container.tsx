@@ -1,4 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import {
   Wrapper,
   QuestionWrapper,
@@ -44,7 +44,14 @@ export const FETCH_USEDITEM_QUESTION_ANSWERS = gql`
   }
 `;
 
-export default function QuestionAnswer() {
+export const DELETE_USEDITEM_QUESTION_ANSWER = gql`
+  mutation deleteUseditemQuestionAnswer($useditemQuestionAnswerId: ID!){
+    deleteUseditemQuestionAnswer(useditemQuestionAnswerId: $useditemQuestionAnswerId)
+  }
+`
+
+export default function QuestionAnswer(props:) {
+  const [deleteUseditemQuestionAnswer] = useMutation(DELETE_USEDITEM_QUESTION_ANSWER)
   const { data: answerData } = useQuery(FETCH_USEDITEM_QUESTION_ANSWERS, {
     variables: {
       useditemQuestionId: props.el._id,
@@ -59,9 +66,9 @@ export default function QuestionAnswer() {
     setIsAnswer((prev) => !prev);
   }
 
-  async function onClickDeleteAnswer() {
-    await deleteUseditemQuestionAnswer({ variables: {} });
-  }
+  // async function onClickDeleteAnswer() {
+  //   await deleteUseditemQuestionAnswer({ variables: {useditemQuestionAnswerId: } });
+  // }
 
   return (
     {answerData &&
