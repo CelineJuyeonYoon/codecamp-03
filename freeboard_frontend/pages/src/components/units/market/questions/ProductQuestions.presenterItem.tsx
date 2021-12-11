@@ -79,9 +79,19 @@ export default function ProductQuestionsItem(props: any) {
     setIsAnswer((prev) => !prev);
   }
 
-  async function onClickDeleteAnswer() {
-    await deleteUseditemQuestionAnswer({ variables: {} });
+  async function onClickDeleteAnswer(event: any) {
+    await deleteUseditemQuestionAnswer({
+      variables: { useditemQuestionAnswerId: event.target.id },
+      refetchQueries: [
+        {
+          query: FETCH_USEDITEM_QUESTION_ANSWERS,
+          variables: { useditemQuestionId: props.el._id },
+        },
+      ],
+    });
   }
+
+  async function onClickEditAnswer() {}
 
   return (
     <Wrapper>
@@ -133,11 +143,12 @@ export default function ProductQuestionsItem(props: any) {
               <QuestionButtons>
                 <QuestionEditBtn
                   src="/images/edit.png"
-                  onClick={onClickEdit}
+                  onClick={onClickEditAnswer}
                 ></QuestionEditBtn>
                 <QuestionDeleteBtn
                   src="/images/delete.png"
                   onClick={onClickDeleteAnswer}
+                  id={el._id}
                 ></QuestionDeleteBtn>
               </QuestionButtons>
             ) : (
