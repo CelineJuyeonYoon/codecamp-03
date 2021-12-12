@@ -40,24 +40,26 @@ const Button = styled.button`
   background-color: #ffd600;
   border-style: none;
   width: 91px;
-  height: 50px;
+  height: 49px;
   font-weight: 500;
   cursor: pointer;
 `;
 
-export default function Answer01(props: any) {
+export default function EditAnswer(props: any) {
   return (
     <Wrapper>
       <Arrow src="/images/response.png" />
       <CommentWrapper>
         <CommentInput
           onChange={props.onChangeAnswer}
-          placeholder="답글을 등록해주세요."
+          defaultValue={props.defaultValue}
           maxLength={100}
         />
         <CommentSubmitBar>
           <CommentCount>{props.contents.length}/100</CommentCount>
-          <Button onClick={props.onClickSubmitAnswer}>{props.name}</Button>
+          <Button onClick={props.onClickEditAnswer} id={props.id}>
+            {props.name}
+          </Button>
         </CommentSubmitBar>
       </CommentWrapper>
     </Wrapper>

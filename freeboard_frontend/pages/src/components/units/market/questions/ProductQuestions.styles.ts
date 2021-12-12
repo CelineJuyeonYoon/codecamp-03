@@ -64,32 +64,3 @@ export const QuestionAnswerBtn = styled.img`
   width: 20px;
   height: 20px;
 `;
-export const AnswerWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 60px;
-  padding-top: 20px;
-`;
-export const Answer = styled.div`
-  display: flex;
-`;
-export const AnswerInfo = styled.div`
-  padding-left: 15px;
-`;
-export const AnswerContents = styled.div``;
-export const AnswerWriter = styled.div`
-  font-weight: bold;
-`;
-export const AnswerWriterProfile = styled.img`
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  margin-left: 15px;
-  border-radius: 50%;
-`;
-export const Arrow = styled.img`
-  width: 15px;
-  height: 17px;
-`;
-export const AnswerButtons = styled.div``;

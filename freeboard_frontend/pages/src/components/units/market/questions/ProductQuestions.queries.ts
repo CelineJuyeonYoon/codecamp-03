@@ -26,19 +26,26 @@ export const FETCH_USEDITEM_QUESTION_ANSWERS = gql`
     fetchUseditemQuestionAnswers(useditemQuestionId: $useditemQuestionId) {
       _id
       contents
-      useditemQuestion {
-        _id
-        # user {
-        #   _id
-        # }
-        ###### 위 user 를 추가하면 fetch자체가 안됨..
-      }
       createdAt
       user {
         _id
         name
         picture
       }
+    }
+  }
+`;
+
+export const CREATE_USEDITEM_QUESTION_ANSWER = gql`
+  mutation createUseditemQuestionAnswer(
+    $createUseditemQuestionAnswerInput: CreateUseditemQuestionAnswerInput!
+    $useditemQuestionId: ID!
+  ) {
+    createUseditemQuestionAnswer(
+      createUseditemQuestionAnswerInput: $createUseditemQuestionAnswerInput
+      useditemQuestionId: $useditemQuestionId
+    ) {
+      _id
     }
   }
 `;
