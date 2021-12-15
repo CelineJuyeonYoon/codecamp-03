@@ -28,7 +28,8 @@ import {
   Buttons,
 } from "./ProductList.styles";
 import InfiniteScroll from "react-infinite-scroller";
-export default function MarketMainUI(props) {
+import SearchBars02 from "../../../commons/searchbars/Searchbars02";
+export default function MarketMainUI(props: any) {
   // console.log(props.data?.fetchUseditems.map((el) => el));
   return (
     <Wrapper>
@@ -42,11 +43,15 @@ export default function MarketMainUI(props) {
             판매된상품
           </SoldOut>
         </ProductStatus>
-        <SearchBar>
+        {/* <SearchBar>
           <SearchProduct placeholder="제품을 검색해주세요."></SearchProduct>
           <SearchDate placeholder="2020.12.02 ~ 2020.12.02"></SearchDate>
           <SearchBtn>검색</SearchBtn>
-        </SearchBar>
+        </SearchBar> */}
+        <SearchBars02
+          refetch={props.refetch}
+          onChangeKeyword={props.onChangeKeyword}
+        />
       </ProductListHeader>
       <ProductList style={{ overflow: "auto", height: 1000 }}>
         {props.data?.fetchUseditems && (
@@ -56,7 +61,7 @@ export default function MarketMainUI(props) {
             hasMore={true}
             useWindow={false}
           >
-            {props.data?.fetchUseditems.map((el) => (
+            {props.data?.fetchUseditems.map((el: any) => (
               <Row key={el._id}>
                 {el.images[0] ? (
                   <ProductImg
@@ -71,7 +76,7 @@ export default function MarketMainUI(props) {
                   </ProductName>
                   <ProductRemarks>{el.remarks}</ProductRemarks>
                   <ProductTags>
-                    {el.tags.length ? el.tags.map((el) => `#${el} `) : "#"}
+                    {el.tags.length ? el.tags.map((el: any) => `#${el} `) : "#"}
                   </ProductTags>
                   <SellerAndCount>
                     <Seller>

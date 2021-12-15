@@ -13,7 +13,7 @@ const SearchBarInput = styled.input`
   padding-left: 20px;
 `;
 
-export default function SearchBars01(props: any) {
+export default function SearchBars02(props: any) {
   const getDebounce = _.debounce((data) => {
     props.refetch({ search: data, page: 1 });
     props.onChangeKeyword(data);

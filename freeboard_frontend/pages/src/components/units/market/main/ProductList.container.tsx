@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function MarketMain() {
-  const { data, fetchMore } = useQuery(FETCH_USEDITEMS);
+  const { data, fetchMore, refetch } = useQuery(FETCH_USEDITEMS);
   const router = useRouter();
   const [onSale, setOnSale] = useState(true);
   const [soldOut, setSoldOut] = useState(false);
 
-  function onClickToDetail(event) {
+  function onClickToDetail(event: any) {
     router.push(`/market/${event.target.id}`);
   }
 
@@ -45,6 +45,8 @@ export default function MarketMain() {
     });
   }
 
+  function onChangeKeyword(data: any) {}
+
   return (
     <MarketMainUI
       data={data}
@@ -55,6 +57,8 @@ export default function MarketMain() {
       onSale={onSale}
       soldOut={soldOut}
       onLoadProductMore={onLoadProductMore}
+      refetch={refetch}
+      onChangeKeyword={onChangeKeyword}
     />
   );
 }

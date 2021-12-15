@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
 interface IProps {
-  sale: string;
-  sold: string;
+  sale?: string;
+  sold?: string;
 }
 
 export const Wrapper = styled.div`
@@ -32,15 +32,15 @@ export const ProductStatus = styled.div`
 `;
 export const OnSale = styled.div`
   font-size: 18px;
-  font-weight: ${(props) => (props.sale ? "500" : "")};
+  font-weight: ${(props: IProps) => (props.sale ? "500" : "")};
   margin-right: 20px;
-  color: ${(props) => (props.sale ? "black" : "#4F4F4F")};
+  color: ${(props: IProps) => (props.sale ? "black" : "#4F4F4F")};
   cursor: pointer;
 `;
 export const SoldOut = styled.div`
   font-size: 18px;
-  font-weight: ${(props) => (props.sold ? "500" : "")};
-  color: ${(props) => (props.sold ? "black" : "#4F4F4F")};
+  font-weight: ${(props: IProps) => (props.sold ? "500" : "")};
+  color: ${(props: IProps) => (props.sold ? "black" : "#4F4F4F")};
   cursor: pointer;
 `;
 export const SearchBar = styled.div`
