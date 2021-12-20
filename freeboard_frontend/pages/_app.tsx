@@ -1,6 +1,6 @@
 // import "../styles/globals.css";
 import "antd/dist/antd.css";
-import { globalStyles } from "./src/commons/styles/globalStyles";
+import { globalStyles } from "../src/commons/styles/globalStyles";
 import { Global } from "@emotion/react";
 import {
   ApolloClient,
@@ -10,10 +10,10 @@ import {
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error"; // 에러가 났을 때 캐치해주는 기능
 
-import Layout from "./src/components/commons/layout";
+import Layout from "../src/components/commons/layout";
 import { createUploadLink } from "apollo-upload-client";
 import { createContext, useEffect, useState } from "react";
-import { getAccessToken } from "./src/commons/libraries/getAccessToken";
+import { getAccessToken } from "../src/commons/libraries/getAccessToken";
 
 // function MyApp({ Component, pageProps }) {
 //   return <Component {...pageProps} />
@@ -21,11 +21,11 @@ import { getAccessToken } from "./src/commons/libraries/getAccessToken";
 
 export const GlobalContext = createContext(null);
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: any) {
   const [accessToken, setAccessToken] = useState("");
   const [userInfo, setUserInfo] = useState({});
 
-  const value = {
+  const value: any = {
     accessToken,
     setAccessToken,
     userInfo,
@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }) {
   );
 
   const uploadLink = createUploadLink({
-    uri: "https://backend03-team.codebootcamp.co.kr/team04",
+    uri: "https://backend03.codebootcamp.co.kr/graphql15",
     headers: { authorization: `Bearer ${accessToken}` },
     credentials: "include", // 중요한 정보들을 포함시켜줘. 이거 해야 쿠키에 저장됨
   });
