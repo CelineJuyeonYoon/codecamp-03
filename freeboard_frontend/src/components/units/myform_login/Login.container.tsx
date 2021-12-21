@@ -37,12 +37,10 @@ export default function MyformLogin() {
     });
     const userInfo = resultUserInfo.data.fetchUserLoggedIn;
     setUserInfo(userInfo);
-    // console.log(result.data?.loginUser.accessToken);
-    // localStorage.setItem("accessToken", result.data?.loginUser.accessToken); // 이제 토큰은 변수에 저장
     setAccessToken(accessToken);
-    localStorage.setItem("refreshToken", "true"); // 로컬스토리지에는 refreshToken이 있다는 true값만 저장
+    localStorage.setItem("refreshToken", "true");
+    sessionStorage.setItem("login", "true");
     router.push("/market");
-    // setUserInfo(data.email);
   }
 
   return (

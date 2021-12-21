@@ -29,11 +29,11 @@ import {
 } from "./ProductList.styles";
 import InfiniteScroll from "react-infinite-scroller";
 import SearchBars02 from "../../../commons/searchbars/Searchbars02";
+
 export default function MarketMainUI(props: any) {
-  // console.log(props.data?.fetchUseditems.map((el) => el));
   return (
     <Wrapper>
-      <BestProducts></BestProducts>
+      {/* <BestProducts></BestProducts> */}
       <ProductListHeader>
         <ProductStatus>
           <OnSale onClick={props.onClickOnSale} sale={props.onSale}>

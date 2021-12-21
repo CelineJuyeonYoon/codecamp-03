@@ -11,7 +11,6 @@ export default function LayoutHeader() {
   const { accessToken, setAccessToken, setUserInfo, userInfo }: any =
     useContext(GlobalContext);
   const { data } = useQuery(FETCH_USER_LOGGEDIN);
-  // setUserInfo(data?.fetchUserLoggedIn);
 
   useEffect(() => {
     if (!isEmpty(userInfo)) return;
@@ -27,10 +26,9 @@ export default function LayoutHeader() {
   }
 
   function onClickLogout() {
-    // router.push("/login"); => 권한분기해서 필요없어짐
-    // localStorage.removeItem("accessToken"); // refreshToken 넣으면서 이제 변수에 저장
     setAccessToken("");
     localStorage.removeItem("refreshToken");
+    sessionStorage.removeItem("login");
   }
 
   function onClickHome() {

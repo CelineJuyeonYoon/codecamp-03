@@ -3,7 +3,6 @@ import {
   Logo,
   LoginWrapper,
   Login,
-  Profile,
   Signup,
   Mypage,
 } from "./LayoutHeader.styles";
@@ -12,9 +11,7 @@ export default function LayoutHeaderUI(props: any) {
   return (
     <Wrapper>
       <Logo src="/images/logo.png" onClick={props.onClickHome} />
-      <span>{props.data?.fetchUserLoggedIn.name}님 안녕하세요</span>
       <LoginWrapper>
-        {props.accessToken && <Profile src="/images/profile.png" />}
         {props.accessToken ? (
           <Login onClick={props.onClickLogout}>로그아웃</Login>
         ) : (
