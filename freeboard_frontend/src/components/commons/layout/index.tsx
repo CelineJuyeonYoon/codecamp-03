@@ -20,11 +20,11 @@ const Body = styled.div`
   align-items: center;
 `;
 
-const HIDDEN_PAGE = ['/landing']
+const HIDDEN_PAGE = ["/"];
 
 export default function Layout(props: any) {
-  const router = useRouter()
-  const isHiddenPage = HIDDEN_PAGE.includes(router.pathname)
+  const router = useRouter();
+  const isHiddenPage = HIDDEN_PAGE.includes(router.pathname);
 
   return (
     <Wrapper>
@@ -32,7 +32,7 @@ export default function Layout(props: any) {
       {!isHiddenPage && <LayoutBanner />}
       {!isHiddenPage && <LayoutNavigation />}
       <Body>{props.children}</Body>
-      <LayoutFooter />
+      {!isHiddenPage && <LayoutFooter />}
     </Wrapper>
   );
 }

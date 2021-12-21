@@ -5,8 +5,8 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   margin: 10px 30px 10px 30px;
-  border-top: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
+  /* border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray; */
 `;
 export const Logo = styled.img``;
 export const User = styled.div`

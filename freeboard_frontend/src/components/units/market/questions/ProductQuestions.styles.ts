@@ -41,7 +41,7 @@ export const QuestionContent = styled.div`
 export const QuestionDate = styled.div`
   color: #bdbdbd;
   font-size: 12px;
-  padding-top: 20px;
+  padding-top: 10px;
 `;
 export const QuestionButtons = styled.div`
   display: flex;

@@ -6,13 +6,13 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function LayoutBannerUI() {
   const settings = {
-    // dots: true,
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
+    // autoplay: true,
+    // autoplaySpeed: 2000,
   };
   return (
     <Wrapper>

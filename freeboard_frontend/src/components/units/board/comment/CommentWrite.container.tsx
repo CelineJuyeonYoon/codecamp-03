@@ -51,7 +51,7 @@ export default function CommentWrite(props: any) {
           },
         ],
       });
-      console.log(router.query.id);
+      // console.log(router.query.id);
       alert(`댓글이 추가되었습니다`);
     }
   }

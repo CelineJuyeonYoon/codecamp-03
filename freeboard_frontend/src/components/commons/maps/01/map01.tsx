@@ -68,7 +68,7 @@ export default function Map01(props: any) {
 
     script.onload = () => {
       window.kakao.maps.load(function () {
-        console.log(window.kakao);
+        // console.log(window.kakao);
         const container = document.getElementById("map");
         const options = {
           center: new window.kakao.maps.LatLng(37.578054, 126.9746933),
@@ -76,7 +76,7 @@ export default function Map01(props: any) {
         };
 
         const map = new window.kakao.maps.Map(container, options);
-        console.log("지도", map);
+        // console.log("지도", map);
 
         // 지도를 클릭한 위치에 표출할 마커입니다
         const marker = new window.kakao.maps.Marker({
@@ -96,7 +96,7 @@ export default function Map01(props: any) {
             const latlng = mouseEvent.latLng;
 
             setMylatlng(latlng);
-            console.log("latlng", latlng);
+            // console.log("latlng", latlng);
 
             // 마커 위치를 클릭한 위치로 옮깁니다
             marker.setPosition(latlng);

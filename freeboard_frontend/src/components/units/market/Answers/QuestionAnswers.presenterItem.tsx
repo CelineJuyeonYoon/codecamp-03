@@ -99,7 +99,7 @@ export default function QuestionAnswersUIItem(props: any) {
               <AnswerContents>{props.el?.contents}</AnswerContents>
             </AnswerInfo>
           </Answer>
-          {data?.fetchUseditem.seller._id === props.userInfo._id && (
+          {data?.fetchUseditem.seller._id === props.userInfo?._id && (
             <>
               {props.el?.user._id === props.userInfo?._id ? (
                 <QuestionButtons>

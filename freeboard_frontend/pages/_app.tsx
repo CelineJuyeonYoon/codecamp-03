@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }: any) {
   );
 
   const uploadLink = createUploadLink({
-    uri: "https://backend03.codebootcamp.co.kr/graphql15",
+    uri: "https://backend03-team.codebootcamp.co.kr/team04",
     headers: { authorization: `Bearer ${accessToken}` },
     credentials: "include", // 중요한 정보들을 포함시켜줘. 이거 해야 쿠키에 저장됨
   });
