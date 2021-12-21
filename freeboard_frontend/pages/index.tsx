@@ -1,22 +1,33 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 
 const Wrapper = styled.div`
   background-image: url("/images/background.jpeg");
-  width: 1200px;
-  /* height: 950px; */
-  object-fit: cover;
+  background-size: cover;
+  width: 385px;
+  :hover {
+    width: 1200px;
+  }
+  transition: 1s;
 `;
 
 const Typo = styled.div`
   color: white;
-  font-size: 120px;
-  padding-right: 15px;
-  text-align: end;
+  font-size: 100px;
+  font-family: "DidotR";
+  margin: 10px;
+  text-align: center;
 `;
 
 export default function Home() {
+  const router = useRouter();
+
+  function onClickToMain() {
+    router.push(`/market`);
+  }
+
   return (
-    <Wrapper>
+    <Wrapper onClick={onClickToMain}>
       <Typo>Aile</Typo>
       <Typo>Studio</Typo>
       <Typo>Art</Typo>

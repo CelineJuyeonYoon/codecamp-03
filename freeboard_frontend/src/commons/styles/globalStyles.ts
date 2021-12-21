@@ -6,7 +6,11 @@ export const globalStyles = css`
     box-sizing: border-box;
   }
   @font-face {
-    font-family: "live";
-    src: url("/fonts/scifibit.ttf");
+    font-family: "DidotR";
+    src: url("/fonts/Didot Regular.ttf");
+  }
+  @font-face {
+    font-family: "DidotM";
+    src: url("/fonts/Didot Medium.ttf");
   }
 `;

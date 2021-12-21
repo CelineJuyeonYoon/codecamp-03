@@ -1,4 +1,3 @@
-// import "../styles/globals.css";
 import "antd/dist/antd.css";
 import { globalStyles } from "../src/commons/styles/globalStyles";
 import { Global } from "@emotion/react";
