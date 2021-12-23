@@ -7,7 +7,6 @@ export const StarRating = styled(Rate)`
 
 export const Wrapper = styled.div`
   width: 1200px;
-  /* padding-top: 20px; */
 `;
 export const CommentWrapper = styled.div`
   display: flex;

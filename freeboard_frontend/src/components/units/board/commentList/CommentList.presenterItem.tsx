@@ -26,18 +26,16 @@ const DELETE_COMMENT = gql`
   }
 `;
 
-export default function CommentListUIItem(props) {
+export default function CommentListUIItem(props: any) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
   const [deleteBoardComment] = useMutation(DELETE_COMMENT);
-  const [myPassword, setMyPassword] = useState("");
-  // const [myStar, setMyStar] = useState(0)
 
   async function onClickEditComment() {
     setIsEdit(true);
   }
 
-  async function onClickDeleteComment(event) {
+  async function onClickDeleteComment(event: any) {
     const myPassword = prompt("비밀번호를 입력해주세요.");
     try {
       await deleteBoardComment({
@@ -93,11 +91,7 @@ export default function CommentListUIItem(props) {
       )}
       {/* 수정하기 눌렀을 때, 댓글수정 (댓글등록component 재사용!!) */}
       {isEdit && (
-        <CommentWrite
-          isEdit={isEdit}
-          setIsEdit={setIsEdit} // 수정하기 버튼을 누르면 setIsEdit로 이 파일의 state를 바꿔서 댓글상세가 보이는 걸로 바꿔야함!!
-          el={props.el} // 수정하기에서 defaultValue 주기위해
-        />
+        <CommentWrite isEdit={isEdit} setIsEdit={setIsEdit} el={props.el} />
       )}
     </>
   );

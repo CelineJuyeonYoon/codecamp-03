@@ -27,7 +27,7 @@ import {
 import SearchBars01 from "../../../commons/searchbars/Searchbars01";
 import { v4 as key } from "uuid";
 
-export default function BoardListUI(props) {
+export default function BoardListUI(props: any) {
   return (
     <Wrapper>
       <SearchBar>
@@ -46,7 +46,7 @@ export default function BoardListUI(props) {
           <HeadWriter>작성자</HeadWriter>
           <HeadDate>날짜</HeadDate>
         </Header>
-        {props.data?.fetchBoards.map((el, index) => (
+        {props.data?.fetchBoards.map((el: any, index: any) => (
           <Row key={el._id} id={el._id} onClick={props.onClickToDetailPage}>
             <Number>{10 - index}</Number>
             {/* <Title id={el._id}>{el.title}</Title> */}
@@ -54,7 +54,7 @@ export default function BoardListUI(props) {
               {el.title
                 .replaceAll(props.keyword, `^^${props.keyword}^^`)
                 .split("^^")
-                .map((el) => (
+                .map((el: any) => (
                   <TextToken key={key()} isMatched={props.keyword === el}>
                     {el}
                   </TextToken>

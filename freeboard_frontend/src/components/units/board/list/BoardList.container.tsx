@@ -17,7 +17,7 @@ export default function BoardList() {
   });
   const lastPage = Math.ceil(fetchBoardsCountData?.fetchBoardsCount / 10);
 
-  function onClickToDetailPage(event) {
+  function onClickToDetailPage(event: any) {
     router.push(`../../boards/board_read/${event.currentTarget.id}`);
   }
 
@@ -25,7 +25,7 @@ export default function BoardList() {
     router.push(`../../boards/board_new`);
   }
 
-  function onClickPage(event) {
+  function onClickPage(event: any) {
     refetch({ page: Number(event.target.id) });
     setThisPage(Number(event.target.id));
   }
@@ -42,7 +42,7 @@ export default function BoardList() {
     setThisPage(startPage);
   }
 
-  function onChangeKeyword(value) {
+  function onChangeKeyword(value: any) {
     setKeyword(value);
   }
 

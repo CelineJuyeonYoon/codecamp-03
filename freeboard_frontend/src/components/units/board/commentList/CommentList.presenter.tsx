@@ -4,7 +4,7 @@ import { FETCH_BOARD_COMMENTS } from "./CommentList.queries"; // 댓글 조회 q
 import InfiniteScroll from "react-infinite-scroller";
 import { useRouter } from "next/router";
 
-export default function CommentListUI(props) {
+export default function CommentListUI(props: any) {
   const router = useRouter();
   const { data, fetchMore } = useQuery(FETCH_BOARD_COMMENTS, {
     variables: { boardId: router.query.id },
@@ -15,7 +15,7 @@ export default function CommentListUI(props) {
     fetchMore({
       // fetchMore를 만나면 추가로 데이터 요청됨. 요청된 데이터는 아래 fetchMoreResult에 들어온다.
       variables: { page: Math.ceil(data?.fetchBoardComments.length / 10) + 1 }, // ! fetchMore 할때는 variables에 boardId 안넣어도 된다.
-      updateQuery: (prev, { fetchMoreResult }) => {
+      updateQuery: (prev: any, { fetchMoreResult }: any) => {
         return {
           fetchBoardComments: [
             ...prev.fetchBoardComments,
@@ -28,7 +28,7 @@ export default function CommentListUI(props) {
   if (!props.data?.fetchBoardComments) return <></>;
   return (
     <InfiniteScroll pageStart={0} loadMore={onLoadCommentMore} hasMore={true}>
-      {props.data?.fetchBoardComments.map((el) => (
+      {props.data?.fetchBoardComments.map((el: any) => (
         <CommentListUIItem key={el._id} el={el} />
       ))}
     </InfiniteScroll>

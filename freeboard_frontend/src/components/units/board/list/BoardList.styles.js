@@ -153,6 +153,9 @@ export const ToNext = styled.img`
   margin-left: 3px;
   cursor: pointer;
 `;
-export const TextToken = styled.span`
+export const TextToken =
+  styled.span <
+  { isMatched: any } >
+  `
   color: ${(props) => (props.isMatched ? "red" : "black")};
 `;

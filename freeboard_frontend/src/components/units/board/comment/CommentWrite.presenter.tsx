@@ -13,7 +13,7 @@ import {
   StarRating,
 } from "./CommentWrite.styles";
 
-export default function CommentWriteUI(props) {
+export default function CommentWriteUI(props: any) {
   return (
     <Wrapper>
       {!props.isEdit && (
@@ -26,7 +26,7 @@ export default function CommentWriteUI(props) {
         <Writer
           type="text"
           placeholder="작성자"
-          readOnly={Boolean(props.data?.writer)} // 작성자가 있으면(작성됐으면), 이후로 수정 불가능
+          readOnly={Boolean(props.data?.writer)}
           onChange={props.onChangeWriter}
           defaultValue={props.el?.writer}
         />
