@@ -6,7 +6,9 @@ export const Wrapper = styled.div`
   justify-content: space-around;
   margin: 10px 30px 10px 30px;
 `;
-export const Logo = styled.img``;
+export const Logo = styled.img`
+  cursor: pointer;
+`;
 export const User = styled.div`
   display: flex;
   flex-direction: column;

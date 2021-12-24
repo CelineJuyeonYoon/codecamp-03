@@ -7,7 +7,7 @@ export default function LayoutNavigationUI(props: any) {
       <MenuItem id="/market" onClick={props.onClickMove}>
         List
       </MenuItem>
-      <MenuItem id="/boards/board_list" onClick={props.onClickMove}>
+      <MenuItem id="/boards" onClick={props.onClickMove}>
         Board
       </MenuItem>
       <MenuItem>Mypage</MenuItem>
