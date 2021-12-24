@@ -133,11 +133,3 @@ export const Buttons = styled.div`
   justify-content: center;
   padding-top: 84px;
 `;
-export const Noimg = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: lightgray;
-  width: 296px;
-  height: 296px;
-`;

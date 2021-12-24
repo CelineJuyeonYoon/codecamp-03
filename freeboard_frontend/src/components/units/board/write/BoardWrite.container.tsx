@@ -1,10 +1,10 @@
 import BoardWriteUI from "./BoardWrite.presenter";
 import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
 import { useMutation } from "@apollo/client";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 
-export default function BoardWrite(props) {
+export default function BoardWrite(props: any) {
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
   const [uploadFile] = useMutation(UPLOAD_FILE);
@@ -28,13 +28,11 @@ export default function BoardWrite(props) {
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
 
-  const [buttonAct, setButtonAct] = useState("");
+  const [buttonAct, setButtonAct]: any = useState("");
 
-  // const [imgUrls, setImgUrls] = useState(["", "", ""]);
   const [files, setFiles] = useState([null, null, null]);
-  // const [files, setFiles] = useState(["", "", ""]);
 
-  function onChangeName(event) {
+  function onChangeName(event: any) {
     setName(event.target.value);
     if (event.target.value) {
       setNameErr("");
@@ -50,7 +48,7 @@ export default function BoardWrite(props) {
       setButtonAct("");
     }
   }
-  function onChangePassword(event) {
+  function onChangePassword(event: any) {
     setPassword(event.target.value);
     if (event.target.value.length > 3) {
       setPasswordErr("");
@@ -66,7 +64,7 @@ export default function BoardWrite(props) {
       setButtonAct("");
     }
   }
-  function onChangeTitle(event) {
+  function onChangeTitle(event: any) {
     setTitle(event.target.value);
     if (event.target.value) {
       setTitleErr("");
@@ -82,7 +80,7 @@ export default function BoardWrite(props) {
       setButtonAct("");
     }
   }
-  function onChangeContent(event) {
+  function onChangeContent(event: any) {
     setContent(event.target.value);
     if (event.target.value) {
       setContentErr("");
@@ -99,11 +97,11 @@ export default function BoardWrite(props) {
     }
   }
 
-  function onChangeYoutubeUrl(event) {
+  function onChangeYoutubeUrl(event: any) {
     setYoutubeUrl(event.target.value);
   }
 
-  function onChangeAddressDetail(event) {
+  function onChangeAddressDetail(event: any) {
     setAddressDetail(event.target.value);
   }
 
@@ -111,8 +109,7 @@ export default function BoardWrite(props) {
     setIsOpen(true);
   }
 
-  function onCompleteAddressSearch(data) {
-    // 우편번호 검색이 끝났을 때 사용자가 선택한 정보를 받아올 콜백함수
+  function onCompleteAddressSearch(data: any) {
     setZipcode(data.zonecode);
     setAddress(`${data.address} ${data.buildingName}`);
     setIsOpen(false);
@@ -165,8 +162,7 @@ export default function BoardWrite(props) {
               address,
               addressDetail,
             },
-            // images: [...imgUrls],
-            images: myImages, // 이미지 2차 실습
+            images: myImages,
           },
         },
       });
@@ -177,7 +173,7 @@ export default function BoardWrite(props) {
   }
 
   async function onClickEdit() {
-    const myVariables = {
+    const myVariables: any = {
       boardId: router.query.id,
       password,
       updateBoardInput: {},
@@ -201,11 +197,8 @@ export default function BoardWrite(props) {
     myVariables.updateBoardInput.images = myImages;
 
     if (props.data?.fetchBoard.images?.length) {
-      // 기존에 이미지가 있었으면,
-      const prevImages = [...props.data?.fetchBoard.images]; // 기존 이미지 배열
-      // console.log("기존이미지!", prevImages);
+      const prevImages = [...props.data?.fetchBoard.images];
       myVariables.updateBoardInput.images = prevImages.map((el, index) => myImages[index] || el); // prettier-ignore
-      // 새로운 이미지가 들어왔으면 대체, 없으면 기존꺼
     } else {
       myVariables.updateBoardInput.images = myImages;
     }
@@ -219,15 +212,7 @@ export default function BoardWrite(props) {
     }
   }
 
-  // function onChangeImageUrls(imgUrl, index) {
-  //   const newImgUrls = [...imgUrls]; // 얕은복사 => 원본을 건드리지 않는 것이 암묵룰!
-  //   newImgUrls[index] = imgUrl;
-  //   setImgUrls(newImgUrls);
-  //   console.log("이미지url: " + imgUrl);
-  // }
-
-  /////////////// 이미지 2차 실습 /////////////////
-  function onChangeFiles(file, index) {
+  function onChangeFiles(file: any, index: number) {
     const newFiles = [...files];
     newFiles[index] = file;
     setFiles(newFiles);
@@ -256,10 +241,8 @@ export default function BoardWrite(props) {
       onCompleteAddressSearch={onCompleteAddressSearch}
       zipcode={zipcode}
       address={address}
-      // imgUrls={imgUrls}
       files={files}
-      // onChangeImageUrls={onChangeImageUrls}
-      onChangeFiles={onChangeFiles} // 이미지 2차 실습
+      onChangeFiles={onChangeFiles}
     />
   );
 }

@@ -22,10 +22,9 @@ import {
   ProductContents,
   ProductTags,
   LocationBox,
-  // Location,
+  Location,
   ProductImgs,
   CarouselImg,
-  Noimg,
   CarouselImgs,
   SliderImg,
   MiniImg,
@@ -152,7 +151,7 @@ export default function ProductDetailUI(props: any) {
           {props.data?.fetchUseditem.tags.map((el: any) => `#${el} `)}
         </ProductTags>
         <LocationBox>
-          <div id="map" style={{ width: "792px", height: "360px" }}></div>
+          <Location id="map"></Location>
         </LocationBox>
         <Buttons>
           <Button02 name="목록으로" onClick={props.onClickToList}></Button02>

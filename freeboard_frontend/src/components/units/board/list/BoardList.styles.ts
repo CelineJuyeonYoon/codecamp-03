@@ -131,7 +131,7 @@ export const BoardWrite = styled.span`
   font-weight: 500;
   padding-left: 11px;
 `;
-export const Page = styled.span`
+export const Page = styled.span<{ thisPage: any }>`
   cursor: pointer;
   margin: 10px;
   :hover {
@@ -153,9 +153,6 @@ export const ToNext = styled.img`
   margin-left: 3px;
   cursor: pointer;
 `;
-export const TextToken =
-  styled.span <
-  { isMatched: any } >
-  `
+export const TextToken = styled.span<{ isMatched: any }>`
   color: ${(props) => (props.isMatched ? "red" : "black")};
 `;

@@ -32,7 +32,7 @@ import {
 } from "./BoardWrite.styles";
 import Uploads01 from "../../../commons/uploads/Uploads01";
 
-export default function BoardWriteUI(props) {
+export default function BoardWriteUI(props: any) {
   return (
     <Wrapper>
       {props.isOpen && (
@@ -82,7 +82,6 @@ export default function BoardWriteUI(props) {
       <InputWrapper>
         <Label>내용</Label>
         <ContentInput
-          type="text"
           placeholder="내용을 작성해주세요."
           onChange={props.onChangeContent}
           defaultValue={props.data?.fetchBoard.contents}
@@ -120,17 +119,7 @@ export default function BoardWriteUI(props) {
       <AddWrapper>
         <Label>사진 첨부</Label>
         <AddBoxWrapper>
-          {/* /////////// 1차 이미지 실습 ///////////
-          {props.imgUrls.map((el, index) => (
-            <Uploads01
-              key={`${el}_${index}`}
-              index={index} // imgUrls 배열의 index로 사용
-              imgUrl={el} // 실제 url
-              onChangeImageUrls={props.onChangeImageUrls}
-            />
-          ))} */}
           {new Array(3).fill(1).map((el, index) => (
-            // {props.files.map((el, index) => (
             <Uploads01
               key={`${el}_${index}`}
               index={index}

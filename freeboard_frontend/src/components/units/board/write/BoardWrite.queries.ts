@@ -32,14 +32,14 @@ export const UPDATE_BOARD = gql`
     ) {
       title
       contents
-    } ### return부분이 필수인데 입력안해서 오류, playground & 9일차 블로그 참고
+    }
   }
 `;
 
 export const UPLOAD_FILE = gql`
-  mutation uploadFile($file: Upload!){
-    uploadFile(file: $file){
+  mutation uploadFile($file: Upload!) {
+    uploadFile(file: $file) {
       url
     }
   }
-`
+`;

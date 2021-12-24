@@ -185,7 +185,7 @@ export const CancelBtn = styled.button`
   }
 `;
 
-export const SubmitBtn = styled.button`
+export const SubmitBtn = styled.button<{buttonAct?: boolean}>`
   background-color: ${(props) =>
     props.buttonAct === true ? "#FFD600" : "#BDBDBD"};
   width: 179px;
@@ -200,7 +200,7 @@ export const SubmitBtn = styled.button`
   }
 `;
 
-export const EditBtn = styled.button`
+export const EditBtn = styled.button<{buttonAct: any}>`
   background-color: ${(props) =>
     props.buttonAct === true ? "#FFD600" : "#BDBDBD"};
   width: 179px;
