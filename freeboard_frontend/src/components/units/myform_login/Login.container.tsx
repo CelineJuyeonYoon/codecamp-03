@@ -19,28 +19,32 @@ export default function MyformLogin() {
   const client = useApolloClient();
 
   async function onClickLogin(data: any) {
-    const result = await loginUser({
-      variables: {
-        email: data.email,
-        password: data.password,
-      },
-    });
-    const accessToken = result.data?.loginUser.accessToken;
-    // useApolloClient 로 query 하기
-    const resultUserInfo = await client.query({
-      query: FETCH_USER_LOGGEDIN,
-      context: {
-        headers: {
-          authorization: `Bearer ${accessToken}`,
+    try {
+      const result = await loginUser({
+        variables: {
+          email: data.email,
+          password: data.password,
         },
-      },
-    });
-    const userInfo = resultUserInfo.data.fetchUserLoggedIn;
-    setUserInfo(userInfo);
-    setAccessToken(accessToken);
-    localStorage.setItem("refreshToken", "true");
-    sessionStorage.setItem("login", "true");
-    router.push("/market");
+      });
+      const accessToken = result.data?.loginUser.accessToken;
+      // useApolloClient 로 query 하기
+      const resultUserInfo = await client.query({
+        query: FETCH_USER_LOGGEDIN,
+        context: {
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        },
+      });
+      const userInfo = resultUserInfo.data.fetchUserLoggedIn;
+      setUserInfo(userInfo);
+      setAccessToken(accessToken);
+      localStorage.setItem("refreshToken", "true");
+      sessionStorage.setItem("login", "true");
+      router.push("/market");
+    } catch (err) {
+      alert(err.message);
+    }
   }
 
   return (

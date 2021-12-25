@@ -16,19 +16,22 @@ export default function Myform(props: any) {
     mode: "onChange",
     resolver: yupResolver(schema),
   });
-  const client = useApolloClient();
 
-  function onClickSignup(data: any) {
-    createUser({
-      variables: {
-        createUserInput: {
-          email: data.email,
-          password: data.password,
-          name: data.name,
+  async function onClickSignup(data: any) {
+    try {
+      await createUser({
+        variables: {
+          createUserInput: {
+            email: data.email,
+            password: data.password,
+            name: data.name,
+          },
         },
-      },
-    });
-    router.push("/login");
+      });
+      router.push("/login");
+    } catch (err) {
+      alert(err.message);
+    }
   }
 
   return (
