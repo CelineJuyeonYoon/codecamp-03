@@ -17,6 +17,7 @@ export const User = styled.div`
 export const LoginWrapper = styled.div`
   display: flex;
   align-items: center;
+  width: 200px;
 `;
 export const Login = styled.div`
   margin-right: 17px;
@@ -28,3 +29,13 @@ export const Signup = styled.div`
   cursor: pointer;
 `;
 export const Mypage = styled.div``;
+export const Menu = styled.div`
+  display: flex;
+  align-items: center;
+  width: 200px;
+`;
+export const MenuItem = styled.div`
+  margin-right: 17px;
+  font-size: 14px;
+  cursor: pointer;
+`;

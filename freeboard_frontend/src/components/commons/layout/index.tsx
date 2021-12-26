@@ -30,7 +30,7 @@ export default function Layout(props: any) {
     <Wrapper>
       {!isHiddenPage && <LayoutHeader />}
       {!isHiddenPage && <LayoutBanner />}
-      {!isHiddenPage && <LayoutNavigation />}
+      {/* {!isHiddenPage && <LayoutNavigation />} */}
       <Body>{props.children}</Body>
       {!isHiddenPage && <LayoutFooter />}
     </Wrapper>

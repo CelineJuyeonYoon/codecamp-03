@@ -5,11 +5,18 @@ import {
   Login,
   Signup,
   Mypage,
+  Menu,
+  MenuItem,
 } from "./LayoutHeader.styles";
 
 export default function LayoutHeaderUI(props: any) {
   return (
     <Wrapper>
+      <Menu>
+        <MenuItem>ABOUT</MenuItem>
+        <MenuItem id="boards">REVIEW</MenuItem>
+        <MenuItem id="market">SHOP</MenuItem>
+      </Menu>
       <Logo src="/images/logo.png" onClick={props.onClickHome} />
       <LoginWrapper>
         {props.accessToken ? (
