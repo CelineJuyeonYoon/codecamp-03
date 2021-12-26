@@ -18,6 +18,7 @@ export const LoginWrapper = styled.div`
   display: flex;
   align-items: center;
   width: 200px;
+  justify-content: end;
 `;
 export const Login = styled.div`
   margin-right: 17px;

@@ -31,15 +31,15 @@ export default function LayoutHeader() {
     sessionStorage.removeItem("login");
   }
 
-  function onClickHome() {
-    router.push("/market");
+  function onClickMove(event: any) {
+    router.push(`${event.target.id}`);
   }
 
   return (
     <LayoutHeaderUI
       onClickToLogin={onClickToLogin}
       onClickToSignup={onClickToSignup}
-      onClickHome={onClickHome}
+      onClickMove={onClickMove}
       accessToken={accessToken}
       onClickLogout={onClickLogout}
       data={data}
