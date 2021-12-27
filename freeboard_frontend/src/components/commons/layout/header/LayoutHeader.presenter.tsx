@@ -26,7 +26,9 @@ export default function LayoutHeaderUI(props: any) {
         {props.accessToken ? (
           <>
             <Login onClick={props.onClickLogout}>로그아웃</Login>
-            <Mypage>마이페이지</Mypage>
+            <Mypage id="/mypage" onClick={props.onClickMove}>
+              마이페이지
+            </Mypage>
           </>
         ) : (
           <>

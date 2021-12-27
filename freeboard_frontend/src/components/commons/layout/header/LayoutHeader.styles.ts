@@ -22,14 +22,14 @@ export const LoginWrapper = styled.div`
 `;
 export const Login = styled.div`
   margin-right: 17px;
-  font-size: 14px;
   cursor: pointer;
 `;
 export const Signup = styled.div`
-  font-size: 14px;
   cursor: pointer;
 `;
-export const Mypage = styled.div``;
+export const Mypage = styled.div`
+  cursor: pointer;
+`;
 export const Menu = styled.div`
   display: flex;
   align-items: center;
@@ -37,6 +37,5 @@ export const Menu = styled.div`
 `;
 export const MenuItem = styled.div`
   margin-right: 17px;
-  font-size: 14px;
   cursor: pointer;
 `;
