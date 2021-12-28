@@ -1,31 +1,84 @@
-import { useMutation } from "@apollo/client";
-import { useState } from "react";
 import MypageUI from "./Mypage.presenter";
-import { UPDATE_USER } from "./Mypage.queries";
+import { useMutation, useQuery } from "@apollo/client";
+import { useState } from "react";
+import {
+  UPDATE_USER,
+  UPLOAD_FILE,
+  FETCH_USER_LOGGEDIN,
+} from "./Mypage.queries";
+import { useRef } from "react";
 
 export default function Mypage() {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [updateUser] = useMutation(UPDATE_USER);
-  const name = useState("");
-  const picture = useState("");
-  const myUpdate: any = {
-    picture:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8OXyJ1dN-6nhzobM0sWCGCq_JSz3hWQNCKg&usqp=CAU",
-  };
-  // if (name) {
-  //   myUpdate.name = name;
-  // }
-  // if (picture) {
-  //   // myUpdate.picture = picture;
-  //   myUpdate.picture =
-  //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8OXyJ1dN-6nhzobM0sWCGCq_JSz3hWQNCKg&usqp=CAU";
-  // }
-  async function onClickUpdateProfile() {
-    await updateUser({
-      variables: {
-        updateUserInput: myUpdate,
-      },
-    });
+  const [uploadFile] = useMutation(UPLOAD_FILE);
+  const [prev, setPrev] = useState("");
+  const [picture, setPicture] = useState("");
+  const { data } = useQuery(FETCH_USER_LOGGEDIN);
+  const [menu, setMenu] = useState("");
+
+  function onClickFile() {
+    inputRef.current?.click();
   }
 
-  return <MypageUI onClickUpdateProfile={onClickUpdateProfile} />;
+  async function onChangeImg(event: any) {
+    const file = event.target.files[0];
+
+    if (!file) {
+      alert("파일을 선택해주세요");
+      return;
+    }
+
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = (data) => {
+      setPrev(data.target?.result as string);
+    };
+
+    try {
+      const result = await uploadFile({
+        variables: {
+          file,
+        },
+      });
+      setPicture(
+        `https://storage.googleapis.com/${result.data.uploadFile.url}`
+      );
+    } catch (err) {
+      alert(err.message);
+    }
+  }
+
+  async function onClickUpload() {
+    try {
+      await updateUser({
+        variables: {
+          updateUserInput: {
+            picture,
+          },
+        },
+      });
+    } catch (err) {
+      alert(err.message);
+    }
+    alert("수정되었습니다.");
+  }
+
+  function onClickMenu(event: any) {
+    setMenu(event.target.id);
+    console.log(event.target.value);
+  }
+
+  return (
+    <MypageUI
+      onChangeImg={onChangeImg}
+      onClickFile={onClickFile}
+      inputRef={inputRef}
+      prev={prev}
+      onClickUpload={onClickUpload}
+      data={data}
+      onClickMenu={onClickMenu}
+      menu={menu}
+    />
+  );
 }

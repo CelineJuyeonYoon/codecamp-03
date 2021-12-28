@@ -80,20 +80,24 @@ export default function Comment01(props: any) {
   }
 
   const onClickSubmit = async () => {
-    const result = await createUseditemQuestion({
-      variables: {
-        useditemId: router.query.productid,
-        createUseditemQuestionInput: {
-          contents,
+    try {
+      const result = await createUseditemQuestion({
+        variables: {
+          useditemId: router.query.productid,
+          createUseditemQuestionInput: {
+            contents,
+          },
         },
-      },
-      refetchQueries: [
-        {
-          query: FETCH_USEDITEM_QUESTIONS,
-          variables: { useditemId: router.query.productid },
-        },
-      ],
-    });
+        refetchQueries: [
+          {
+            query: FETCH_USEDITEM_QUESTIONS,
+            variables: { useditemId: router.query.productid },
+          },
+        ],
+      });
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   return (

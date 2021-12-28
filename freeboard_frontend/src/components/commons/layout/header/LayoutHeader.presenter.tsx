@@ -21,7 +21,7 @@ export default function LayoutHeaderUI(props: any) {
           SHOP
         </MenuItem>
       </Menu>
-      <Logo src="/images/logo.png" onClick={props.onClickHome} />
+      <Logo src="/images/logo.png" id="/market" onClick={props.onClickMove} />
       <LoginWrapper>
         {props.accessToken ? (
           <>
