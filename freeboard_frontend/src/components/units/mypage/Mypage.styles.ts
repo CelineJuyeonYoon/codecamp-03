@@ -40,28 +40,42 @@ export const ImgEditBtn = styled(SettingsIcon)`
   background-color: white;
   border-radius: 50%;
 `;
-export const EditBtn = styled.button`
-  cursor: pointer;
-  margin-top: 50px;
-`;
 export const PointWrapper = styled.div`
   display: flex;
 `;
 export const Point = styled.div`
   font-size: large;
 `;
-export const AddPointBtn = styled.button`
-  margin-left: 10px;
-`;
 export const MypageMenu = styled.div`
   padding-top: 30px;
   display: flex;
   flex-direction: column;
 `;
-export const MenuItem = styled.div<{ menu: any }>`
+export const MyAccount = styled.div<{ menu: any }>`
   cursor: pointer;
-  color: ${(props) => props.menu === "MY ACCOUNT" && "blue"};
+  color: ${(props) => props.menu === "1" && "darkorange"};
+`;
+export const AddPoint = styled.div<{ menu: any }>`
+  cursor: pointer;
+  color: ${(props) => props.menu === "2" && "darkorange"};
+`;
+export const MyCollection = styled.div<{ menu: any }>`
+  cursor: pointer;
+  color: ${(props) => props.menu === "3" && "darkorange"};
+`;
+export const FavoriteItems = styled.div<{ menu: any }>`
+  cursor: pointer;
+  color: ${(props) => props.menu === "4" && "darkorange"};
 `;
 export const MypageBody = styled.div`
   width: 70%;
+  padding: 0 30px;
+`;
+////////////////////////////////////////////////////////////////////////
+export const AddPointBtn = styled.button`
+  margin-left: 10px;
+`;
+export const EditBtn = styled.button`
+  cursor: pointer;
+  margin-top: 50px;
 `;

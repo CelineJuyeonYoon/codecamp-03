@@ -66,7 +66,6 @@ export default function Mypage() {
 
   function onClickMenu(event: any) {
     setMenu(event.target.id);
-    console.log(event.target.value);
   }
 
   return (

@@ -10,10 +10,17 @@ import {
   AddPointBtn,
   PointWrapper,
   MypageMenu,
-  MenuItem,
+  MyAccount,
+  AddPoint,
+  MyCollection,
+  FavoriteItems,
   MypageNav,
   MypageBody,
 } from "./Mypage.styles";
+import AccountSection from "./account/AccountSection";
+import PointSection from "./point/PointSection";
+import CollectionSection from "./collection/CollectionSection";
+import FavoriteSection from "./favorite/FavoriteSection";
 
 export default function MypageUI(props: any) {
   return (
@@ -35,12 +42,18 @@ export default function MypageUI(props: any) {
           {/* <AddPointBtn>ADD POINT</AddPointBtn> */}
         </PointWrapper>
         <MypageMenu>
-          <MenuItem onClick={props.onClickMenu} menu={props.menu} id="account">
+          <MyAccount onClick={props.onClickMenu} menu={props.menu} id="1">
             MY ACCOUNT
-          </MenuItem>
-          <MenuItem menu={props.menu}>ADD POINT</MenuItem>
-          <MenuItem menu={props.menu}>MY COLLECTION</MenuItem>
-          <MenuItem menu={props.menu}>FAVORITE ITEMS</MenuItem>
+          </MyAccount>
+          <AddPoint onClick={props.onClickMenu} menu={props.menu} id="2">
+            ADD POINT
+          </AddPoint>
+          <MyCollection onClick={props.onClickMenu} menu={props.menu} id="3">
+            MY COLLECTION
+          </MyCollection>
+          <FavoriteItems onClick={props.onClickMenu} menu={props.menu} id="4">
+            FAVORITE ITEMS
+          </FavoriteItems>
         </MypageMenu>
         {/* <EditBtn onClick={props.onClickUpload}>Edit</EditBtn> */}
         <UploadImg
@@ -49,7 +62,12 @@ export default function MypageUI(props: any) {
           onChange={props.onChangeImg}
         />
       </MypageNav>
-      <MypageBody></MypageBody>
+      <MypageBody>
+        {props.menu == 1 && <AccountSection />}
+        {props.menu == 2 && <PointSection />}
+        {props.menu == 3 && <CollectionSection />}
+        {props.menu == 4 && <FavoriteSection />}
+      </MypageBody>
     </Wrapper>
   );
 }
