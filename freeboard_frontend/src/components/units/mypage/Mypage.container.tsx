@@ -15,7 +15,7 @@ export default function Mypage() {
   const [prev, setPrev] = useState("");
   const [picture, setPicture] = useState("");
   const { data } = useQuery(FETCH_USER_LOGGEDIN);
-  const [menu, setMenu] = useState("");
+  const [menu, setMenu] = useState("4");
 
   function onClickFile() {
     inputRef.current?.click();
