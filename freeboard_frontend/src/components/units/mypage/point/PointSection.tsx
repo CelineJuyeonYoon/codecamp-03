@@ -1,4 +1,13 @@
+import { gql, useMutation } from "@apollo/client";
 import styled from "@emotion/styled";
+
+const CREATE_POINT_TRANSACTION_OF_LOADING = gql`
+  mutation createPointTransactionOfLoading($impUid: ID!) {
+    createPointTransactionOfLoading(impUid: $impUid) {
+      balance
+    }
+  }
+`;
 
 const Wrapper = styled.div``;
 const Select = styled.select`
@@ -12,6 +21,18 @@ const AddBtn = styled.button`
 `;
 
 export default function PointSection() {
+  const [createPointTransactionOfLoading] = useMutation(
+    CREATE_POINT_TRANSACTION_OF_LOADING
+  );
+
+  function onClickAddPoint() {
+    createPointTransactionOfLoading({
+      variables: {
+        impUid: "",
+      },
+    });
+  }
+
   return (
     <Wrapper>
       <div>Select Point</div>
@@ -23,7 +44,7 @@ export default function PointSection() {
         <option value="50000">50000</option>
         <option value="100000">100000</option>
       </Select>
-      <AddBtn>충전하기</AddBtn>
+      <AddBtn onClick={onClickAddPoint}>충전하기</AddBtn>
     </Wrapper>
   );
 }
