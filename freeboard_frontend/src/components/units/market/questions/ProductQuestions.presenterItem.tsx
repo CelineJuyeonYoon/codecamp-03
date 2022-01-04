@@ -57,7 +57,7 @@ export default function ProductQuestionsItem(props: any) {
           },
         ],
       });
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
   }

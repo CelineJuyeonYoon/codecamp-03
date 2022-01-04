@@ -44,7 +44,7 @@ export default function Mypage() {
       setPicture(
         `https://storage.googleapis.com/${result.data.uploadFile.url}`
       );
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
   }
@@ -58,7 +58,7 @@ export default function Mypage() {
           },
         },
       });
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
     alert("수정되었습니다.");
@@ -67,7 +67,7 @@ export default function Mypage() {
   function onClickMenu(event: any) {
     setMenu(event.target.id);
   }
-
+  console.log("화긴", data);
   return (
     <MypageUI
       onChangeImg={onChangeImg}

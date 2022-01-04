@@ -29,7 +29,7 @@ export default function Myform(props: any) {
         },
       });
       router.push("/login");
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
   }

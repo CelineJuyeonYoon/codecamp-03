@@ -1,9 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
 
-const FETCH_USEDITEM_I_BOUGHT = gql`
-  query fetchUseditemIBought($search: String) {
-    fetchUseditemIBought(search: $search) {
+const FETCH_USEDITEMS_I_BOUGHT = gql`
+  query fetchUseditemsIBought($search: String) {
+    fetchUseditemsIBought(search: $search) {
       _id
       name
       price
@@ -32,13 +32,13 @@ const ProductPrice = styled.div`
 `;
 
 export default function CollectionSection() {
-  const { data } = useQuery(FETCH_USEDITEM_I_BOUGHT, {
+  const { data } = useQuery(FETCH_USEDITEMS_I_BOUGHT, {
     variables: { search: "" },
   });
 
   return (
     <Wrapper>
-      {data?.fetchUseditemIBought.map((el: any) => (
+      {data?.fetchUseditemsIBought.map((el: any) => (
         <Product key={el._id}>
           <ProductImg src={`https://storage.googleapis.com/${el.images[0]}`} />
           <ProductName>{el.name}</ProductName>

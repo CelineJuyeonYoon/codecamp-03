@@ -41,7 +41,7 @@ export default function AccountSection() {
           password: PW1.current?.value,
         },
       });
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
     alert("비밀번호가 변경되었습니다.");

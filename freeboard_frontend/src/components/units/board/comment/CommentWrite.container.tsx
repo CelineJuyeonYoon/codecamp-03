@@ -85,7 +85,7 @@ export default function CommentWrite(props: any) {
         ],
       });
       props.setIsEdit?.(false); // 수정버튼 눌러서 수정되면 다시 수정박스 닫기!
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
   }

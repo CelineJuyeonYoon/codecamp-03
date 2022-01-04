@@ -42,7 +42,6 @@ export default function FavoriteSection() {
   function onClickItem(event: any) {
     router.push(`/market/${event.currentTarget.id}`);
   }
-  console.log(data);
 
   return (
     <Wrapper>

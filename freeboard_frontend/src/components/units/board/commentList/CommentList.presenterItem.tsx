@@ -50,7 +50,7 @@ export default function CommentListUIItem(props: any) {
           },
         ],
       });
-    } catch (error) {
+    } catch (error: any) {
       alert(error.message);
     }
   }

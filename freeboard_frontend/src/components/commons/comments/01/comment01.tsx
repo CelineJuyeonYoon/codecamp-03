@@ -95,7 +95,7 @@ export default function Comment01(props: any) {
           },
         ],
       });
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
   };

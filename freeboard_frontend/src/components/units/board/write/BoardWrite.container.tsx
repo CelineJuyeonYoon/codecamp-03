@@ -167,7 +167,7 @@ export default function BoardWrite(props: any) {
         },
       });
       router.push(`/boards/board_read/${result.data.createBoard._id}`);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
     }
   }
@@ -207,7 +207,7 @@ export default function BoardWrite(props: any) {
     try {
       await updateBoard({ variables: myVariables });
       router.push(`/boards/board_read/${router.query.id}`);
-    } catch (error) {
+    } catch (error: any) {
       alert(error.message);
     }
   }

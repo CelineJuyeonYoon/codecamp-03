@@ -56,7 +56,7 @@ export default function BoardRead() {
       await deleteBoard({ variables: { boardId: router.query.id } });
       alert("게시물이 삭제되었습니다.");
       router.push(`/boards/board_list`);
-    } catch (error) {
+    } catch (error: any) {
       alert(error.message);
     }
   }

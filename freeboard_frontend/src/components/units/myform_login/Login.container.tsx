@@ -42,7 +42,7 @@ export default function MyformLogin() {
       localStorage.setItem("refreshToken", "true");
       sessionStorage.setItem("login", "true");
       router.push("/market");
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
   }
