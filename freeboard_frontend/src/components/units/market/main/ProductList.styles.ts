@@ -6,7 +6,7 @@ interface IProps {
 }
 
 export const Wrapper = styled.div`
-  width: 1200px;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,29 +16,35 @@ export const BestProducts = styled.div`
   width: 1200px;
   height: 450px;
 `;
+export const ProductListWrapper = styled.div`
+  margin-top: 40px;
+  overflow: auto;
+  height: 1000px;
+`;
 export const ProductList = styled.div`
-  padding-top: 40px;
-  border-bottom: 1px solid #bdbdbd;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 export const ProductListHeader = styled.div`
-  width: 1200px;
+  width: 100vw;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding: 0 30px;
   padding-top: 80px;
 `;
 export const ProductStatus = styled.div`
   display: flex;
 `;
 export const OnSale = styled.div`
-  font-size: 18px;
   font-weight: ${(props: IProps) => (props.sale ? "500" : "")};
   margin-right: 20px;
   color: ${(props: IProps) => (props.sale ? "black" : "#4F4F4F")};
   cursor: pointer;
 `;
 export const SoldOut = styled.div`
-  font-size: 18px;
   font-weight: ${(props: IProps) => (props.sold ? "500" : "")};
   color: ${(props: IProps) => (props.sold ? "black" : "#4F4F4F")};
   cursor: pointer;
@@ -66,25 +72,23 @@ export const SearchBtn = styled.button`
   height: 52px;
 `;
 export const Row = styled.div`
-  height: 200px;
+  width: 30vw;
+  height: 30vw;
   display: flex;
-  align-items: center;
-  width: 1200px;
-  border-top: 1px solid #bdbdbd;
-  padding: 20px 0 20px 0;
+  flex-direction: column;
+  padding: 10px;
 `;
 export const ProductImg = styled.img`
-  width: 160px;
-  height: 160px;
-  margin-right: 40px;
+  width: 100%;
+  height: 80%;
+  border-radius: 2px;
+  object-fit: cover;
 `;
 export const ProductInfo = styled.div`
-  width: 60%;
-  margin-right: 40px;
+  width: 30vw;
 `;
 export const ProductName = styled.div`
   font-weight: 500;
-  font-size: 24px;
   margin-top: 8px;
   cursor: pointer;
 `;
@@ -114,27 +118,20 @@ export const PickedCount = styled.span`
   margin-left: 6px;
 `;
 export const ProductPrice = styled.div`
-  /* width: 20%; */
-  display: flex;
-  align-items: center;
-  height: 18px;
-  /* text-align: right; */
-`;
-export const Price = styled.div`
   font-weight: bold;
-  font-size: 24px;
-  margin-left: 11px;
+  font-size: 16px;
 `;
 export const Buttons = styled.div`
   padding-top: 40px;
 `;
 export const SubmitBtn = styled.button`
-  width: 124px;
-  height: 52px;
   background-color: white;
-  border: 1px solid black;
+  border-style: none;
+  cursor: pointer;
+  font-size: 14px;
 `;
 export const NoImage = styled.img`
-  width: 160px;
+  width: 100%;
+  height: 80%;
   margin-right: 40px;
 `;
