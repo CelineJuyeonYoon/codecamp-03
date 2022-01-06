@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 
 const FETCH_USEDITEMS_I_BOUGHT = gql`
   query fetchUseditemsIBought($search: String) {
@@ -18,6 +19,7 @@ const Wrapper = styled.div`
 `;
 const Product = styled.div`
   margin: 5px;
+  cursor: pointer;
 `;
 const ProductImg = styled.img`
   width: 150px;
@@ -32,14 +34,19 @@ const ProductPrice = styled.div`
 `;
 
 export default function CollectionSection() {
+  const router = useRouter();
   const { data } = useQuery(FETCH_USEDITEMS_I_BOUGHT, {
     variables: { search: "" },
   });
 
+  function onClickItem(event: any) {
+    router.push(`/market/${event.currentTarget.id}`);
+  }
+
   return (
     <Wrapper>
       {data?.fetchUseditemsIBought.map((el: any) => (
-        <Product key={el._id}>
+        <Product key={el._id} onClick={onClickItem} id={el._id}>
           <ProductImg src={`https://storage.googleapis.com/${el.images[0]}`} />
           <ProductName>{el.name}</ProductName>
           <ProductPrice>{el.price}</ProductPrice>
