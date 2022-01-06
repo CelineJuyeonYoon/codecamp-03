@@ -44,7 +44,7 @@ export default function ProductDetailUI(props: any) {
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=1283e91757dafae0f985204d3c20d319";
+      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=60434684541b8ddb27b2a4f4750eaad5";
     document.head.appendChild(script);
 
     script.onload = () => {
