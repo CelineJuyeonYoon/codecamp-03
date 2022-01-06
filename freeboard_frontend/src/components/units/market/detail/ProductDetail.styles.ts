@@ -1,15 +1,12 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  /* width: 1200px;
-  height: 1602px; */
   width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 100px;
 `;
-export const Box = styled.div``;
 export const Header = styled.div`
   width: 792px;
   display: flex;
@@ -90,6 +87,8 @@ export const ProductContents = styled.div`
 export const ProductTags = styled.div`
   padding-top: 40px;
   color: #3f729b;
+  width: 792px;
+  text-align: start;
 `;
 export const LocationBox = styled.div`
   border-top: 1px solid #bdbdbd;
@@ -110,23 +109,20 @@ export const ProductImgs = styled.div`
 `;
 export const CarouselImg = styled.div`
   background-color: #bdbdbd;
-  width: 296px;
-  height: 296px;
+  width: 400px;
 `;
 export const CarouselImgs = styled.div`
   display: flex;
-  width: 384px;
+  width: 400px;
   justify-content: space-evenly;
   padding-top: 64px;
 `;
 export const SliderImg = styled.img`
-  width: 296px;
-  height: 296px;
+  object-fit: cover;
 `;
 export const MiniImg = styled.img`
-  background-color: black;
+  object-fit: cover;
   width: 78px;
-  height: 78px;
 `;
 export const Buttons = styled.div`
   display: flex;

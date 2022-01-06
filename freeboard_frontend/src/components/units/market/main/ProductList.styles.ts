@@ -77,6 +77,10 @@ export const Row = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px;
+  @media screen and (max-width: 390px) {
+    width: 390px;
+    height: 390px;
+  }
 `;
 export const ProductImg = styled.img`
   width: 100%;

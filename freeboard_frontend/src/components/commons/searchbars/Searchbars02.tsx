@@ -2,14 +2,15 @@ import styled from "@emotion/styled";
 import _ from "lodash";
 import { ChangeEvent } from "react";
 
-const SearchBar = styled.div``;
+const SearchBar = styled.div`
+  width: 50vw;
+`;
 const SearchBarInput = styled.input`
-  width: 776px;
-  height: 52px;
+  width: 100%;
+  height: 30px;
   background-color: #f2f2f2;
   border-radius: 10px;
   border: none;
-  font-size: 16px;
   padding-left: 20px;
 `;
 
