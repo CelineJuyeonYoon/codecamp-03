@@ -39,7 +39,6 @@ export default function MypageUI(props: any) {
           <Point>
             {props.data?.fetchUserLoggedIn.userPoint.amount.toLocaleString()} P
           </Point>
-          {/* <AddPointBtn>ADD POINT</AddPointBtn> */}
         </PointWrapper>
         <MypageMenu>
           <MyAccount onClick={props.onClickMenu} menu={props.menu} id="1">
@@ -55,7 +54,6 @@ export default function MypageUI(props: any) {
             FAVORITE ITEMS
           </FavoriteItems>
         </MypageMenu>
-        {/* <EditBtn onClick={props.onClickUpload}>Edit</EditBtn> */}
         <UploadImg
           type="file"
           ref={props.inputRef}
