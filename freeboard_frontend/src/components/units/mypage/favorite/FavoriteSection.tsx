@@ -18,12 +18,15 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 const Product = styled.div`
-  margin: 5px;
+  margin: 10px;
   cursor: pointer;
+  width: 20vw;
+  height: 20vw;
 `;
 const ProductImg = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 80%;
+  border-radius: 2px;
   object-fit: cover;
 `;
 const ProductName = styled.div`
