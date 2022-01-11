@@ -11,7 +11,7 @@ export const MypageNav = styled.div`
   flex-direction: column;
   align-items: center;
   width: 30%;
-  padding: 0 30px;
+  padding: 10px 30px;
   border-right: 1px solid black;
 `;
 export const ImgWrapper = styled.div`

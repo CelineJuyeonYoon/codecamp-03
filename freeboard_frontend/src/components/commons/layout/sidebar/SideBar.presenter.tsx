@@ -1,3 +1,7 @@
+import AccountSection from "../../../units/mypage/account/AccountSection";
+import CollectionSection from "../../../units/mypage/collection/CollectionSection";
+import FavoriteSection from "../../../units/mypage/favorite/FavoriteSection";
+import PointSection from "../../../units/mypage/point/PointSection";
 import {
   Wrapper,
   UserImg,
@@ -54,6 +58,12 @@ export default function SideBarUI(props: any) {
           onChange={props.onChangeImg}
         />
       </MypageNav>
+      {/* <MypageBody>
+        <AccountSection />
+        <PointSection />
+        <CollectionSection />
+        <FavoriteSection />
+      </MypageBody> */}
     </Wrapper>
   );
 }

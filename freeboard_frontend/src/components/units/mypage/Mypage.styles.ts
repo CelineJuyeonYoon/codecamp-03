@@ -3,7 +3,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 
 export const Wrapper = styled.div`
   display: flex;
-  width: 80vw;
+  width: 70vw;
   padding-top: 50px;
 `;
 export const MypageNav = styled.div`

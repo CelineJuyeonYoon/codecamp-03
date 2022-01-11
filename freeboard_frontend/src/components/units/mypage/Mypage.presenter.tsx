@@ -25,7 +25,7 @@ import FavoriteSection from "./favorite/FavoriteSection";
 export default function MypageUI(props: any) {
   return (
     <Wrapper>
-      <MypageNav>
+      {/* <MypageNav>
         <ImgWrapper>
           {props.prev || props.data?.fetchUserLoggedIn.picture ? (
             <UserImg src={props.prev || props.data.fetchUserLoggedIn.picture} />
@@ -59,7 +59,7 @@ export default function MypageUI(props: any) {
           ref={props.inputRef}
           onChange={props.onChangeImg}
         />
-      </MypageNav>
+      </MypageNav> */}
       <MypageBody>
         {props.menu == 1 && <AccountSection />}
         {props.menu == 2 && <PointSection />}
