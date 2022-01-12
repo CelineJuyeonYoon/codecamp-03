@@ -52,31 +52,23 @@ export const MypageMenu = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const MyAccount = styled.div<{ menu: any }>`
+export const MyAccount = styled.div<{ section: any }>`
   cursor: pointer;
-  color: ${(props) => props.menu === "1" && "darkorange"};
+  color: ${(props) => props.section === "account" && "darkorange"};
 `;
-export const AddPoint = styled.div<{ menu: any }>`
+export const AddPoint = styled.div<{ section: any }>`
   cursor: pointer;
-  color: ${(props) => props.menu === "2" && "darkorange"};
+  color: ${(props) => props.section === "addpoint" && "darkorange"};
 `;
-export const MyCollection = styled.div<{ menu: any }>`
+export const MyCollection = styled.div<{ section: any }>`
   cursor: pointer;
-  color: ${(props) => props.menu === "3" && "darkorange"};
+  color: ${(props) => props.section === "collection" && "darkorange"};
 `;
-export const FavoriteItems = styled.div<{ menu: any }>`
+export const FavoriteItems = styled.div<{ section: any }>`
   cursor: pointer;
-  color: ${(props) => props.menu === "4" && "darkorange"};
+  color: ${(props) => props.section === "favorites" && "darkorange"};
 `;
 export const MypageBody = styled.div`
   width: 70%;
   padding: 0 30px;
-`;
-////////////////////////////////////////////////////////////////////////
-export const AddPointBtn = styled.button`
-  margin-left: 10px;
-`;
-export const EditBtn = styled.button`
-  cursor: pointer;
-  margin-top: 50px;
 `;

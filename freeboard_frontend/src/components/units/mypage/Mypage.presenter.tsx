@@ -5,9 +5,7 @@ import {
   UserName,
   ImgEditBtn,
   ImgWrapper,
-  EditBtn,
   Point,
-  AddPointBtn,
   PointWrapper,
   MypageMenu,
   MyAccount,
@@ -25,7 +23,7 @@ import FavoriteSection from "./favorite/FavoriteSection";
 export default function MypageUI(props: any) {
   return (
     <Wrapper>
-      {/* <MypageNav>
+      <MypageNav>
         <ImgWrapper>
           {props.prev || props.data?.fetchUserLoggedIn.picture ? (
             <UserImg src={props.prev || props.data.fetchUserLoggedIn.picture} />
@@ -41,16 +39,32 @@ export default function MypageUI(props: any) {
           </Point>
         </PointWrapper>
         <MypageMenu>
-          <MyAccount onClick={props.onClickMenu} menu={props.menu} id="1">
+          <MyAccount
+            id="account"
+            onClick={props.onClickChangeContent}
+            section={props.section}
+          >
             MY ACCOUNT
           </MyAccount>
-          <AddPoint onClick={props.onClickMenu} menu={props.menu} id="2">
+          <AddPoint
+            onClick={props.onClickChangeContent}
+            id="addpoint"
+            section={props.section}
+          >
             ADD POINT
           </AddPoint>
-          <MyCollection onClick={props.onClickMenu} menu={props.menu} id="3">
+          <MyCollection
+            onClick={props.onClickChangeContent}
+            id="collection"
+            section={props.section}
+          >
             MY COLLECTION
           </MyCollection>
-          <FavoriteItems onClick={props.onClickMenu} menu={props.menu} id="4">
+          <FavoriteItems
+            onClick={props.onClickChangeContent}
+            id="favorites"
+            section={props.section}
+          >
             FAVORITE ITEMS
           </FavoriteItems>
         </MypageMenu>
@@ -59,12 +73,12 @@ export default function MypageUI(props: any) {
           ref={props.inputRef}
           onChange={props.onChangeImg}
         />
-      </MypageNav> */}
+      </MypageNav>
       <MypageBody>
-        {props.menu == 1 && <AccountSection />}
-        {props.menu == 2 && <PointSection />}
-        {props.menu == 3 && <CollectionSection />}
-        {props.menu == 4 && <FavoriteSection />}
+        {props.section === "account" && <AccountSection />}
+        {props.section === "addpoint" && <PointSection />}
+        {props.section === "collection" && <CollectionSection />}
+        {props.section === "favorites" && <FavoriteSection />}
       </MypageBody>
     </Wrapper>
   );

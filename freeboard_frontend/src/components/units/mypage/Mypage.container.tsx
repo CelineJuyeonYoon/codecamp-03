@@ -15,7 +15,7 @@ export default function Mypage() {
   const [prev, setPrev] = useState("");
   const [picture, setPicture] = useState("");
   const { data } = useQuery(FETCH_USER_LOGGEDIN);
-  const [menu, setMenu] = useState("4");
+  const [section, setSection] = useState("account");
 
   function onClickFile() {
     inputRef.current?.click();
@@ -64,10 +64,11 @@ export default function Mypage() {
     alert("수정되었습니다.");
   }
 
-  function onClickMenu(event: any) {
-    setMenu(event.target.id);
+  function onClickChangeContent(event: any) {
+    history.pushState(null, "null", `/mypage/${event.target.id}`);
+    setSection(event.target.id);
   }
-  console.log("화긴", data);
+
   return (
     <MypageUI
       onChangeImg={onChangeImg}
@@ -76,8 +77,8 @@ export default function Mypage() {
       prev={prev}
       onClickUpload={onClickUpload}
       data={data}
-      onClickMenu={onClickMenu}
-      menu={menu}
+      onClickChangeContent={onClickChangeContent}
+      section={section}
     />
   );
 }
