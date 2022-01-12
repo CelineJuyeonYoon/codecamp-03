@@ -3,15 +3,15 @@ import SettingsIcon from "@mui/icons-material/Settings";
 
 export const Wrapper = styled.div`
   display: flex;
-  width: 70vw;
+  width: 90vw;
   padding-top: 50px;
 `;
 export const MypageNav = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30%;
-  padding: 0 30px;
+  width: 20%;
+  padding-top: 5px;
   border-right: 1px solid black;
 `;
 export const ImgWrapper = styled.div`
@@ -69,6 +69,6 @@ export const FavoriteItems = styled.div<{ section: any }>`
   color: ${(props) => props.section === "favorites" && "darkorange"};
 `;
 export const MypageBody = styled.div`
-  width: 70%;
+  width: 80%;
   padding: 0 30px;
 `;

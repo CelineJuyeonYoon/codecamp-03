@@ -69,6 +69,11 @@ export default function Mypage() {
     setSection(event.target.id);
   }
 
+  window.onpopstate = function () {
+    setSection(location.pathname.split("/")[2]);
+    // setSection(event.target.history.state.as.split("/")[2]);
+  };
+
   return (
     <MypageUI
       onChangeImg={onChangeImg}
