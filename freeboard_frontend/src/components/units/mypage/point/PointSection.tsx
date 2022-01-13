@@ -10,10 +10,7 @@ declare const window: typeof globalThis & {
 const CREATE_POINT_TRANSACTION_OF_LOADING = gql`
   mutation createPointTransactionOfLoading($impUid: ID!) {
     createPointTransactionOfLoading(impUid: $impUid) {
-      balance
       _id
-      amount
-      status
     }
   }
 `;
@@ -46,13 +43,13 @@ export default function PointSection() {
       return;
     }
     var IMP = window.IMP;
-    IMP.init("imp25002470");
+    IMP.init("imp49910675");
     IMP.request_pay(
       {
         pg: "html5_inicis",
         pay_method: "card",
         name: "포인트 충전",
-        amount: 100,
+        amount: amount,
       },
       function (rsp: any) {
         if (rsp.success) {
