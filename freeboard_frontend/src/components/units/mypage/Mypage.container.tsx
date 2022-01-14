@@ -7,6 +7,7 @@ import {
   FETCH_USER_LOGGEDIN,
 } from "./Mypage.queries";
 import { useRef } from "react";
+import { useEffect } from "react";
 
 export default function Mypage() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -69,10 +70,14 @@ export default function Mypage() {
     setSection(event.target.id);
   }
 
-  // window.onpopstate = function () {
-  //   setSection(location.pathname.split("/")[2]);
-  //   // setSection(event.target.history.state.as.split("/")[2]);
-  // };
+  useEffect(() => {
+    if (process.browser) {
+      window.onpopstate = function () {
+        setSection(location.pathname.split("/")[2]);
+        // setSection(event.target.history.state.as.split("/")[2]);
+      };
+    }
+  });
 
   return (
     <MypageUI
