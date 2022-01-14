@@ -4,8 +4,9 @@ import {
   ProductList,
   ProductListHeader,
   ProductStatus,
-  OnSale,
-  SoldOut,
+  // OnSale,
+  // SoldOut,
+  SortProduct,
   Row,
   ProductImg,
   NoImage,
@@ -22,12 +23,13 @@ export default function MarketMainUI(props: any) {
     <Wrapper>
       <ProductListHeader>
         <ProductStatus>
-          <OnSale onClick={props.onClickOnSale} sale={props.onSale}>
+          {/* <OnSale onClick={props.onClickOnSale} sale={props.onSale}>
             판매중상품
           </OnSale>
           <SoldOut onClick={props.onClickSoldOut} sold={props.soldOut}>
             판매된상품
-          </SoldOut>
+          </SoldOut> */}
+          <SortProduct>최신순</SortProduct>
         </ProductStatus>
         <SearchBars02
           refetch={props.refetch}

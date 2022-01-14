@@ -77,7 +77,11 @@ export const Row = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px;
-  @media screen and (max-width: 390px) {
+  @media screen and (max-width: 800px) {
+    width: 50vw;
+    height: 50vw;
+  }
+  @media screen and (max-width: 480px) {
     width: 390px;
     height: 390px;
   }
@@ -138,4 +142,8 @@ export const NoImage = styled.img`
   width: 100%;
   height: 80%;
   margin-right: 40px;
+`;
+export const SortProduct = styled.div`
+  cursor: pointer;
+  font-size: 14px;
 `;

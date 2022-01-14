@@ -8,10 +8,12 @@ const SearchBar = styled.div`
 const SearchBarInput = styled.input`
   width: 100%;
   height: 30px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
   border: none;
+  border-bottom: 1px solid black;
   padding-left: 20px;
+  :focus {
+    outline: none;
+  }
 `;
 
 export default function SearchBars02(props: any) {
