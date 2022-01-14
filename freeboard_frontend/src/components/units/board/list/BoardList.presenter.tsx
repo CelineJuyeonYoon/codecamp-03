@@ -13,8 +13,6 @@ import {
   Date,
   // SearchTitle,
   SearchBar,
-  SearchDate,
-  SearchBtn,
   Footer,
   BoardWriteBtn,
   BoardWrite,
@@ -31,13 +29,10 @@ export default function BoardListUI(props: any) {
   return (
     <Wrapper>
       <SearchBar>
-        {/* <SearchTitle type="text" placeholder="제목을 검색해주세요" /> */}
         <SearchBars01
           refetch={props.refetch}
           onChangeKeyword={props.onChangeKeyword}
         />
-        <SearchDate type="text" placeholder="YYYY.MM.DD ~ YYYY.MM.DD" />
-        <SearchBtn>검색하기</SearchBtn>
       </SearchBar>
       <BoardList>
         <Header>

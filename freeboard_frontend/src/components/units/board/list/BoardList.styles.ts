@@ -86,24 +86,17 @@ export const Date = styled.span`
 export const SearchBar = styled.div`
   width: 1200px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 80px;
 `;
-export const SearchDate = styled.input`
-  width: 244px;
-  border-style: none;
-  border: 1px solid #bdbdbd;
-  text-align: center;
-  font-size: 16px;
-`;
-export const SearchBtn = styled.button`
-  width: 94px;
-  background-color: black;
-  color: white;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-`;
+// export const SearchBtn = styled.button`
+//   width: 94px;
+//   background-color: black;
+//   color: white;
+//   border-radius: 10px;
+//   font-size: 16px;
+//   cursor: pointer;
+// `;
 export const BoardWriteBtn = styled.button`
   width: 171px;
   height: 52px;

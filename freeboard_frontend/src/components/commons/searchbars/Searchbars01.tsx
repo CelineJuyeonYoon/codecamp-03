@@ -6,11 +6,13 @@ const SearchBar = styled.div``;
 const SearchBarInput = styled.input`
   width: 776px;
   height: 52px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
   border: none;
+  border-bottom: 1px solid black;
   font-size: 16px;
   padding-left: 20px;
+  :focus {
+    outline: none;
+  }
 `;
 
 export default function SearchBars01(props: any) {
