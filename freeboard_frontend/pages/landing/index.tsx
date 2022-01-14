@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import { useRouter } from "next/router"
+import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -25,20 +25,24 @@ const Store = styled.img`
   cursor: pointer;
 `;
 
-export default function LandingPage(){
-  const router = useRouter()
+export default function LandingPage() {
+  const router = useRouter();
 
-  function onClickMove(event: any){
-    router.push(event.target.id)
+  function onClickMove(event: any) {
+    router.push(event.target.id);
   }
 
-  return(
+  return (
     <Wrapper>
       <Logo src="/images/logo.png"></Logo>
       <Banners>
-        <Gallery id="/boards/board_list" src="/images/bridge.jpg" onClick={onClickMove}/>
-        <Store id="/boards/board_new" src="/images/store.jpg" onClick={onClickMove}/>
+        <Gallery id="/boards" src="/images/bridge.jpg" onClick={onClickMove} />
+        <Store
+          id="/boards/board_new"
+          src="/images/store.jpg"
+          onClick={onClickMove}
+        />
       </Banners>
     </Wrapper>
-  )
+  );
 }

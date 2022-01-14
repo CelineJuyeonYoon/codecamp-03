@@ -44,7 +44,7 @@ export default function BoardRead() {
   }
 
   function onClickToList() {
-    router.push(`../../boards/board_list`);
+    router.push(`../../boards`);
   }
 
   function onClickToEdit() {
@@ -55,7 +55,7 @@ export default function BoardRead() {
     try {
       await deleteBoard({ variables: { boardId: router.query.id } });
       alert("게시물이 삭제되었습니다.");
-      router.push(`/boards/board_list`);
+      router.push(`/boards`);
     } catch (error: any) {
       alert(error.message);
     }

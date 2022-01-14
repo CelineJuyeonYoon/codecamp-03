@@ -116,7 +116,7 @@ export default function BoardWrite(props: any) {
   }
 
   function onClickCancle() {
-    router.push(`../../../boards/board_read/${router.query.id}`);
+    router.push(`../../../boards`);
   }
 
   async function onClickSubmit() {
