@@ -13,7 +13,9 @@ export default function LayoutHeaderUI(props: any) {
   return (
     <Wrapper>
       <Menu>
-        <MenuItem>ABOUT</MenuItem>
+        <MenuItem id="/introduce" onClick={props.onClickMove}>
+          ABOUT
+        </MenuItem>
         <MenuItem id="/boards" onClick={props.onClickMove}>
           REVIEW
         </MenuItem>
