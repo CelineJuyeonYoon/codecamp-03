@@ -77,6 +77,7 @@ export const Row = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px;
+  cursor: pointer;
   @media screen and (max-width: 800px) {
     width: 50vw;
     height: 50vw;
@@ -98,7 +99,6 @@ export const ProductInfo = styled.div`
 export const ProductName = styled.div`
   font-weight: 500;
   margin-top: 8px;
-  cursor: pointer;
 `;
 export const ProductRemarks = styled.div`
   font-weight: 500;

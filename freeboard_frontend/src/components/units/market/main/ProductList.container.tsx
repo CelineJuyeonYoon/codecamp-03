@@ -11,7 +11,7 @@ export default function MarketMain() {
   const [soldOut, setSoldOut] = useState(false);
 
   function onClickToDetail(event: any) {
-    router.push(`/market/${event.target.id}`);
+    router.push(`/market/${event.currentTarget.id}`);
   }
 
   function onClickToWrite() {

@@ -47,7 +47,7 @@ export default function MarketMainUI(props: any) {
           >
             <ProductList>
               {props.data?.fetchUseditems.map((el: any) => (
-                <Row key={el._id}>
+                <Row key={el._id} id={el._id} onClick={props.onClickToDetail}>
                   {el.images[0] ? (
                     <ProductImg
                       src={`https://storage.googleapis.com/${el.images?.[0]}`}
@@ -56,9 +56,7 @@ export default function MarketMainUI(props: any) {
                     <NoImage src="/images/noimage.png" />
                   )}
                   <ProductInfo>
-                    <ProductName id={el._id} onClick={props.onClickToDetail}>
-                      {el.name}
-                    </ProductName>
+                    <ProductName>{el.name}</ProductName>
                     <ProductPrice>{el.price?.toLocaleString()}원</ProductPrice>
                   </ProductInfo>
                 </Row>

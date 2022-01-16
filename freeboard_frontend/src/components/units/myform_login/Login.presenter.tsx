@@ -4,11 +4,18 @@ import Error01 from "../../commons/errors/01/error01";
 
 export default function MyformLoginUI(props: any) {
   return (
-    <form onSubmit={props.handleSubmit(props.onClickLogin)}>
-      <Input01 name="이메일" type="text" register={props.register("email")} />
+    <form
+      onSubmit={props.handleSubmit(props.onClickLogin)}
+      style={{ display: "flex", flexDirection: "column" }}
+    >
+      <Input01
+        name="이메일 🔑 guest@gmail.com"
+        type="text"
+        register={props.register("email")}
+      />
       <Error01 value={props.formState.errors.email?.message} />
       <Input01
-        name="비밀번호"
+        name="비밀번호 🔑 1213"
         type="password"
         register={props.register("password")}
       />
